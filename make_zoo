@@ -6,9 +6,9 @@
 ##
 ##  Usage: make_zoo
 ##
-##  Uses perl and zoo to create just the <pname>-<version>.zoo
-##  and copies the README to README.<pname> (both are placed in
-##  the pkg directory).
+##  Uses perl and zoo to create <pname>-<version>.zoo and
+##  <pname>doc-<version>.zoo archives and copies the README 
+##  to README.<pname> (each is placed in the pkg directory).
 ##
 
 #set values of <pname> and <version>
