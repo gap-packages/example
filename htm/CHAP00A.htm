@@ -334,13 +334,24 @@ that the expression list is  only  printed  (or  even  executed)  if  the
 <p>
 <a name="SECT005"><h2>A.5 Having a Banner</h2></a>
 <p><p>
+<a name = "I0"></a>
+
+<a name = "I1"></a>
+
+<a name = "I2"></a>
+
 Typically a banner for a package is produced by  a  sequence  of  <code>Print</code>
 statements in a file named <code>banner.g</code> which is  loaded  via  a  <code>ReadPkg</code>
 statement in the package <code>init.g</code> file. The execution of the printing  of
 the banner should be nested inside <code>if not QUIET and BANNER then ... fi;</code>
 (see the  <font face="Gill Sans,Helvetica,Arial">Example</font>  package  <code>init.g</code>  file)  so  that  the  banner  is
 suppressed during package autoloading and when <font face="Gill Sans,Helvetica,Arial">GAP</font> is started up  with
-the <code>-q</code> or <code>-b</code> command line options.
+the <code>-q</code> or <code>-b</code> command line options. It's also nice to have a means  of
+controlling the extent of the banner from the  <code>RequirePackage</code>  command;
+in the <font face="Gill Sans,Helvetica,Arial">Example</font> package's <code>banner.g</code> file we test for the value of  the
+option <code>pkgbanner</code>: if it is <code>"short"</code> a 1-line <code>Loading ...</code> message  is
+<code>Info</code>-ed, if it is <code>"none"</code> no banner is  printed,  otherwise  the  full
+banner is printed.
 <p>
 It is a good idea to have a hook into  your  package  documentation  from
 your banner. The <font face="Gill Sans,Helvetica,Arial">Example</font> package suggests to the <font face="Gill Sans,Helvetica,Arial">GAP</font> user:
