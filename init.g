@@ -22,5 +22,3 @@ DeclarePackage("example","1.0",
 # install the documentation
 DeclarePackageAutoDocumentation( "example", "doc" );
 
-# read the actual code.
-ReadPkg( "example", "gap/files.g");
