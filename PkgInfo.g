@@ -199,9 +199,7 @@ PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
 ##     - the PDF-file (if provided) *relative to the package root*
 ##  For links to other package manuals or the GAP manuals one can assume 
 ##  relative paths as in a standard GAP installation. 
-##  Also, provide the information which is currently given in your packages 
-##  init.g file in the command DeclarePackage(Auto)Documentation
-##  (for future simplification of the package loading mechanism).
+##  Also, provide the information about autoloadability of the documentation.
 ##  
 ##  Please, don't include unnecessary files (.log, .aux, .dvi, .ps, ...) in
 ##  the provided documentation archive.
@@ -253,7 +251,6 @@ Dependencies := rec(
 ),
 
 ## Provide a test function for the availability of this package, see
-## documentation of 'Declare(Auto)Package', this is the <tester> function.
 ## For packages which will not fully work, use 'Info(InfoWarning, 1,
 ## ".....")' statements. For packages containing nothing but GAP code,
 ## just say 'ReturnTrue' here.
@@ -281,6 +278,14 @@ AvailabilityTest := function()
     # since the hello binary is not vital we return ...
     return true;
   end,
+
+##  If the default banner does not suffice then provide a string that is
+##  printed when the package is loaded (not when it is autoloaded or if
+##  command line options `-b' or `-q' are given).
+BannerString := Concatenation( [
+  "----------------------------------------------------------\n",
+  "Loading  ``example'' version ", ~.Version, "\n",
+  "----------------------------------------------------------\n" ] ),
 
 ##  Suggest here if the package should be *automatically loaded* when GAP is 
 ##  started.  This should usually be 'false'. Say 'true' only if your package 
