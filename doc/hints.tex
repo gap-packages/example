@@ -128,10 +128,10 @@ word `Example' with <package-name>.
 
 `lib'&
 This is the preferred place for the {\GAP} code, i.e.~the `.g', `.gd' and
-`.gi' files (other than `init.g' and `read.g'). For  some  packages  (the
-{\Example} package included), the directory `gap' has been  used  instead
-of `lib';  `lib'  has  the  slight  advantage  that  it  is  the  default
-subdirectory   of   a   package   directory   searched   for    by    the
+`.gi' files (other than `PackageInfo.g', `init.g' and `read.g'). For some
+packages (the {\Example} package included), the directory `gap' has  been
+used instead of `lib'; `lib' has the slight  advantage  that  it  is  the
+default  subdirectory  of  a  package  directory  searched  for  by   the
 `DirectoriesPackageLibrary' command  (see~"ref:DirectoriesPackageLibrary"
 in the {\GAP}~4 Reference Manual).
 
@@ -167,8 +167,8 @@ Note that using `gs' and `ps2pdf' in lieu of `pdftex' or `pdflatex' is  a
 poor substitute unless your `gs' is at  least  version  6.<xx>  for  some
 <xx>.
 
-The rest of this section describe the various additional tools needed for
-the `gapmacro.tex' documentation system.
+The rest of this section describes the various  additional  tools  needed
+for the `gapmacro.tex' documentation system.
 
 To produce the `.dvi', `.ps' and `.pdf'  manual  formats,  the  following
 {\GAP} tools (usually located  in  {\GAP}'s  main  `doc'  directory)  are
@@ -306,13 +306,13 @@ capitalised.
 `BindGlobal') to define functions and variables, which allow the  package
 author to organise her function- and variable- definitions in  any  order
 without worrying about any interdependence. The  `Declare...'  statements
-should go in files with `.gd'  extensions  and  be  loaded  by  `ReadPkg'
+should go in files with `.gd' extensions and be loaded  by  `ReadPackage'
 statements in the package `init.g' file, and the `Install...' definitions
-should go in files with `.gi'  extensions  and  be  loaded  by  `ReadPkg'
+should go in files with `.gi' extensions and be loaded  by  `ReadPackage'
 statements in the package `read.g' file;  this  ensures  that  the  `.gi'
-files are read *after* the `.gd' files. All  other  package  code  should
-go in `.g' files (other than the `init.g' and `read.g' files  themselves)
-and be loaded via `ReadPkg' statements in the `init.g' file.
+files are read *after* the `.gd' files. All other package code should  go
+in `.g' files (other than the `init.g' and `read.g' files themselves) and
+be loaded via `ReadPackage' statements in the `init.g' file.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Having an InfoClass}
