@@ -20,7 +20,7 @@ DeclarePackage("example","1.0",
   end);
 
 # install the documentation
-DeclarePackageDocumentation( "example", "doc" );
+DeclarePackageAutoDocumentation( "example", "doc" );
 
 # read the actual code.
 ReadPkg( "example", "gap/files.g");
