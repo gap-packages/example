@@ -1,0 +1,386 @@
+<html><head><title>[Example] A Hints for writing a GAP Package</title></head>
+<body text="#000000" bgcolor="#ffffff">
+[<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
+<h1>A Hints for writing a GAP Package</h1><p>
+<P>
+<H3>Sections</H3>
+<oL>
+<li> <A HREF="CHAP00A.htm#SECT001">Structure of a GAP Package</a>
+<li> <A HREF="CHAP00A.htm#SECT002">Documentation Software Tools Needed</a>
+<li> <A HREF="CHAP00A.htm#SECT003">Functions and Variables and Choices of Their Names</a>
+<li> <A HREF="CHAP00A.htm#SECT004">Having an InfoClass</a>
+<li> <A HREF="CHAP00A.htm#SECT005">Having a Banner</a>
+<li> <A HREF="CHAP00A.htm#SECT006">Packing up your GAP Package</a>
+<li> <A HREF="CHAP00A.htm#SECT007">CVS</a>
+</ol><p>
+<p>
+The <font face="Gill Sans,Helvetica,Arial">Example</font> package is intended to be a prototype for a package.  Here
+we describe just what features one should emulate when writing one's  own
+<font face="Gill Sans,Helvetica,Arial">GAP</font> package for popular consumption, and a few pointers as to where to
+go for more information.
+<p>
+<p>
+<a name="SECT001"><h2>A.1 Structure of a GAP Package</h2></a>
+<p><p>
+A <font face="Gill Sans,Helvetica,Arial">GAP</font> package should have an alphanumeric name (<var>package-name</var>,  say);
+mixed case is fine, but there should  be  no  whitespace.  The  directory
+<var>package-dir</var> containing the files of package  <var>package-name</var>  should  be
+just  <var>package-name</var>  converted  to  lowercase  (the   restriction   that
+<var>package-dir</var> must be contain only lowercase characters may change in the
+future); this is so that a user may load the  <var>package-name</var>  package  by
+calling  the  <code>RequirePackage</code>  command  (which  lowercases   its   first
+argument; see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC003.1">RequirePackage</a> in the Reference Manual)  with  either
+<var>package-name</var> or <var>package-dir</var> (in doublequotes).
+<p>
+The directory  <var>package-dir</var>  should  be  a  subdirectory  of  <code>pkg</code>  and
+preferably should have the following structure  (below,  a  trailing  <code>/</code>
+distinguishes directories from ordinary files):
+<p>
+<code></code><var>package-dir</var><code>/</code>
+<br><code>  README</code>
+<br><code>  configure</code>
+<br><code>  Makefile.in</code>
+<br><code>  init.g</code>
+<br><code>  read.g</code>
+<br><code>  doc/</code>
+<br><code>  lib/</code>
+<br><code>  src/</code>
+<p>
+We now describe the above files and directories:
+<p>
+<p>
+<dl compact>
+<p>
+<dt><code>README</code><dd>
+This should contain ``how  to  get  it''  (from  the  <font face="Gill Sans,Helvetica,Arial">GAP</font>  <code>ftp</code>-  and
+web-sites) instructions, as well as installation instructions  and  names
+of the package  authors  and  their  email  addresses.  The  installation
+instructions and authors' names and addresses should be repeated  in  the
+package's documentation (which should be in the <code>doc</code> directory).
+<p>
+<dt><code>configure</code>, <code>Makefile.in</code><dd>
+These files are only necessary if the package has a non-<font face="Gill Sans,Helvetica,Arial">GAP</font> component,
+e.g.&nbsp;some C code (the files of which should be in the  <code>src</code>  directory).
+The <code>configure</code> and <code>Makefile.in</code> files of the <font face="Gill Sans,Helvetica,Arial">Example</font> package provide
+prototypes. The <code>configure</code> file typically takes a  path  <var>path</var>  to  the
+<font face="Gill Sans,Helvetica,Arial">GAP</font> root  directory  as  argument  and  uses  the  value  assigned  to
+<code>GAParch</code> in the file <code>sysinfo.gap</code> (created when <font face="Gill Sans,Helvetica,Arial">GAP</font> was compiled) to
+determine the compilation architecture, inserts  this  in  place  of  the
+string <code>@GAPARCH@</code> in <code>Makefile.in</code> and creates a file  <code>Makefile</code>.  When
+<code>make</code> is run (which, of course, reads  the  constructed  <code>Makefile</code>),  a
+directory <code>bin</code> (if necessary) and a  subdirectory  of  <code>bin</code>  with  name
+equal to the string assigned  to  <code>GAParch</code>  in  the  file  <code>sysinfo.gap</code>
+should be created; any binaries constructed  by  compiling  the  code  in
+<code>src</code> should end up in this subdirectory of <code>bin</code>.
+<p>
+<dt><code>init.g</code>, <code>read.g</code><dd>
+A <font face="Gill Sans,Helvetica,Arial">GAP</font> package <strong>must</strong>  have  a  file  <code>init.g</code>  (see  Sections&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT001">The Structure of a GAP Package</a> and&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT002">The Init File of a GAP  Package</a>  in
+the Reference Manual; the latter section describes what  <code>init.g</code>  should
+contain). If the ``declaration''  and  ``implementation''  parts  of  the
+package are separated (and  this  is  recommended),  there  should  be  a
+<code>read.g</code> file. The ``declaration'' part of a package consists of function
+and variable <strong>name</strong>  declarations  and  these  go  in  files  with  <code>.gd</code>
+extensions; these files  are  read  in  via  <code>ReadPkg</code>  commands  in  the
+<code>init.g</code> file. The ``implementation'' part of a package consists  of  the
+actual definitions of  the  functions  and  variables  whose  names  were
+declared in the ``declaration'' part, and these go in  files  with  <code>.gi</code>
+extensions; these files  are  read  in  via  <code>ReadPkg</code>  commands  in  the
+<code>read.g</code> file. The reason for following the above dichotomy is  that  the
+<code>read.g</code> file is read  <strong>after</strong>  the  <code>init.g</code>  file,  thus  enabling  the
+possibility of a function's implementation to refer to  another  function
+whose name is known but is not actually  defined  yet.  The  <font face="Gill Sans,Helvetica,Arial">GAP</font>  code
+(whether or not it is split into ``declaration''  and  ``implementation''
+parts) should go in the package's <code>lib</code> directory (see below).
+<p>
+<dt><code>doc</code><dd>
+This directory should contain the package's documentation. Traditionally,
+a TeX-based system has been used for <font face="Gill Sans,Helvetica,Arial">GAP</font>  documentation,  which  is
+thoroughly described in Section&nbsp;<a href="../../../doc/htm/ext/CHAP002.htm">The gapmacro.tex Manual  Format</a>  of
+the <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4 Programming Reference Manual. There is  now  an  alternative
+XML-based  system  provided  by  the  <font face="Gill Sans,Helvetica,Arial">GAP</font>   package   <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>
+(see&nbsp;<a href="../../gapdoc/doc/chap3.html#s2ss2">gapdoc:Title  page</a>).  Please   spend   some   time   reading   the
+documentation for whichever system you decide to  use  for  writing  your
+package's  documentation.  The  <font face="Gill Sans,Helvetica,Arial">Example</font>  package's  documentation  was
+written using the traditional TeX-based system. If you plan  on  using
+this, please use the <font face="Gill Sans,Helvetica,Arial">Example</font> package's <code>doc</code> directory as a prototype,
+which you will observe contains the following files:
+<p>
+<dt><code>manual.tex # master file</code>
+<dt><br><code></code><var>chapi</var><code>.tex # chapter file(s) ... 1 for each chapter</code>
+<dt><br><code>manual.mst # MakeIndex style file</code>
+<dt><br><code>make_doc   # script that generates the manuals</code>
+<p>
+<dt><dd>
+Generally, one should also provide a <code>manual.bib</code> BibTeX database file
+(or write one's  own  bibliography  <code>manual.bbl</code>  file).  Generating  the
+various formats of the manuals requires various software tools which  are
+called directly or indirectly by  <code>make_doc</code>  and  these  are  listed  in
+Section&nbsp;<a href="CHAP00A.htm#SECT002">Documentation Software Tools Needed</a>. The file  <code>manual.mst</code>  is
+needed for generating a manual index; it should be  a  copy  of  the  one
+provided in the <font face="Gill Sans,Helvetica,Arial">Example</font> package. The only adjustments that  a  package
+writer should need to make to <code>make_doc</code> is to replace occurrences of the
+word <code>Example</code> with <var>package-name</var>.
+<p>
+<dt><code>lib</code><dd>
+This is the preferred place for the <font face="Gill Sans,Helvetica,Arial">GAP</font> code, i.e.&nbsp;the <code>.g</code>, <code>.gd</code> and
+<code>.gi</code> files (other than <code>init.g</code> and <code>read.g</code>). For  some  packages  (the
+<font face="Gill Sans,Helvetica,Arial">Example</font> package included), the directory <code>gap</code> has been  used  instead
+of <code>lib</code>;  <code>lib</code>  has  the  slight  advantage  that  it  is  the  default
+subdirectory   of   a   package   directory   searched   for    by    the
+<code>DirectoriesPackageLibrary</code> command  (see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC004.6">DirectoriesPackageLibrary</a>
+in the <font face="Gill Sans,Helvetica,Arial">GAP</font> Reference Manual).
+<p>
+<dt><code>src</code><dd>
+If the package has non-<font face="Gill Sans,Helvetica,Arial">GAP</font> code, e.g.&nbsp;C  code,  then  this  ``source''
+code should go in the <code>src</code> directory.  If  there  are  <code>.h</code>  ``include''
+files you may prefer to put these all together in  a  separate  <code>include</code>
+directory.
+<p>
+</dl>
+<p>
+<p>
+<a name="SECT002"><h2>A.2 Documentation Software Tools Needed</h2></a>
+<p><p>
+Whether you use the traditional  <code>gapmacro.tex</code>  TeX-based  system  or
+<font face="Gill Sans,Helvetica,Arial">GAPDoc</font> you will need to have the various following TeX tools
+installed:
+<p>
+<p>
+<dl compact>
+<p>
+<dt><code>tex</code> (or <code>latex</code> for <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>), <code>bibtex</code> and <code>makeindex</code><dd>
+for generating <code>.dvi</code>;
+<p>
+<dt><code>dvips</code><dd>
+for generating <code>.ps</code>; and
+<p>
+<dt><code>pdftex</code> or <code>gs</code> and <code>ps2pdf</code> (or <code>pdflatex</code> for <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>)<dd>
+for generating <code>.pdf</code>;
+<p>
+</dl>
+<p>
+Note that using <code>gs</code> and <code>ps2pdf</code> in lieu of <code>pdftex</code> or <code>pdflatex</code> is  a
+poor substitute unless your <code>gs</code> is at  least  version  6.<var>xx</var>  for  some
+<var>xx</var>.
+<p>
+The rest of this section describe the various additional tools needed for
+the <code>gapmacro.tex</code> documentation system.
+<p>
+To produce the <code>.dvi</code>, <code>.ps</code> and <code>.pdf</code>  manual  formats,  the  following
+<font face="Gill Sans,Helvetica,Arial">GAP</font> tools (usually located  in  <font face="Gill Sans,Helvetica,Arial">GAP</font>'s  main  <code>doc</code>  directory)  are
+needed (provided by <code>tools</code><var>XXX</var><code>.zoo</code> for some version number <var>XXX</var> at the
+<font face="Gill Sans,Helvetica,Arial">GAP</font>  <code>ftp</code>-  or  web-sites,   or   can   be   obtained   by   emailing
+<a href="mailto:gap-trouble@dcs.st-and.ac.uk">gap-trouble@dcs.st-and.ac.uk</a>).
+<p>
+<p>
+<dl compact>
+<p>
+<dt><code>gapmacro.tex</code><dd>
+The macros file that dictates the style and mark-up for  the  traditional
+TeX-based system of <font face="Gill Sans,Helvetica,Arial">GAP</font> documentation.
+<p>
+<dt><code>manualindex</code><dd>
+This is an <code>awk</code> script that adjusts the  TeX-produced  index  entries
+and calls <code>makeindex</code> to process them.
+<p>
+<dt><code>mrabbrev.bib</code><dd>
+This is usually supplied with your TeX tools but nevertheless  a  copy
+of <code>mrabbrev.bib</code> should be located in <font face="Gill Sans,Helvetica,Arial">GAP</font>'s main <code>doc</code> directory.  To
+find it on your system, try:
+<p>
+<pre>
+kpsewhich mrabbrev.bib
+</pre>
+<p>
+<dt><dd>
+or if that doesn't work and you can't otherwise find it check out a  CTAN
+site, e.g.&nbsp;search for it at:
+<a href="http://www.dante.de/cgi-bin/ctan-index">http://www.dante.de/cgi-bin/ctan-index</a>
+<p>
+</dl>
+<p>
+If your manual cross-refers to other <code>gapmacro.tex</code>-produced manuals (and
+so  has  <code>\UseReferences</code>  commands  in  its   <code>manual.tex</code>),   then   a
+<code>manual.lab</code> file (generated by running <code>tex manual</code>) for each such other
+manual is needed (this includes the ``main'' manuals, e.g.&nbsp;those  in  the
+<code>doc/ref</code>, <code>doc/ext</code> etc.&nbsp;directories).
+<p>
+If your manual cross-refers to <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>-produced manuals (and  so
+has  <code>\UseGapDocReferences</code>  commands   in   its   <code>manual.tex</code>),   then
+<code>manual.lab</code> files need to be generated for these too. This  is  done  by
+starting <font face="Gill Sans,Helvetica,Arial">GAP</font> (at least <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4.3) and running:
+<p>
+<code>gap&gt; GapDocManualLab( "</code><var>package</var><code>" );</code>
+<p>
+for each <var>package</var> whose manual is cross-referred to.
+<p>
+To produce an HTML version of the manual one needs  the  Perl  5  program
+<code>convert.pl</code> which is usually located in the subdirectory  <code>etc</code>  of  the
+<font face="Gill Sans,Helvetica,Arial">GAP</font> root directory. The <code>etc</code> directory  is  not  part  of  the  usual
+<font face="Gill Sans,Helvetica,Arial">GAP</font>  distribution.  The  <code>etc</code>  directory  files  are  obtained   from
+<code>tools</code><var>XXX</var><code>.zoo</code> for some version number <var>XXX</var> at the  <font face="Gill Sans,Helvetica,Arial">GAP</font>  <code>ftp</code>-  or
+web-sites,      or      can      be      obtained       by       emailing
+<a href="mailto:gap-trouble@dcs.st-and.ac.uk">gap-trouble@dcs.st-and.ac.uk</a>.
+<p>
+Finally, to ensure the mathematics formulae are rendered as well as  they
+can be in the HTML version,  one  should  also  have  the  program  <code>tth</code>
+(TeX  to  HTML  converter);  <code>convert.pl</code>  calls  <code>tth</code>  to  translate
+mathmode formulae to HTML (if it's available). The <code>tth</code> program is  easy
+to compile and can be obtained from
+<a href="http://hutchinson.belmont.ma.us/tth/tth-noncom/download.html">http://hutchinson.belmont.ma.us/tth/tth-noncom/download.html</a>
+<p>
+As a package author, you are not obliged to provide an  HTML  version  of
+your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
+Section&nbsp;<a href="../../../doc/htm/ext/CHAP002.htm">The gapmacro.tex Manual Format</a> of the <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4  Programming
+Reference Manual,  you  should  have  no  trouble  in  producing  one.  A
+prototype of the command to execute is in the file <code>make_doc</code>; note  that
+the HTML manual  is  produced  in  files  with  <code>.htm</code>  extensions  in  a
+directory <code>htm</code> outside the <code>doc</code> directory. The beginning  of  the  file
+<code>convert.pl</code> contains instructions on its usage should you need them.
+<p>
+<p>
+<a name="SECT003"><h2>A.3 Functions and Variables and Choices of Their Names</h2></a>
+<p><p>
+In writing the <font face="Gill Sans,Helvetica,Arial">GAP</font> code for your package  you  need  to  be  a  little
+careful on just how you define your functions and variables.
+<p>
+<strong>Firstly</strong>, in general one should avoid defining functions  and  variables
+via assignment statements in the way you would interactively, e.g.
+<p>
+<pre>
+gap&gt; Cubed := function(x) return x^3; end;
+</pre>
+<p>
+The reason for this is that such  functions  and  variables  are  <strong>easily
+overwritten</strong> and what's more you are not warned about it when it happens.
+<p>
+To protect a function  or  variable  against  overwriting  there  is  the
+command  <code>BindGlobal</code>  (see&nbsp;<a href="../../../doc/htm/ref/CHAP004.htm#SSEC009.7">BindGlobal</a>  in  the  <font face="Gill Sans,Helvetica,Arial">GAP</font>   Reference
+Manual), or alternatively (and equivalently)  you  may  define  a  global
+function via a <code>DeclareGlobalFunction</code> and  <code>InstallGlobalFunction</code>  pair
+or a global variable via  a  <code>DeclareGlobalVariable</code>  and  <code>InstallValue</code>
+pair. There are also operations and their methods,  and  related  objects
+like attributes and filters which also have <code>Declare...</code> and <code>Install...</code>
+pairs.
+<p>
+<strong>Secondly</strong>,  it's  a  good  idea  to  reduce  the  chance  of  accidental
+overwriting by choosing names for your functions and variables that begin
+with a string that identifies it  with  the  package,  e.g.&nbsp;some  of  the
+undocumented functions in the <font face="Gill Sans,Helvetica,Arial">Example</font> package begin with <code>Eg</code>. This is
+especially important in cases where you actually want the user to be able
+to change the value of a function or variable defined  by  your  package,
+for which you haved used direct assignments  (for  which  the  user  will
+receive no warning  if  she  accidentally  overwrites  them).  It's  also
+important  for  functions  and  variables   defined   via   <code>BindGlobal</code>,
+<code>DeclareGlobalFunction</code>/<code>InstallGlobalFunction</code>                       and
+<code>DeclareGlobalVariable</code>/<code>InstallValue</code>, in order to  avoid  name  clashes
+that may  occur  with  (extensions  of)  the  <font face="Gill Sans,Helvetica,Arial">GAP</font>  library  and  other
+packages. On the other hand, operations and their  methods  (defined  via
+<code>DeclareOperation</code>, <code>InstallMethod</code> etc.&nbsp;pairs) and  their  relatives  do
+not need this consideration, as they avoid name clashes by  allowing  for
+more than one ``method'' for the same-named object.
+<p>
+The method <code>Recipe</code> was included in the <font face="Gill Sans,Helvetica,Arial">Example</font> package to demonstrate
+the definition of a  function  via  a  <code>DeclareOperation</code>/<code>InstallMethod</code>
+pair; <code>Recipe( FruitCake );</code> gives a ``method'' for making a  fruit  cake
+(forgive the pun).
+<p>
+<strong>Thirdly</strong>, functions or variables with  <code>Set</code><var>XXX</var><code></code>  or  <code>Has</code><var>XXX</var><code></code>  names
+(even if they are defined as operations) should be avoided as  these  may
+clash with objects associated with attributes or  properties  (attributes
+and  properties   <var>XXX</var>   declared   via   the   <code>DeclareAttribute</code>   and
+<code>DeclareProperty</code> commands have associated  with  them  testers  of  form
+<code>Has</code><var>XXX</var><code></code> and setters of form <code>Set</code><var>XXX</var><code></code>).
+<p>
+<strong>Fourthly</strong>, it is a good  idea  to  have  some  convention  for  internal
+functions and variables  (i.e.&nbsp;the  functions  and  variables  you  don't
+intend for the  user  to  use).  For  example,  they  might  be  entirely
+capitalised.
+<p>
+<strong>Finally</strong>,        note        the        advantage        of        using
+<code>DeclareGlobalFunction</code>/<code>InstallGlobalFunction</code>,
+<code>DeclareGlobalVariable</code>/<code>InstallValue</code>,    etc.&nbsp;pairs    (rather     than
+<code>BindGlobal</code>) to define functions and variables, which allow the  package
+author to organise her function- and variable- definitions in  any  order
+without worrying about any interdependence. The  <code>Declare...</code>  statements
+should go in files with <code>.gd</code>  extensions  and  be  loaded  by  <code>ReadPkg</code>
+statements in the package <code>init.g</code> file, and the <code>Install...</code> definitions
+should go in files with <code>.gi</code>  extensions  and  be  loaded  by  <code>ReadPkg</code>
+statements in the package <code>read.g</code> file;  this  ensures  that  the  <code>.gi</code>
+files are read <strong>after</strong> the <code>.gd</code> files. All  other  package  code  should
+go in <code>.g</code> files (other than the <code>init.g</code> and <code>read.g</code> files  themselves)
+and be loaded via <code>ReadPkg</code> statements in the <code>init.g</code> file.
+<p>
+<p>
+<a name="SECT004"><h2>A.4 Having an InfoClass</h2></a>
+<p><p>
+It is a good idea to declare an <code>InfoClass</code> for your package. This  gives
+the package user the opportunity  to  control  the  verbosity  of  output
+and/or the possibility of receiving debugging information  (see&nbsp;<a href="../../../doc/htm/ref/CHAP007.htm#SECT004">Info functions</a> in the <font face="Gill Sans,Helvetica,Arial">GAP</font>  Reference  Manual).  Below,  we  give  a  quick
+overview of its utility.
+<p>
+An <code>InfoClass</code> is defined with  a  <code>DeclareInfoClass(  </code><var>InfoPkgname</var><code>  );</code>
+statement and may be set to have an initial <code>InfoLevel</code>  other  than  the
+zero default (which means no <code>Info</code> statement is to  output  information)
+via a <code>SetInfoLevel( </code><var>InfoPkgname</var><code>, </code><var>level</var><code>  );</code>  statement.  An  initial
+<code>InfoLevel</code> of 1 is typical.
+<p>
+<code>Info</code> statements have the form: <code>Info( </code><var>InfoPkgname</var><code>, </code><var>level</var><code>,  </code><var>expr1</var><code>,
+</code><var>expr2</var><code>, ... );</code>  where  the  expression  list  <code></code><var>expr1</var><code>,  </code><var>expr2</var><code>,  ...</code>
+appears just like it would in a <code>Print</code> statement. The only difference is
+that the expression list is  only  printed  (or  even  executed)  if  the
+<code>InfoLevel</code> of <var>InfoPkgname</var> is at least <var>level</var>.
+<p>
+<p>
+<a name="SECT005"><h2>A.5 Having a Banner</h2></a>
+<p><p>
+Typically a banner for a package is produced by  a  sequence  of  <code>Print</code>
+statements in a file named <code>banner.g</code> which is  loaded  via  a  <code>ReadPkg</code>
+statement in the package <code>init.g</code> file. The execution of the printing  of
+the banner should be nested inside <code>if not QUIET and BANNER then ... fi;</code>
+(see the  <font face="Gill Sans,Helvetica,Arial">Example</font>  package  <code>init.g</code>  file)  so  that  the  banner  is
+suppressed during package autoloading and when <font face="Gill Sans,Helvetica,Arial">GAP</font> is started up  with
+the <code>-q</code> or <code>-b</code> command line options.
+<p>
+It is a good idea to have a hook into  your  package  documentation  from
+your banner. The <font face="Gill Sans,Helvetica,Arial">Example</font> package suggests to the <font face="Gill Sans,Helvetica,Arial">GAP</font> user:
+<p>
+<pre>
+For help, type: ?Example package
+</pre>
+<p>
+In order for this to display the introduction of the  <font face="Gill Sans,Helvetica,Arial">Example</font>  package
+an <code>\atindex</code> equivalent of the following index-entry:
+<p>
+<code>\index{Example package}</code>
+<p>
+was added just before the first paragraph of the introductory section  in
+the file <code>example.tex</code>. The <font face="Gill Sans,Helvetica,Arial">Example</font> package  uses  the  <code>gapmacro.tex</code>
+system  (see   Section&nbsp;<a href="CHAP00A.htm#SECT002">Documentation   Software   Tools   Needed</a>)   for
+documentation (you will need some different scheme to achieve this  using
+<font face="Gill Sans,Helvetica,Arial">GAPDoc</font>).
+<p>
+<p>
+<a name="SECT006"><h2>A.6 Packing up your GAP Package</h2></a>
+<p><p>
+Ideally, your <font face="Gill Sans,Helvetica,Arial">GAP</font> package should  be  packed  via  the  <code>zoo</code>  program
+(Section <a href="../../../doc/htm/ext/CHAP004.htm#SECT014">Wrapping Up a GAP  Package</a>  in  the  ``Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>''
+Manual contains more information). The <font face="Gill Sans,Helvetica,Arial">Example</font> package file <code>make_zoo</code>
+provides  a  template  packing-up  script  that  uses  <code>zoo</code>.  The  <code>etc</code>
+directory obtained from <code>tools</code><var>XXX</var><code>.zoo</code> for some  version  number  <var>XXX</var>
+(this  is  described  above  in  Section&nbsp;<a href="CHAP00A.htm#SECT002">Documentation  Software   Tools Needed</a>) contains a file  <code>packpack</code>  which  provides  a  more  versatile
+packing-up script.
+<p>
+<p>
+<a name="SECT007"><h2>A.7 CVS</h2></a>
+<p><p>
+When your package is ready to be refereed and/or  made  available  as  an
+``accepted'' <font face="Gill Sans,Helvetica,Arial">GAP</font> package, it may be of benefit to obtain CVS access to
+<font face="Gill Sans,Helvetica,Arial">GAP</font>; as a first step towards this you should make  a  request  to  the
+<font face="Gill Sans,Helvetica,Arial">GAP</font> team via an email to <a href="mailto:gap-trouble@dcs.st-and.ac.uk">gap-trouble@dcs.st-and.ac.uk</a>.
+<p>
+<p>
+[<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
+<P>
+<address>Example manual<br>February 2002
+</address></body></html>

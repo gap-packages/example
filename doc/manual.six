@@ -7,3 +7,17 @@ F 1.1. LoadedPackages
 F 1.1. Which
 F 1.1. WhereIsPkgProgram
 F 1.1. HelloWorld
+F 1.1. FruitCake
+F 1.1. Recipe
+C install.tex 2. Installing and Loading the Example Package
+S 2.1. Installing the Example Package
+S 2.2. Loading the Example Package
+I 2.2. banner!suppression
+C hints.tex 3. Hints for writing a GAP Package
+S 3.1. Structure of a GAP Package
+S 3.2. Documentation Software Tools Needed
+S 3.3. Functions and Variables and Choices of Their Names
+S 3.4. Having an InfoClass
+S 3.5. Having a Banner
+S 3.6. Packing up your GAP Package
+S 3.7. CVS
