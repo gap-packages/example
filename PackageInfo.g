@@ -1,16 +1,29 @@
 #############################################################################
 ##  
-##  PackageInfo.g for the package `example'                     Werner Nickel
+##  PackageInfo.g for the package `Example'                     Werner Nickel
 ##                                                                Greg Gamble
 ##  (created from Frank Lübeck's PackageInfo.g template file)
 ##  
 ##  This is a GAP readable file. Of course you can change and remove all
 ##  comments as you like.
 ##  
+##  This file contains meta-information on the package. It is used by
+##  the package loading mechanism and the upgrade mechanism for the
+##  redistribution of the package via the GAP website.
+##  
 ##  Entries that are commented out are those used for the EDIM package 
 ##  and are there for purposes of illustration of a possible alternative,
 ##  especially in the case where the Example package's entry is blank.
 ##  
+
+##  For the LoadPackage mechanism in GAP >= 4.4 only the entries
+##  .PackageName, .Version, .PackageDoc, .Dependencies, .AvailabilityTest
+##  .Autoload   are needed. The other entries are relevant if the
+##  package shall be distributed for other GAP users, in particular if it
+##  shall be redistributed via the GAP Website.
+
+##  With a new release of the package at least the entries .Version, .Date and
+##  .ArchiveURL must be updated.
 
 SetPackageInfo( rec(
 
@@ -18,20 +31,29 @@ SetPackageInfo( rec(
 #
 PackageName := "Example",
 
+##  This may be used by a default banner or on a Web page, should fit on
+##  one line.
+Subtitle := "A Demo for Package Authors",
+
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
-##  of valid version numbers.
-Version := "1.4",
+##  of valid version numbers. For an automatic package distribution update
+##  you must provide a new version number even after small changes.
+Version := "1.5",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 # 
-Date := "13/01/2003",
+Date := "18/06/2003",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
 ##  (and probably somehow contain the package name and version).
+##  The paths of the files in the archive must begin with the name of the
+##  directory containing the package (in our "example" probably:
+##  example/init.g, ...    or  example-1.3/init.g, ...  )
 # 
-ArchiveURL := "http://www.math.colostate.edu/~hulpke/gapstuff/example/example14",
+ArchiveURL := 
+          "http://www.math.colostate.edu/~hulpke/gapstuff/example/example14",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -148,10 +170,10 @@ Persons := [
 ##    "other"         for all other packages
 ##
 # Status := "accepted",
-#Status := "accepted",
+Status := "deposited",
 
 ##  You must provide the next two entries if and only if the status is 
-##  "accepted":
+##  "accepted" because is was successfully refereed:
 # format: 'name (place)'
 # CommunicatedBy := "Mike Atkinson (St. Andrews)",
 #CommunicatedBy := "",
@@ -164,13 +186,15 @@ Persons := [
 ##  contained in each package:
 ##     - A README file, containing a short abstract about the package
 ##       content and installation instructions.
-##     - The file you are currently reading or editing!
+##     - The PackageInfo.g file you are currently reading or editing!
 ##  You must specify URLs for these two files, these allow to automate 
 ##  the updating of package information on the GAP Website, and inclusion
 ##  and updating of the package in the GAP distribution.
 #
-README_URL := "http://www.math.colostate.edu/~hulpke/gapstuff/example/README.example",
-PackageInfoURL := "http://www.math.colostate.edu/~hulpke/gapstuff/example/PackageInfo.g",
+README_URL := 
+  "http://www.math.colostate.edu/~hulpke/gapstuff/example/README.example",
+PackageInfoURL := 
+  "http://www.math.colostate.edu/~hulpke/gapstuff/example/PackageInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -188,29 +212,41 @@ AbstractHTML :=
    package. It has little functionality except for being a package",
 
 PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
-                  
-##  On the GAP Website there is an online version of all manuals in the
-##  GAP distribution. To handle the documentation of a package it is
-##  necessary to have:
-##     - an archive containing the package documentation (in at least one 
-##       of HTML or PDF-format, preferably both formats)
-##     - the start file of the HTML documentation (if provided), *relative to
-##       package root*
-##     - the PDF-file (if provided) *relative to the package root*
-##  For links to other package manuals or the GAP manuals one can assume 
-##  relative paths as in a standard GAP installation. 
-##  Also, provide the information about autoloadability of the documentation.
+               
+##  Here is the information on the help books of the package, used for
+##  loading into GAP's online help and maybe for an online copy of the 
+##  documentation on the GAP website.
 ##  
-##  Please, don't include unnecessary files (.log, .aux, .dvi, .ps, ...) in
-##  the provided documentation archive.
+##  For the online help the following is needed:
+##       - the name of the book (.BookName)
+##       - a long title, shown by ?books (.LongTitle, optional)
+##       - the path to the manual.six file for this book (.SixFile)
+##       - a decision if the book should be (auto)loaded, probably 'true'
+##         (.Autoload)
+##  
+##  For an online version on a Web page further entries are needed, 
+##  if possible, provide an HTML- and a PDF-version:
+##      - if there is an HTML-version the path to the start file,
+##        relative to the package home directory (.HTMLStart)
+##      - if there is a PDF-version the path to the .pdf-file,
+##        relative to the package home directory (.PDFFile)
+##      - give the paths to the files inside your package directory
+##        which are needed for the online manual (either as URL .Archive
+##        if you pack them into a separate archive, or as list 
+##        .ArchiveURLSubset of directory and file names which should be 
+##        copied from your package archive, given in .ArchiveURL above
+##  
+##  For links to other GAP or package manuals you can assume a relative 
+##  position of the files as in a standard GAP installation.
 ##  
 # in case of several help books give a list of such records here:
 PackageDoc := rec(
   # use same as in GAP            
   BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-  Archive := 
-      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.3.zoo",
+  #  Archive := 
+  #    "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.3.zoo",
+  ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",
   # the path to the .six file used by GAP's help system
@@ -250,14 +286,14 @@ Dependencies := rec(
                       
 ),
 
-## Provide a test function for the availability of this package, see
-## For packages which will not fully work, use 'Info(InfoWarning, 1,
-## ".....")' statements. For packages containing nothing but GAP code,
-## just say 'ReturnTrue' here.
-## (When this is used for package loading in the future the availability
-## tests of other packages, as given above, will be done automatically and
-## need not be included here.)
-# AvailabilityTest := ReturnTrue,
+##  Provide a test function for the availability of this package.
+##  For packages which will not fully work, use 'Info(InfoWarning, 1,
+##  ".....")' statements. For packages containing nothing but GAP code,
+##  just say 'ReturnTrue' here.
+##  With the new package loading mechanism (GAP >=4.4)  the availability
+##  tests of other packages, as given under .Dependencies above, will be 
+##  done automatically and need not be included in this function.
+#AvailabilityTest := ReturnTrue,
 AvailabilityTest := function()
   local path,file;
     # test for existence of the compiled binary
@@ -279,9 +315,10 @@ AvailabilityTest := function()
     return true;
   end,
 
-##  If the default banner does not suffice then provide a string that is
-##  printed when the package is loaded (not when it is autoloaded or if
-##  command line options `-b' or `-q' are given).
+##  The LoadPackage mechanism can produce a default banner from the infos
+##  in this file. If you are not happy with it, you can provide a string
+##  here that is used as a banner. GAP decides when the banner is shown and
+##  when it is not shown. *optional* (note the ~-syntax in this example)
 BannerString := Concatenation( [
   "----------------------------------------------------------\n",
   "Loading  ``example'' version ", ~.Version, "\n",
