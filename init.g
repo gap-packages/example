@@ -5,9 +5,11 @@
 ##    @(#)$Id$
 ##
 
+# announce the package version
+DeclarePackage("example","1.0",ReturnTrue);
 
-Print( "#I  Reading init.g of share package example\n" );
-
-ReadPkg( "example", "gap/files.g");
-
+# install the documentation
 DeclarePackageDocumentation( "example", "doc" );
+
+# read the actual code.
+ReadPkg( "example", "gap/files.g");

@@ -101,15 +101,3 @@ Which := function( prg )
         return fail;
     fi;
 end;
-
-#############################################################################
-##
-#F  Edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . edit a file
-##
-EDITOR := "emacs ";
-Edit := function( file )
-
-    Exec( Concatenation( EDITOR, file ) );
-
-    Read( file );
-end;
