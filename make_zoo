@@ -59,13 +59,12 @@ addtoarchive( "$pname-$version.zoo", $pname );
 sub addtoarchive {
   ($archive, @dir) = @_;
   for $dir ( @dir ) {
-    my @files = `find $dir -name CVS -prune -o -print | egrep -v '$prune'`;
-    for $file ( @files ) {
+    system( "find $dir -name CVS -prune -o -print | egrep -v '$prune' | ".
+            "zoo ahI $archive");
+    my @textfiles = `find $dir -name CVS -prune -o -print | egrep '$text'`;
+    for $file ( @textfiles ) {
       chomp $file;
-      system( "zoo ah $archive $file" );
-      if ($file =~ /$text/) {
-        system( "(echo '!TEXT!'; echo '/END') | zoo c $archive $file" );
-      }
+      system( "(echo '!TEXT!'; echo '/END') | zoo c $archive $file" );
     }  
   }
 }
