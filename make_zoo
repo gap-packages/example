@@ -2,6 +2,8 @@
 
 #A  Greg Gamble ... based in part on Frank Lübeck's packpack
 ## 
+#H  $Id$
+##
 ##  Usage: make_zoo
 ##
 ##  Uses perl and zoo to create just the <pname>-<version>.zoo
