@@ -17,10 +17,16 @@ DeclarePackage("example","1.2",
       Info(InfoWarning,1,
         "Package ``example'': The program `hello' is not compiled");
       Info(InfoWarning,1,
+        "`HelloWorld()' is thus unavailable");
+      Info(InfoWarning,1,
         "See the installation instructions; ",
         "type: ?Installing the Example package");
     fi;
-    return file<>fail;
+    # if the hello binary was vital to the package we would return
+    # the following ...
+    #return file<>fail;
+    # since the hello binary is not vital we return ...
+    return true;
   end);
 
 # install the documentation
