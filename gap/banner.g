@@ -11,20 +11,13 @@
 Revision.("example/gap/banner_g") := 
     "@(#)$Id$";
 
-EG_PKG_BANNER := ValueOption( "pkgbanner" );
-if EG_PKG_BANNER = "short" then
-  Info(InfoWarning, 1, 
-       "Loading Example Package Version ", PACKAGES_VERSIONS.example);
-elif EG_PKG_BANNER <> "none" then
-  Print("\n");
-  Print("           The Example package\n");
-  Print("               Version ", PACKAGES_VERSIONS.example, "\n");
-  Print("            by Werner Nickel \n");
-  Print("\n");
-  Print("     For help, type: ?Example package\n");
-  Print("\n");
-fi;
-Unbind(EG_PKG_BANNER);
+Print("\n");
+Print("           The Example package\n");
+Print("               Version ", PACKAGES_VERSIONS.example, "\n");
+Print("            by Werner Nickel \n");
+Print("\n");
+Print("     For help, type: ?Example package\n");
+Print("\n");
 
 ############################################################################
 ##
