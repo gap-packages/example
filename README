@@ -1,20 +1,39 @@
-README file for ``example'' share package.
+                             The Example package
 
-This share package serves as an example how to add a share package to GAP4.
-This share package uses an external binary and therefore works only under
-UNIX systems.
+This is the README file for the GAP package ``Example''.
 
-To install this share package (after extracting the share packages archive
-file to the GAP home directory) go to the directory `pkg/example' (the
-directory containing this README file) and call
+This package serves as an example how to add a package to GAP 4.  This
+package uses an external binary and therefore works  only  under  UNIX
+systems.
 
-/bin/sh ./configure path
+The ``Example'' package is bundled in with the accepted share packages
+.zoo  archive:  `acceptedpkg<XXX>.zoo',  for  some  <XXX>.  When  this
+archive is unpacked in the `pkg' subdirectory via:
 
-where path is a path to the main GAP root directory (so normally you would
-call /bin/sh ./configure ../..).
+  unzoo -x acceptedpkg<XXX>
 
-afterwards call `make' to compile the binary.
+a directory `example',  along  with  the  directories  for  the  other
+accepted packages in the archive, will have been created.
 
-If you installed GAP on several architectures, you must ecexute this
-configure/make step for the ``example'' share package on each of the
-architectures immediately after configuring GAP itself on this architecture.
+To complete the installation of the  ``Example''  package  go  to  the
+directory `example' created (the directory contains  a  copy  of  this
+README file) and call
+
+  /bin/sh ./configure <path>
+
+where <path> is a path to the main GAP root directory; so normally you
+would call
+
+  /bin/sh ./configure ../..
+
+and then call
+
+  make 
+  
+to compile the binary.
+
+If you installed GAP on several architectures, you  must  execute  the
+configure/make steps for  the  ``Example''  package  on  each  of  the
+architectures  immediately  after  configuring  GAP  itself  on   this
+architecture.
+

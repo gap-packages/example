@@ -1,11 +1,23 @@
-
-Revision.("example/gap/files_g") := "@(#)$Id$";
+#############################################################################
+####
+##
+#W  files.gi                   Example Package                  Werner Nickel
+##
+##  Installation file for functions of the Example package.
+##
+#H  @(#)$Id$
+##
+#Y  Copyright (C) 1999,2001 University of St. Andrews, North Haugh,
+#Y                          St. Andrews, Fife KY16 9SS, Scotland
+##
+Revision.("example/gap/files_gi") := 
+    "@(#)$Id$";
 
 #############################################################################
 ##
-#F  SeparatedString . . . . . . . . . . . . . . . .  cut a string into pieces
+#F  EgSeparatedString( <str>, <c> ) . . . . . . . .  cut a string into pieces
 ##
-SeparatedString := function( str, c )
+InstallGlobalFunction( EgSeparatedString, function( str, c )
     local   pieces,  start,  i;
 
     pieces := [];
@@ -23,13 +35,13 @@ SeparatedString := function( str, c )
     fi;
     
     return pieces;
-end;
+end );
 
 #############################################################################
 ##
-#F  ListDirectory . . . . . . . . . . . . . . . list the files in a directory
+#F  ListDirectory([<dir>])  . . . . . . . . . . list the files in a directory
 ##
-ListDirectory := function( arg )
+InstallGlobalFunction( ListDirectory, function( arg )
     local   dir,  str,  ls,  out;
 
     if Length( arg ) = 0 then
@@ -48,17 +60,17 @@ ListDirectory := function( arg )
         out := OutputTextString( str, true );
         Process( dir, ls, InputTextNone(), out, [] );
         CloseStream( out );
-        return SeparatedString( str, '\n' );
+        return EgSeparatedString( str, '\n' );
     else
         return Error( "Directory <dirname> does not exist" );
     fi;
-end;
+end );
 
 #############################################################################
 ##
-#F  FindFile  . . . . . . . . . . . . . . . . find a file in a directory tree
+#F  FindFile( <dir>, <file> ) . . . . . . . . find a file in a directory tree
 ##
-FindFile := function( dir, file )
+InstallGlobalFunction( FindFile, function( dir, file )
     local   files,  try,  res;
 
     files := ListDirectory( dir );
@@ -75,23 +87,23 @@ FindFile := function( dir, file )
     od;
 
     return res;
-end;
+end );
 
 
 #############################################################################
 ##
-#F  LoadedSharePackages . . . . . . . . . .  which share packages are loaded?
+#F  LoadedPackages() . . . . . . . . . . . . which share packages are loaded?
 ##
-LoadedSharePackages := function()
+InstallGlobalFunction( LoadedPackages, function()
 
     return RecNames( LOADED_PACKAGES );
-end;
+end );
 
 #############################################################################
 ##
-#F  Which . . . . . . . . . . . . . . . . . which program would Exec execute?
+#F  Which( <prg> )  . . . . . . . . . . . . which program would Exec execute?
 ##
-Which := function( prg )
+InstallGlobalFunction( Which, function( prg )
 
     if prg[1] <> '/' then
         prg := Filename( DirectoriesSystemPrograms(), prg );
@@ -102,4 +114,31 @@ Which := function( prg )
     else
         return fail;
     fi;
-end;
+end );
+
+#############################################################################
+##
+#F  WhereIsPkgProgram( <prg> ) . . . . the paths of any matching pkg programs
+##
+InstallGlobalFunction( WhereIsPkgProgram, function( prg )
+local paths;
+
+    paths := List( LoadedPackages(), 
+                   pkg -> Filename(DirectoriesPackagePrograms(pkg), prg) );
+
+    return Filtered(paths, path -> path <> fail);   
+end );
+
+#############################################################################
+##
+#F  HelloWorld() . . . . . . . . . . . . . . . . . . . . . . . . . . . guess!
+##
+InstallGlobalFunction( HelloWorld, function()
+local hello;
+
+    hello := Filename(DirectoriesPackagePrograms("example"), "hello");
+
+    Exec(hello);
+end );
+
+#E  files.gi  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

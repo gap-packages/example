@@ -1,12 +1,12 @@
 #############################################################################
 ##
-#W    init.g               share package 'example'              Werner Nickel
+#W    init.g                 The Example package                Werner Nickel
 ##
 ##    @(#)$Id$
 ##
 
 # announce the package version and test for the existence of the binary
-DeclarePackage("example","1.0",
+DeclarePackage("example","1.1",
   function()
   local path,file;
     # test for existence of the compiled binary
@@ -21,4 +21,10 @@ DeclarePackage("example","1.0",
 
 # install the documentation
 DeclarePackageAutoDocumentation( "example", "doc" );
+
+if BANNER and not QUIET then
+  ReadPkg("example", "gap/banner.g");
+fi;
+# read the function declarations
+ReadPkg("example/gap/files.gd");
 
