@@ -9,7 +9,7 @@
 <li> <A HREF="CHAP00A.htm#SECT002">Documentation Software Tools Needed</a>
 <li> <A HREF="CHAP00A.htm#SECT003">Functions and Variables and Choices of Their Names</a>
 <li> <A HREF="CHAP00A.htm#SECT004">Having an InfoClass</a>
-<li> <A HREF="CHAP00A.htm#SECT005">Having a Banner</a>
+<li> <A HREF="CHAP00A.htm#SECT005">The Banner</a>
 <li> <A HREF="CHAP00A.htm#SECT006">Packing up your GAP Package</a>
 <li> <A HREF="CHAP00A.htm#SECT007">CVS</a>
 </ol><p>
@@ -22,15 +22,16 @@ go for more information.
 <p>
 <h2><a name="SECT001">A.1 Structure of a GAP Package</a></h2>
 <p><p>
+This  section  is  intended  to  amplify  the  recommendations  made   in
+Section&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT001">The Files of  a  GAP  Package</a>  of  the  Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4
+Reference Manual.
+<p>
 A <font face="Gill Sans,Helvetica,Arial">GAP</font> package should have an alphanumeric name (<var>package-name</var>,  say);
 mixed case is fine, but there should  be  no  whitespace.  The  directory
 <var>package-dir</var> containing the files of package  <var>package-name</var>  should  be
 just  <var>package-name</var>  converted  to  lowercase  (the   restriction   that
-<var>package-dir</var> must be contain only lowercase characters may change in the
-future); this is so that a user may load the  <var>package-name</var>  package  by
-calling  the  <code>RequirePackage</code>  command  (which  lowercases   its   first
-argument; see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC003.1">RequirePackage</a> in the Reference Manual)  with  either
-<var>package-name</var> or <var>package-dir</var> (in doublequotes).
+<var>package-dir</var> must contain only lowercase characters may  change  in  the
+future).
 <p>
 The directory  <var>package-dir</var>  should  be  a  subdirectory  of  <code>pkg</code>  and
 preferably should have the following structure  (below,  a  trailing  <code>/</code>
@@ -40,6 +41,7 @@ distinguishes directories from ordinary files):
 <br><code>  README</code>
 <br><code>  configure</code>
 <br><code>  Makefile.in</code>
+<br><code>  PackageInfo.g</code>
 <br><code>  init.g</code>
 <br><code>  read.g</code>
 <br><code>  doc/</code>
@@ -73,37 +75,45 @@ equal to the string assigned  to  <code>GAParch</code>  in  the  file  <code>sys
 should be created; any binaries constructed  by  compiling  the  code  in
 <code>src</code> should end up in this subdirectory of <code>bin</code>.
 <p>
+<dt><code>PackageInfo.g</code><dd>
+Since <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4.4, a <font face="Gill Sans,Helvetica,Arial">GAP</font> package <strong>must</strong> have  a  <code>PackageInfo.g</code>  file.
+The <font face="Gill Sans,Helvetica,Arial">Example</font>  package's  <code>PackageInfo.g</code>  file  is  well-commented  and
+should be used as a prototype.
+<p>
 <dt><code>init.g</code>, <code>read.g</code><dd>
-A <font face="Gill Sans,Helvetica,Arial">GAP</font> package <strong>must</strong>  have  a  file  <code>init.g</code>  (see  Sections&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT001">The Structure of a GAP Package</a> and&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT002">The Init File of a GAP  Package</a>  in
-the Reference Manual; the latter section describes what  <code>init.g</code>  should
-contain). If the ``declaration''  and  ``implementation''  parts  of  the
-package are separated (and  this  is  recommended),  there  should  be  a
-<code>read.g</code> file. The ``declaration'' part of a package consists of function
-and variable <strong>name</strong>  declarations  and  these  go  in  files  with  <code>.gd</code>
-extensions; these files  are  read  in  via  <code>ReadPkg</code>  commands  in  the
-<code>init.g</code> file. The ``implementation'' part of a package consists  of  the
-actual definitions of  the  functions  and  variables  whose  names  were
-declared in the ``declaration'' part, and these go in  files  with  <code>.gi</code>
-extensions; these files  are  read  in  via  <code>ReadPkg</code>  commands  in  the
-<code>read.g</code> file. The reason for following the above dichotomy is  that  the
-<code>read.g</code> file is read  <strong>after</strong>  the  <code>init.g</code>  file,  thus  enabling  the
-possibility of a function's implementation to refer to  another  function
-whose name is known but is not actually  defined  yet.  The  <font face="Gill Sans,Helvetica,Arial">GAP</font>  code
-(whether or not it is split into ``declaration''  and  ``implementation''
-parts) should go in the package's <code>lib</code> directory (see below).
+A <font face="Gill Sans,Helvetica,Arial">GAP</font> package <strong>must</strong> have a file <code>init.g</code> (see Section&nbsp;<a href="../../../doc/htm/ext/CHAP004.htm#SECT001">The  Files of a GAP Package</a> in the Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4  Reference  Manual).  As  of
+<font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4.4, the typical  <code>init.g</code>  and  <code>read.g</code>  files  should  normally
+consist entirely of <code>ReadPackage</code> (see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC003.1">ReadPackage</a> in the  <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4
+Reference Manual) commands (and possibly also <code>Read</code>  commands).  If  the
+``declaration'' and ``implementation'' parts of the package are separated
+(and  this  is  recommended),  there  should  be  a  <code>read.g</code>  file.  The
+``declaration'' part of a  package  consists  of  function  and  variable
+<strong>name</strong> declarations and these go in files with  <code>.gd</code>  extensions;  these
+files are read in via <code>ReadPackage</code> commands in the  <code>init.g</code>  file.  The
+``implementation'' part of a package consists of the  actual  definitions
+of  the  functions  and  variables  whose  names  were  declared  in  the
+``declaration'' part, and these go in files with <code>.gi</code> extensions;  these
+files are read in via <code>ReadPackage</code> commands in the  <code>read.g</code>  file.  The
+reason for following the above dichotomy is that  the  <code>read.g</code>  file  is
+read <strong>after</strong> the <code>init.g</code>  file,  thus  enabling  the  possibility  of  a
+function's implementation to refer to  another  function  whose  name  is
+known but is not actually defined yet. The <font face="Gill Sans,Helvetica,Arial">GAP</font> code (whether or not it
+is split into ``declaration'' and ``implementation'' parts) should go  in
+the package's <code>lib</code> directory (see below).
 <p>
 <dt><code>doc</code><dd>
 This directory should contain the package's documentation. Traditionally,
 a TeX-based system has been used for <font face="Gill Sans,Helvetica,Arial">GAP</font>  documentation,  which  is
 thoroughly described in Section&nbsp;<a href="../../../doc/htm/ext/CHAP002.htm">The gapmacro.tex Manual  Format</a>  of
-the <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4 Programming Reference Manual. There is  now  an  alternative
+the Extending <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4 Reference Manual.  There  is  now  an  alternative
 XML-based  system  provided  by  the  <font face="Gill Sans,Helvetica,Arial">GAP</font>   package   <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>
-(see&nbsp;<a href="../../gapdoc/doc/chap3.html#s2ss2">gapdoc:Title  page</a>).  Please   spend   some   time   reading   the
-documentation for whichever system you decide to  use  for  writing  your
-package's  documentation.  The  <font face="Gill Sans,Helvetica,Arial">Example</font>  package's  documentation  was
-written using the traditional TeX-based system. If you plan  on  using
-this, please use the <font face="Gill Sans,Helvetica,Arial">Example</font> package's <code>doc</code> directory as a prototype,
-which you will observe contains the following files:
+(see Chapter&nbsp;<a href="../../gapdoc/doc/chap1.html#s0ss0">gapdoc:Introduction and Example</a>  of  the  <font face="Gill Sans,Helvetica,Arial">GAPDoc</font>
+Manual). Please spend some time reading the documentation  for  whichever
+system you decide to use for writing your  package's  documentation.  The
+<font face="Gill Sans,Helvetica,Arial">Example</font> package's documentation  was  written  using  the  traditional
+TeX-based system. If you plan on using this, please use the <font face="Gill Sans,Helvetica,Arial">Example</font>
+package's <code>doc</code> directory as a prototype, which you will observe contains
+the following files:
 <p>
 <dt><code>manual.tex # master file</code>
 <dt><br><code></code><var>chapi</var><code>.tex # chapter file(s) ... 1 for each chapter</code>
@@ -123,12 +133,12 @@ word <code>Example</code> with <var>package-name</var>.
 <p>
 <dt><code>lib</code><dd>
 This is the preferred place for the <font face="Gill Sans,Helvetica,Arial">GAP</font> code, i.e.&nbsp;the <code>.g</code>, <code>.gd</code> and
-<code>.gi</code> files (other than <code>init.g</code> and <code>read.g</code>). For  some  packages  (the
-<font face="Gill Sans,Helvetica,Arial">Example</font> package included), the directory <code>gap</code> has been  used  instead
-of <code>lib</code>;  <code>lib</code>  has  the  slight  advantage  that  it  is  the  default
-subdirectory   of   a   package   directory   searched   for    by    the
-<code>DirectoriesPackageLibrary</code> command  (see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC004.6">DirectoriesPackageLibrary</a>
-in the <font face="Gill Sans,Helvetica,Arial">GAP</font> Reference Manual).
+<code>.gi</code> files (other than <code>PackageInfo.g</code>, <code>init.g</code> and <code>read.g</code>). For some
+packages (the <font face="Gill Sans,Helvetica,Arial">Example</font> package included), the directory <code>gap</code> has  been
+used instead of <code>lib</code>; <code>lib</code> has the slight  advantage  that  it  is  the
+default  subdirectory  of  a  package  directory  searched  for  by   the
+<code>DirectoriesPackageLibrary</code> command  (see&nbsp;<a href="../../../doc/htm/ref/CHAP074.htm#SSEC003.4">DirectoriesPackageLibrary</a>
+in the <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4 Reference Manual).
 <p>
 <dt><code>src</code><dd>
 If the package has non-<font face="Gill Sans,Helvetica,Arial">GAP</font> code, e.g.&nbsp;C  code,  then  this  ``source''
@@ -163,8 +173,8 @@ Note that using <code>gs</code> and <code>ps2pdf</code> in lieu of <code>pdftex<
 poor substitute unless your <code>gs</code> is at  least  version  6.<var>xx</var>  for  some
 <var>xx</var>.
 <p>
-The rest of this section describe the various additional tools needed for
-the <code>gapmacro.tex</code> documentation system.
+The rest of this section describes the various  additional  tools  needed
+for the <code>gapmacro.tex</code> documentation system.
 <p>
 To produce the <code>.dvi</code>, <code>.ps</code> and <code>.pdf</code>  manual  formats,  the  following
 <font face="Gill Sans,Helvetica,Arial">GAP</font> tools (usually located  in  <font face="Gill Sans,Helvetica,Arial">GAP</font>'s  main  <code>doc</code>  directory)  are
@@ -231,7 +241,7 @@ to compile and can be obtained from
 <p>
 As a package author, you are not obliged to provide an  HTML  version  of
 your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
-Section&nbsp;<a href="../../../doc/htm/ext/CHAP002.htm">The gapmacro.tex Manual Format</a> of the <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4  Programming
+Section&nbsp;<a href="../../../doc/htm/ext/CHAP002.htm">The gapmacro.tex Manual Format</a> of  the  Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4
 Reference Manual,  you  should  have  no  trouble  in  producing  one.  A
 prototype of the command to execute is in the file <code>make_doc</code>; note  that
 the HTML manual  is  produced  in  files  with  <code>.htm</code>  extensions  in  a
@@ -303,13 +313,13 @@ capitalised.
 <code>BindGlobal</code>) to define functions and variables, which allow the  package
 author to organise her function- and variable- definitions in  any  order
 without worrying about any interdependence. The  <code>Declare...</code>  statements
-should go in files with <code>.gd</code>  extensions  and  be  loaded  by  <code>ReadPkg</code>
+should go in files with <code>.gd</code> extensions and be loaded  by  <code>ReadPackage</code>
 statements in the package <code>init.g</code> file, and the <code>Install...</code> definitions
-should go in files with <code>.gi</code>  extensions  and  be  loaded  by  <code>ReadPkg</code>
+should go in files with <code>.gi</code> extensions and be loaded  by  <code>ReadPackage</code>
 statements in the package <code>read.g</code> file;  this  ensures  that  the  <code>.gi</code>
-files are read <strong>after</strong> the <code>.gd</code> files. All  other  package  code  should
-go in <code>.g</code> files (other than the <code>init.g</code> and <code>read.g</code> files  themselves)
-and be loaded via <code>ReadPkg</code> statements in the <code>init.g</code> file.
+files are read <strong>after</strong> the <code>.gd</code> files. All other package code should  go
+in <code>.g</code> files (other than the <code>init.g</code> and <code>read.g</code> files themselves) and
+be loaded via <code>ReadPackage</code> statements in the <code>init.g</code> file.
 <p>
 <p>
 <h2><a name="SECT004">A.4 Having an InfoClass</a></h2>
@@ -332,17 +342,11 @@ that the expression list is  only  printed  (or  even  executed)  if  the
 <code>InfoLevel</code> of <var>InfoPkgname</var> is at least <var>level</var>.
 <p>
 <p>
-<h2><a name="SECT005">A.5 Having a Banner</a></h2>
+<h2><a name="SECT005">A.5 The Banner</a></h2>
 <p><p>
-<a name = "I0"></a>
-
-Typically a banner for a package is produced by  a  sequence  of  <code>Print</code>
-statements in a file named <code>banner.g</code> which is  loaded  via  a  <code>ReadPkg</code>
-statement in the package <code>init.g</code> file. The execution of the printing  of
-the banner should be nested inside <code>if not QUIET and BANNER then ... fi;</code>
-(see the  <font face="Gill Sans,Helvetica,Arial">Example</font>  package  <code>init.g</code>  file)  so  that  the  banner  is
-suppressed during package autoloading and when <font face="Gill Sans,Helvetica,Arial">GAP</font> is started up  with
-the <code>-q</code> or <code>-b</code> command line options.
+Since <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4.4, a default package  banner  is  provided  which  may  be
+over-ridden by assigning a string to  the  <code>BannerString</code>  field  of  the
+record argument of <code>SetPackageInfo</code> in the <code>PackageInfo.g</code> file.
 <p>
 It is a good idea to have a hook into  your  package  documentation  from
 your banner. The <font face="Gill Sans,Helvetica,Arial">Example</font> package suggests to the <font face="Gill Sans,Helvetica,Arial">GAP</font> user:
@@ -366,11 +370,11 @@ documentation (you will need some different scheme to achieve this  using
 <h2><a name="SECT006">A.6 Packing up your GAP Package</a></h2>
 <p><p>
 Ideally, your <font face="Gill Sans,Helvetica,Arial">GAP</font> package should  be  packed  via  the  <code>zoo</code>  program
-(Section <a href="../../../doc/htm/ext/CHAP004.htm#SECT014">Wrapping Up a GAP  Package</a>  in  the  ``Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>''
-Manual contains more information). The <font face="Gill Sans,Helvetica,Arial">Example</font> package file <code>make_zoo</code>
-provides  a  template  packing-up  script  that  uses  <code>zoo</code>.  The  <code>etc</code>
-directory obtained from <code>tools</code><var>XXX</var><code>.zoo</code> for some  version  number  <var>XXX</var>
-(this  is  described  above  in  Section&nbsp;<a href="CHAP00A.htm#SECT002">Documentation  Software   Tools Needed</a>) contains a file  <code>packpack</code>  which  provides  a  more  versatile
+(Section <a href="../../../doc/htm/ext/CHAP004.htm#SECT015">Wrapping Up  a  GAP  Package</a>  in  the  Extending  <font face="Gill Sans,Helvetica,Arial">GAP</font>&nbsp;4
+Reference Manual contains more information). The <font face="Gill Sans,Helvetica,Arial">Example</font> package  file
+<code>make_zoo</code> provides a template packing-up script  that  uses  <code>zoo</code>.  The
+<code>etc</code> directory obtained from <code>tools</code><var>XXX</var><code>.zoo</code> for  some  version  number
+<var>XXX</var> (this is described above in Section&nbsp;<a href="CHAP00A.htm#SECT002">Documentation  Software  Tools Needed</a>) contains a file  <code>packpack</code>  which  provides  a  more  versatile
 packing-up script.
 <p>
 <p>
@@ -384,5 +388,5 @@ When your package is ready to be refereed and/or  made  available  as  an
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP002.htm">Previous</a>] [<a href = "theindex.htm">Index</a>]
 <P>
-<address>Example manual<br>January 2003
+<address>Example manual<br>June 2003
 </address></body></html>
