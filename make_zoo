@@ -30,35 +30,40 @@ system( "rm -f ../$pname*-$version.zoo" );
 system( "cp -f README ../README.$pname" );
 
 ### Create new .zoo files in pkg directory ##################################
-chdir "..";
 
 # substrings (mainly suffixes) that determine files we want to exclude
 $prune = "[._]cvs|[.]bbl|[.]aux|[.]toc|[.][ib]lg|[.]log|[.]lab|[.]ind|[.]idx".
 #         "|zoo|make_".         # uncomment to exclude make_doc, make_zoo etc.
          "|[.]sw[op]|[.-]bak|~|[.][#]";
 
-# documentation files are in doc/ and htm/ directories
-$doc = "doc\/|htm\/";
+# patterns that indicate a file is a text file (first line has suffixes)
+$text = "(([.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)\$)".
+        "|(VERSION|README|INSTALL|Makefile|configure|make_))";
 
-# find command used
-$find = "find $pname -name CVS -prune -o -print | egrep -v '$prune' ";
+# Create doc .zoo file (containing just the doc and htm directories)
+addtoarchive( "$pdoc-$version.zoo", "doc", "htm" );
+system( "mv $pdoc-$version.zoo .." );
+
+chdir "..";
 
 # Create the main .zoo file
-system( "$find | zoo ahI $pname-$version.zoo" );
+addtoarchive( "$pname-$version.zoo", $pname );
 
-system( "$find | egrep '$doc'" );
-# Create the doc .zoo file
-system( "$find | egrep '$doc' | zoo ahI $pdoc-$version.zoo" );
-
-@files = `find $pname -name CVS -prune -o -print | egrep -v '$prune'`;
-# Mark some files as text files
-for $file ( @files ) {
-  chomp $file;
-  if ($file =~ /[.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)$/ ||
-      $file =~ /(VERSION|README|INSTALL|Makefile|configure|make_)/) {
-    if ($file =~ /($doc)/) {
-      system( "(echo '!TEXT!'; echo '/END') | zoo c $pdoc-$version.zoo $file" );
-    }
-    system( "(echo '!TEXT!'; echo '/END') | zoo c $pname-$version.zoo $file" );
+### Subroutine to create archive or add to existing archive #################
+# Usage: addtoarchive( archive, dir1, dir2, ... )
+# Synopsis: adds files in directories dir1, dir2, ... to zoo-archive archive
+#           ignoring files in CVS directories or with suffixes listed in $prune
+#           and marking files that match the pattern $text as text files
+sub addtoarchive {
+  ($archive, @dir) = @_;
+  for $dir ( @dir ) {
+    my @files = `find $dir -name CVS -prune -o -print | egrep -v '$prune'`;
+    for $file ( @files ) {
+      chomp $file;
+      system( "zoo ah $archive $file" );
+      if ($file =~ /$text/) {
+        system( "(echo '!TEXT!'; echo '/END') | zoo c $archive $file" );
+      }
+    }  
   }
 }
