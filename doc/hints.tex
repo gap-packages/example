@@ -18,15 +18,16 @@ go for more information.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Structure of a GAP Package}
 
+This  section  is  intended  to  amplify  the  recommendations  made   in
+Section~"ext:The Files of a GAP  Package"  of  the  {\GAP}~4  Programming
+Reference Manual.
+
 A {\GAP} package should have an alphanumeric name (<package-name>,  say);
 mixed case is fine, but there should  be  no  whitespace.  The  directory
 <package-dir> containing the files of package  <package-name>  should  be
 just  <package-name>  converted  to  lowercase  (the   restriction   that
-<package-dir> must be contain only lowercase characters may change in the
-future); this is so that a user may load the  <package-name>  package  by
-calling  the  `RequirePackage'  command  (which  lowercases   its   first
-argument; see~"ref:RequirePackage" in the Reference Manual)  with  either
-<package-name> or <package-dir> (in doublequotes).
+<package-dir> must contain only lowercase characters may  change  in  the
+future).
 
 The directory  <package-dir>  should  be  a  subdirectory  of  `pkg'  and
 preferably should have the following structure  (below,  a  trailing  `/'
@@ -36,6 +37,7 @@ distinguishes directories from ordinary files):
 \){\kernttindent}\ \ README
 \){\kernttindent}\ \ configure
 \){\kernttindent}\ \ Makefile.in
+\){\kernttindent}\ \ PackageInfo.g
 \){\kernttindent}\ \ init.g
 \){\kernttindent}\ \ read.g
 \){\kernttindent}\ \ doc/
@@ -68,25 +70,32 @@ equal to the string assigned  to  `GAParch'  in  the  file  `sysinfo.gap'
 should be created; any binaries constructed  by  compiling  the  code  in
 `src' should end up in this subdirectory of `bin'.
 
+`PackageInfo.g'&
+Since {\GAP}~4.4, a {\GAP} package *must* have  a  `PackageInfo.g'  file.
+The {\Example}  package's  `PackageInfo.g'  file  is  well-commented  and
+should be used as a prototype.
+
 `init.g', `read.g'&
-A {\GAP} package *must*  have  a  file  `init.g'  (see  Sections~"ext:The
-Structure of a GAP Package" and~"ext:The Init File of a GAP  Package"  in
-the Reference Manual; the latter section describes what  `init.g'  should
-contain). If the ``declaration''  and  ``implementation''  parts  of  the
-package are separated (and  this  is  recommended),  there  should  be  a
-`read.g' file. The ``declaration'' part of a package consists of function
-and variable *name*  declarations  and  these  go  in  files  with  `.gd'
-extensions; these files  are  read  in  via  `ReadPkg'  commands  in  the
-`init.g' file. The ``implementation'' part of a package consists  of  the
-actual definitions of  the  functions  and  variables  whose  names  were
-declared in the ``declaration'' part, and these go in  files  with  `.gi'
-extensions; these files  are  read  in  via  `ReadPkg'  commands  in  the
-`read.g' file. The reason for following the above dichotomy is  that  the
-`read.g' file is read  *after*  the  `init.g'  file,  thus  enabling  the
-possibility of a function's implementation to refer to  another  function
-whose name is known but is not actually  defined  yet.  The  {\GAP}  code
-(whether or not it is split into ``declaration''  and  ``implementation''
-parts) should go in the package's `lib' directory (see below).
+A {\GAP} package *must* have a file `init.g' (see Section~"ext:The  Files
+of a GAP Package" in the {\GAP}~4 Programming Reference  Manual).  As  of
+{\GAP}~4.4, the typical  `init.g'  and  `read.g'  files  should  normally
+consist entirely of `ReadPackage' (see~"ref:ReadPackage" in the  {\GAP}~4
+Reference Manual) commands (and possibly also `Read'  commands).  If  the
+``declaration'' and ``implementation'' parts of the package are separated
+(and  this  is  recommended),  there  should  be  a  `read.g'  file.  The
+``declaration'' part of a  package  consists  of  function  and  variable
+*name* declarations and these go in files with  `.gd'  extensions;  these
+files are read in via `ReadPackage' commands in the  `init.g'  file.  The
+``implementation'' part of a package consists of the  actual  definitions
+of  the  functions  and  variables  whose  names  were  declared  in  the
+``declaration'' part, and these go in files with `.gi' extensions;  these
+files are read in via `ReadPackage' commands in the  `read.g'  file.  The
+reason for following the above dichotomy is that  the  `read.g'  file  is
+read *after* the `init.g'  file,  thus  enabling  the  possibility  of  a
+function's implementation to refer to  another  function  whose  name  is
+known but is not actually defined yet. The {\GAP} code (whether or not it
+is split into ``declaration'' and ``implementation'' parts) should go  in
+the package's `lib' directory (see below).
 
 `doc'&
 This directory should contain the package's documentation. Traditionally,
@@ -124,7 +133,7 @@ This is the preferred place for the {\GAP} code, i.e.~the `.g', `.gd' and
 of `lib';  `lib'  has  the  slight  advantage  that  it  is  the  default
 subdirectory   of   a   package   directory   searched   for    by    the
 `DirectoriesPackageLibrary' command  (see~"ref:DirectoriesPackageLibrary"
-in the {\GAP} Reference Manual).
+in the {\GAP}~4 Reference Manual).
 
 `src'&
 If the package has non-{\GAP} code, e.g.~C  code,  then  this  ``source''
@@ -327,16 +336,11 @@ that the expression list is  only  printed  (or  even  executed)  if  the
 `InfoLevel' of <InfoPkgname> is at least <level>.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\Section{Having a Banner}
+\Section{The Banner}
 
-\index{banner!suppression}
-Typically a banner for a package is produced by  a  sequence  of  `Print'
-statements in a file named `banner.g' which is  loaded  via  a  `ReadPkg'
-statement in the package `init.g' file. The execution of the printing  of
-the banner should be nested inside `if not QUIET and BANNER then ... fi;'
-(see the  {\Example}  package  `init.g'  file)  so  that  the  banner  is
-suppressed during package autoloading and when {\GAP} is started up  with
-the `-q' or `-b' command line options.
+Since {\GAP}~4.4, a default package  banner  is  provided  which  may  be
+over-ridden by assigning a string to  the  `BannerString'  field  of  the
+record argument of `SetPackageInfo' in the `PackageInfo.g' file.
 
 It is a good idea to have a hook into  your  package  documentation  from
 your banner. The {\Example} package suggests to the {\GAP} user:

@@ -42,7 +42,7 @@ Version := "1.5",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 # 
-Date := "18/06/2003",
+Date := "20/06/2003",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -53,7 +53,7 @@ Date := "18/06/2003",
 ##  example/init.g, ...    or  example-1.3/init.g, ...  )
 # 
 ArchiveURL := 
-          "http://www.math.colostate.edu/~hulpke/gapstuff/example/example14",
+          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.5",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -146,7 +146,7 @@ Persons := [
     FirstNames    := "Greg",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "gregg@itee.uq.edu.au",
+    Email         := "gregg@math.rwth-aachen.de",
     WWWHome       := "http://www.math.rwth-aachen.de/~Greg.Gamble",
     PostalAddress := Concatenation( [
                        "Greg Gamble\n",
@@ -192,9 +192,9 @@ Status := "deposited",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL := 
-  "http://www.math.colostate.edu/~hulpke/gapstuff/example/README.example",
+  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README.example",
 PackageInfoURL := 
-  "http://www.math.colostate.edu/~hulpke/gapstuff/example/PackageInfo.g",
+  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PackageInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -244,8 +244,8 @@ PackageDoc := rec(
   # use same as in GAP            
   BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-  #  Archive := 
-  #    "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.3.zoo",
+  Archive := 
+      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.5.zoo",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",
@@ -301,7 +301,7 @@ AvailabilityTest := function()
     file:=Filename(path,"hello");
     if file=fail then
       Info(InfoWarning,1,
-        "Package ``example'': The program `hello' is not compiled");
+        "Package ``Example'': The program `hello' is not compiled");
       Info(InfoWarning,1,
         "`HelloWorld()' is thus unavailable");
       Info(InfoWarning,1,
@@ -315,14 +315,19 @@ AvailabilityTest := function()
     return true;
   end,
 
-##  The LoadPackage mechanism can produce a default banner from the infos
+##  The LoadPackage mechanism can produce a default banner from the info
 ##  in this file. If you are not happy with it, you can provide a string
 ##  here that is used as a banner. GAP decides when the banner is shown and
 ##  when it is not shown. *optional* (note the ~-syntax in this example)
-BannerString := Concatenation( [
-  "----------------------------------------------------------\n",
-  "Loading  ``example'' version ", ~.Version, "\n",
-  "----------------------------------------------------------\n" ] ),
+BannerString := Concatenation( 
+  "----------------------------------------------------------------\n",
+  "Loading  Example ", ~.Version, "\n",
+  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,
+        " (", ~.Persons[1].WWWHome, ")\n",
+  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,
+        " (", ~.Persons[2].WWWHome, ")\n",
+  "For help, type: ?Example package \n",
+  "----------------------------------------------------------------\n" ),
 
 ##  Suggest here if the package should be *automatically loaded* when GAP is 
 ##  started.  This should usually be 'false'. Say 'true' only if your package 
