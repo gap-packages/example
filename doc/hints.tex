@@ -329,13 +329,21 @@ that the expression list is  only  printed  (or  even  executed)  if  the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Having a Banner}
 
+\index{banner!suppression}
+\atindex{option pkgbanner}{@option \noexpand`pkgbanner'}
+\atindex{pkgbanner option}{@\noexpand`pkgbanner' option}
 Typically a banner for a package is produced by  a  sequence  of  `Print'
 statements in a file named `banner.g' which is  loaded  via  a  `ReadPkg'
 statement in the package `init.g' file. The execution of the printing  of
 the banner should be nested inside `if not QUIET and BANNER then ... fi;'
 (see the  {\Example}  package  `init.g'  file)  so  that  the  banner  is
 suppressed during package autoloading and when {\GAP} is started up  with
-the `-q' or `-b' command line options.
+the `-q' or `-b' command line options. It's also nice to have a means  of
+controlling the extent of the banner from the  `RequirePackage'  command;
+in the {\Example} package's `banner.g' file we test for the value of  the
+option `pkgbanner': if it is `"short"' a 1-line `Loading ...' message  is
+`Info'-ed, if it is `"none"' no banner is  printed,  otherwise  the  full
+banner is printed.
 
 It is a good idea to have a hook into  your  package  documentation  from
 your banner. The {\Example} package suggests to the {\GAP} user:

@@ -76,7 +76,8 @@ The `RequirePackage' command is described in Section~"ref:RequirePackage"
 in the {\GAP} Reference Manual.
 
 If {\GAP} cannot find a working binary, the call to `RequirePackage' will
-fail.
+still succeed but a warning is issued informing that  the  `HelloWorld()'
+function will be unavailable.
 
 \index{banner!suppression}
 The banner is suppressed if the global {\GAP} variable `QUIET' is  `true'
@@ -85,6 +86,25 @@ the `-q' or `-b' command line switches, respectively).  If  you  want  to
 load the {\Example} package by default, you can put the  `RequirePackage'
 command into your `.gaprc' file (see Section~"ref:The .gaprc file" in the
 {\GAP} Reference Manual).
+
+\atindex{option pkgbanner}{@option \noexpand`pkgbanner'}
+\atindex{pkgbanner option}{@\noexpand`pkgbanner' option}
+The  banner  is  also  suppressed  if   the   package   is   loaded   via
+`RequirePackage' with the option `pkgbanner' set to `"none"':
+
+\beginexample
+gap> RequirePackage("example" : pkgbanner := "none");
+true
+\endexample
+
+or if the package is instead loaded with the option  `pkgbanner'  set  to
+`"short"' a 1-line loading message is `Info'-ed at `InfoWarning' level 1:
+
+\begintt
+gap> RequirePackage("example" : pkgbanner := "short");
+#I  Loading Example Package Version 1.2
+true
+\endtt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
