@@ -7,7 +7,7 @@
 ##
 
 # announce the package version and test for the existence of the binary
-DeclarePackage("example","1.2",
+DeclarePackage("example","1.3",
   function()
   local path,file;
     # test for existence of the compiled binary
@@ -30,7 +30,8 @@ DeclarePackage("example","1.2",
   end);
 
 # install the documentation
-DeclarePackageAutoDocumentation( "example", "doc" );
+DeclarePackageAutoDocumentation( "Example", "doc", "Example",
+                                 "Example of a GAP Package");
 
 if BANNER and not QUIET then
   ReadPkg("example", "gap/banner.g");

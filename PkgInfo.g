@@ -7,31 +7,31 @@
 ##  This is a GAP readable file. Of course you can change and remove all
 ##  comments as you like.
 ##  
-##  As illustrate the entries we give those used for the EDIM package in
-##  comment lines.
+##  Entries that are commented out are those used for the EDIM package 
+##  and are there for purposes of illustration of a possible alternative,
+##  especially in the case where the Example package's entry is blank.
 ##  
 
 SetPackageInfo( rec(
 
 ##  This is case sensitive, use your preferred spelling.
-# PkgName := "EDIM",
-PkgName := "example",
+#
+PkgName := "Example",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers.
-# Version := "1.1",
-Version := "1.2",
+Version := "1.3",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-# Date := "04/11/2001",
-Date := "",
+# 
+Date := "13/01/2003",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
 ##  (and probably somehow contain the package name and version).
-# ArchiveURL := "http://www.math.rwth-aachen.de/~Frank.Luebeck/EDIM/edim-1p1",
-ArchiveURL := "",
+# 
+ArchiveURL := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.3",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -105,26 +105,37 @@ ArchiveFormats := "",
 ##     )
 ##  
 Persons := [
-  rec(
-    LastName := "Nickel",
-    FirstNames := "Werner",
-    IsAuthor := true,
-    IsMaintainer := true,
-    Email := "",
-    WWWHome := "",
-    Place := "",
-    Institution := ""
-    ),
-  rec(
-    LastName := "Gamble",
-    FirstNames := "Greg",
-    IsAuthor := true,
-    IsMaintainer := true,
-    Email := "",
-    WWWHome := "",
-    Place := "",
-    Institution := ""
-    )
+  rec( 
+    LastName      := "Nickel",
+    FirstNames    := "Werner",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "nickel@mathematik.tu-darmstadt.de",
+    WWWHome       := "http://www.mathematik.tu-darmstadt.de/~nickel",
+    PostalAddress := Concatenation( [
+                       "AG 2, Fachbereich Mathematik, TU Darmstadt\n",
+                       "Schlossgartenstr. 7, 64289 Darmstadt\n",
+                       "Germany" ] ),
+    Place         := "Darmstadt",
+    Institution   := "TU Darmstadt"
+  ),
+  rec( 
+    LastName      := "Gamble",
+    FirstNames    := "Greg",
+    IsAuthor      := true,
+    IsMaintainer  := true,
+    Email         := "gregg@itee.uq.edu.au",
+    WWWHome       := "http://www.math.rwth-aachen.de/~Greg.Gamble",
+    PostalAddress := Concatenation( [
+                       "Greg Gamble\n",
+                       "School of Mathematics and Statistics\n",
+                       "Curtin University of Technology\n",
+                       "GPO Box U 1987\n",
+                       "Perth WA 6845\n",
+                       "Australia" ] ),
+    Place         := "Perth",
+    Institution   := "Curtin University of Technology"
+  )
 # provide such a record for each author and/or maintainer ...
   
 ],
@@ -157,11 +168,9 @@ Persons := [
 ##  You must specify URLs for these two files, these allow to automate 
 ##  the updating of package information on the GAP Website, and inclusion
 ##  and updating of the package in the GAP distribution.
-##  
-# README_URL := "http://www.math.rwth-aachen.de/~Frank.Luebeck/EDIM/README",
-# PkgInfoURL := "http://www.math.rwth-aachen.de/~Frank.Luebeck/EDIM/PkgInfo.g",
-README_URL := "",
-PkgInfoURL := "",
+#
+README_URL := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README",
+PkgInfoURL := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PkgInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -173,10 +182,13 @@ PkgInfoURL := "",
 # AbstractHTML := "This package provides  a collection of functions for \
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
-AbstractHTML := "",
+AbstractHTML := 
+  "This chapter describes the <span class=\"pkgname\">GAP</span> package \
+   span class=\"pkgname\">Example</span>. As its name suggests it is an \
+   example of how to create a <span class=\"pkgname\">GAP</span> package. \
+   It has little functionality except for being a package",
 
-# PackageWWWHome := "http://www.math.rwth-aachen.de/~Frank.Luebeck/EDIM",
-PackageWWWHome := "",
+PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
                   
 ##  On the GAP Website there is an online version of all manuals in the
 ##  GAP distribution. To handle the documentation of a package it is
@@ -198,26 +210,21 @@ PackageWWWHome := "",
 # in case of several help books give a list of such records here:
 PackageDoc := rec(
   # use same as in GAP            
-  # BookName := "EDIM",
-  BookName := "example",
+  BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
-  # Archive := "http://www.math.rwth-aachen.de/~Frank.Luebeck/EDIM/edimdoc-1p1.tar.bz2",
-  Archive := "",
-  # HTMLStart := "xmldoc/chap0.html",
-  HTMLStart := "",
-  # PDFFile := "xmldoc/manual.pdf",
-  PDFFile := "",
+  Archive := 
+      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.3.zoo",
+  HTMLStart := "htm/chapters.htm",
+  PDFFile   := "doc/manual.pdf",
   # the path to the .six file used by GAP's help system
-  # SixFile := "xmldoc/manual.six",
-  SixFile := "doc/manual.six",
+  SixFile   := "doc/manual.six",
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
   LongTitle := "",
   # Should this help book be autoloaded when GAP starts up? This should
   # usually be 'true', otherwise say 'false'. 
-  # AutoLoad := true
-  AutoLoad := true
+  AutoLoad  := true
 ),
 
 
@@ -226,8 +233,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use version strings for specifying exact versions,
   # prepend a '>=' for specifying a least version.
-  # GAP := "4.3",
-  GAP := "4.3",
+  GAP := ">=4.3",
   # list of pairs [package name, (least) version],  package name is case
   # insensitive, least version denoted with '>=' prepended to version string.
   # without these, the package will not load

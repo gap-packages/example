@@ -17,7 +17,7 @@ accepted packages in the archive, will have been created.
 
 It  may  also  be  unpacked  individually  from  the   .zoo   archive:
 `example-<XXX>.zoo', for some package version <XXX>. At  the  time  of
-writing the ``Example'' package version was 1.2.
+writing the ``Example'' package version was 1.3.
 
 To complete the installation of the  ``Example''  package  go  to  the
 directory `example' created (the directory contains  a  copy  of  this
@@ -42,4 +42,4 @@ architectures  immediately  after  configuring  GAP  itself  on   this
 architecture.
 
   Werner Nickel,
-  Greg Gamble -- 12 February, 2002.
+  Greg Gamble -- 12 February, 2002; 13 January, 2003.
