@@ -17,16 +17,19 @@ $version = "1.5";
 #$version = `cat VERSION`;
 #chomp $version;
 
+#package documentation prefix
+$pdoc = $pname . "doc";
+
 #remove files created during installation
 system( "make clean" );
 
-#remove old .zoo file
-system( "rm -f ../$pname-$version.zoo" );
+#remove old .zoo files
+system( "rm -f ../$pname*-$version.zoo" );
 
 #copy README in pkg directory 
 system( "cp -f README ../README.$pname" );
 
-### Create new .zoo file in pkg directory ###################################
+### Create new .zoo files in pkg directory ##################################
 chdir "..";
 
 # substrings (mainly suffixes) that determine files we want to exclude
@@ -34,9 +37,18 @@ $prune = "[._]cvs|[.]bbl|[.]aux|[.]toc|[.][ib]lg|[.]log|[.]lab|[.]ind|[.]idx".
 #         "|zoo|make_".         # uncomment to exclude make_doc, make_zoo etc.
          "|[.]sw[op]|[.-]bak|~|[.][#]";
 
-# Create the .zoo file
-system( "find $pname -name CVS -prune -o -print | egrep -v '$prune' |".
-        "zoo ahI $pname-$version.zoo" );
+# documentation files are in doc/ and htm/ directories
+$doc = "doc\/|htm\/";
+
+# find command used
+$find = "find $pname -name CVS -prune -o -print | egrep -v '$prune' ";
+
+# Create the main .zoo file
+system( "$find | zoo ahI $pname-$version.zoo" );
+
+system( "$find | egrep '$doc'" );
+# Create the doc .zoo file
+system( "$find | egrep '$doc' | zoo ahI $pdoc-$version.zoo" );
 
 @files = `find $pname -name CVS -prune -o -print | egrep -v '$prune'`;
 # Mark some files as text files
@@ -44,6 +56,9 @@ for $file ( @files ) {
   chomp $file;
   if ($file =~ /[.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)$/ ||
       $file =~ /(VERSION|README|INSTALL|Makefile|configure|make_)/) {
+    if ($file =~ /($doc)/) {
+      system( "(echo '!TEXT!'; echo '/END') | zoo c $pdoc-$version.zoo $file" );
+    }
     system( "(echo '!TEXT!'; echo '/END') | zoo c $pname-$version.zoo $file" );
   }
 }
