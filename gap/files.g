@@ -1,7 +1,10 @@
 
+Revision.("example/gap/files_g") := "@(#)$Id$";
+
 #############################################################################
 ##
 #F  SeparatedString . . . . . . . . . . . . . . . .  cut a string into pieces
+## Andrew adding a comment to change the CRC
 ##
 SeparatedString := function( str, c )
     local   pieces,  start,  i;
