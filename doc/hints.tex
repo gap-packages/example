@@ -19,7 +19,7 @@ go for more information.
 \Section{Structure of a GAP Package}
 
 This  section  is  intended  to  amplify  the  recommendations  made   in
-Section~"ext:The Files of a GAP  Package"  of  the  {\GAP}~4  Programming
+Section~"ext:The Files of  a  GAP  Package"  of  the  Extending  {\GAP}~4
 Reference Manual.
 
 A {\GAP} package should have an alphanumeric name (<package-name>,  say);
@@ -77,7 +77,7 @@ should be used as a prototype.
 
 `init.g', `read.g'&
 A {\GAP} package *must* have a file `init.g' (see Section~"ext:The  Files
-of a GAP Package" in the {\GAP}~4 Programming Reference  Manual).  As  of
+of a GAP Package" in the Extending  {\GAP}~4  Reference  Manual).  As  of
 {\GAP}~4.4, the typical  `init.g'  and  `read.g'  files  should  normally
 consist entirely of `ReadPackage' (see~"ref:ReadPackage" in the  {\GAP}~4
 Reference Manual) commands (and possibly also `Read'  commands).  If  the
@@ -101,14 +101,15 @@ the package's `lib' directory (see below).
 This directory should contain the package's documentation. Traditionally,
 a {\TeX}-based system has been used for {\GAP}  documentation,  which  is
 thoroughly described in Section~"ext:The gapmacro.tex Manual  Format"  of
-the {\GAP}~4 Programming Reference Manual. There is  now  an  alternative
+the Extending {\GAP}~4 Reference Manual.  There  is  now  an  alternative
 XML-based  system  provided  by  the  {\GAP}   package   \package{GAPDoc}
-(see~"gapdoc:Title  page").  Please   spend   some   time   reading   the
-documentation for whichever system you decide to  use  for  writing  your
-package's  documentation.  The  {\Example}  package's  documentation  was
-written using the traditional {\TeX}-based system. If you plan  on  using
-this, please use the {\Example} package's `doc' directory as a prototype,
-which you will observe contains the following files:
+(see Chapter~"gapdoc:Introduction and Example"  of  the  \package{GAPDoc}
+Manual). Please spend some time reading the documentation  for  whichever
+system you decide to use for writing your  package's  documentation.  The
+{\Example} package's documentation  was  written  using  the  traditional
+{\TeX}-based system. If you plan on using this, please use the {\Example}
+package's `doc' directory as a prototype, which you will observe contains
+the following files:
 
 \){\kernttindent}manual.tex\ \# master file
 \){\kernttindent}<chapi>.tex\ \# chapter file(s) ... 1 for each chapter
@@ -234,7 +235,7 @@ to compile and can be obtained from
 
 As a package author, you are not obliged to provide an  HTML  version  of
 your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
-Section~"ext:The gapmacro.tex Manual Format" of the {\GAP}~4  Programming
+Section~"ext:The gapmacro.tex Manual Format" of  the  Extending  {\GAP}~4
 Reference Manual,  you  should  have  no  trouble  in  producing  one.  A
 prototype of the command to execute is in the file `make_doc'; note  that
 the HTML manual  is  produced  in  files  with  `.htm'  extensions  in  a
@@ -364,11 +365,11 @@ documentation (you will need some different scheme to achieve this  using
 \Section{Packing up your GAP Package}
 
 Ideally, your {\GAP} package should  be  packed  via  the  `zoo'  program
-(Section "ext:Wrapping Up a GAP  Package"  in  the  ``Extending  {\GAP}''
-Manual contains more information). The {\Example} package file `make_zoo'
-provides  a  template  packing-up  script  that  uses  `zoo'.  The  `etc'
-directory obtained from `tools<XXX>.zoo' for some  version  number  <XXX>
-(this  is  described  above  in  Section~"Documentation  Software   Tools
+(Section "ext:Wrapping Up  a  GAP  Package"  in  the  Extending  {\GAP}~4
+Reference Manual contains more information). The {\Example} package  file
+`make_zoo' provides a template packing-up script  that  uses  `zoo'.  The
+`etc' directory obtained from `tools<XXX>.zoo' for  some  version  number
+<XXX> (this is described above in Section~"Documentation  Software  Tools
 Needed") contains a file  `packpack'  which  provides  a  more  versatile
 packing-up script.
 
