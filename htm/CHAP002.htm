@@ -84,27 +84,6 @@ load the <font face="Gill Sans,Helvetica,Arial">Example</font> package by defaul
 command into your <code>.gaprc</code> file (see Section&nbsp;<a href="../../../doc/htm/ref/CHAP003.htm#SECT004">The .gaprc file</a> in the
 <font face="Gill Sans,Helvetica,Arial">GAP</font> Reference Manual).
 <p>
-<a name = "I1"></a>
-
-<a name = "I2"></a>
-
-The  banner  is  also  suppressed  if   the   package   is   loaded   via
-<code>RequirePackage</code> with the option <code>pkgbanner</code> set to <code>"none"</code>:
-<p>
-<pre>
-gap&gt; RequirePackage("example" : pkgbanner := "none");
-true
-</pre>
-<p>
-or if the package is instead loaded with the option  <code>pkgbanner</code>  set  to
-<code>"short"</code> a 1-line loading message is <code>Info</code>-ed at <code>InfoWarning</code> level 1:
-<p>
-<pre>
-gap&gt; RequirePackage("example" : pkgbanner := "short");
-#I  Loading Example Package Version 1.2
-true
-</pre>
-<p>
 <p>
 [<a href = "chapters.htm">Up</a>] [<a href ="CHAP001.htm">Previous</a>] [<a href ="CHAP00A.htm">Next</a>] [<a href = "theindex.htm">Index</a>]
 <P>
