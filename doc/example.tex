@@ -10,24 +10,63 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Chapter{The Example Package}
 
-This chapter describes an example of a share package.  This share package
-has little functionality except for being a share package.
+\atindex{Example package}{@Example package}
+This chapter  describes  the  {\GAP}  package  {\Example}.  As  its  name
+suggests it is an example of how to  create  a  {\GAP}  package.  It  has
+little functionality except for being a package.
+
+If you are viewing this with on-line help, type: 
+
+\beginexample
+gap> ?>
+\endexample
+
+to see the functions provided by the {\Example} package.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{The main functions}
 
 The following functions are available:
 
-\>FindFile( <directory name>, <file name> )
+\>ListDirectory([<dir>]) F
 
-searches  for the  file   <file name> in  the  directory  tree  rooted at
-<directory  name> and returns the absolute  path names of all occurrances
-of this file in form of a list of strings.
+lists the files in directory <dir> (a string) or the current directory if
+called with no arguments.
 
-\>LoadedSharePackages()
+\>FindFile( <directory_name>, <file_name> ) F
 
-returns a list with the names of the share packages that have been loaded
-so far.
+searches  for the  file   <file_name> in  the  directory  tree  rooted at
+<directory_name> and returns the absolute path names of  all  occurrences
+of this file as a list of strings.
+
+\>LoadedPackages() F
+
+returns a list with the names of the packages that have  been  loaded  so
+far.
+
+\>Which( <prg> ) F
+
+returns the path of the program executed if `Exec(<prg>);' is called, e.g.
+
+\beginexample|unstableoutput
+gap> Which("date");         
+"/bin/date"
+gap> Exec("date");
+Sun Oct  7 16:23:45 CEST 2001
+\endexample
+
+\>WhereIsPkgProgram( <prg> ) F
+
+returns a list of paths of  programs  with  name  <prg>  in  the  current
+packages loaded. Try:
+
+\beginexample
+gap> WhereIsPkgProgram( "hello" );
+\endexample
+
+\>HelloWorld() F
+
+executes the C program `hello' provided by the {\Example} package.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
