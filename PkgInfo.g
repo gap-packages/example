@@ -183,10 +183,9 @@ PkgInfoURL := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PkgInfo.g",
 # computing the Smith normal form of integer matrices and some related \
 # utilities.",
 AbstractHTML := 
-  "This chapter describes the <span class=\"pkgname\">GAP</span> package \
-   span class=\"pkgname\">Example</span>. As its name suggests it is an \
-   example of how to create a <span class=\"pkgname\">GAP</span> package. \
-   It has little functionality except for being a package",
+  "The <span class=\"pkgname\">Example</span> package, as its name suggests, \
+   is an example of how to create a <span class=\"pkgname\">GAP</span> \
+   package. It has little functionality except for being a package",
 
 PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
                   
