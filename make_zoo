@@ -11,7 +11,7 @@
 
 #set values of <pname> and <version>
 $pname = "example";
-$version = "1.2";
+$version = "1.3";
 
 #if <version> is in file VERSION uncomment and capture it this way
 #$version = `cat VERSION`;
