@@ -42,7 +42,7 @@ system( "find $pname -name CVS -prune -o -print | egrep -v '$prune' |".
 # Mark some files as text files
 for $file ( @files ) {
   chomp $file;
-  if ($file =~ /[.](txt|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)$/ ||
+  if ($file =~ /[.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)$/ ||
       $file =~ /(VERSION|README|INSTALL|Makefile|configure|make_)/) {
     system( "(echo '!TEXT!'; echo '/END') | zoo c $pname-$version.zoo $file" );
   }
