@@ -11,3 +11,6 @@ bindir:
 
 default: bindir src/hello.c
 	$(CC) -o bin/@GAPARCH@/hello src/hello.c
+
+clean:
+	rm -rf bin Makefile
