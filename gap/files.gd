@@ -55,4 +55,17 @@ DeclareGlobalFunction( "WhereIsPkgProgram" );
 ##
 DeclareGlobalFunction( "HelloWorld" );
 
+#############################################################################
+##
+#V  FruitCake . . . . . . . . . . . . . things one needs to make a fruit cake
+##
+DeclareGlobalVariable( "FruitCake",
+   "record with the bits and pieces needed to make a boiled fruit cake");
+
+#############################################################################
+##
+#O  Recipe( <cake> ) . . . . . . . . . . . . . . . . . . . . display a recipe
+##
+DeclareOperation( "Recipe", [ IsRecord ] );
+
 #E  files.gd  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

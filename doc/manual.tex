@@ -29,6 +29,7 @@
 %%
 \UseReferences{../../../doc/ext}
 \UseReferences{../../../doc/ref}
+\UseGapDocReferences{../../gapdoc/doc}  %Refs to a GAPDoc-produced manual
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,7 +40,7 @@
   \centerline{\titlefont Example}\medskip
   \centerline{\titlefont ---}\medskip
   \centerline{\titlefont A GAP4 Package}\bigskip\bigskip
-  \centerline{\secfont Version 1.1}\vfill
+  \centerline{\secfont Version 1.2}\vfill
   \centerline{\secfont by}\vfill
   \centerline{\secfont Werner Nickel}\medskip
   \centerline{AG 2, Fachbereich Mathematik, TU Darmstadt}\medskip
@@ -73,7 +74,7 @@
 %%
 \Chapters
 \Input{example}               %generally there are several chapters
-%                             %each chapter *must* go in a separate file
+\Input{install}               %each chapter *must* go in a separate file
 %
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -81,6 +82,7 @@
 %F  Appendices 
 %%
 \Appendices
+\Input{hints}
 %\Bibliography
 \Index                        %to generate a proper index `manual.mst'
 %                             %must be present

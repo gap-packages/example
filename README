@@ -3,17 +3,21 @@
 This is the README file for the GAP package ``Example''.
 
 This package serves as an example how to add a package to GAP 4.  This
-package uses an external binary and therefore works  only  under  UNIX
+package uses an external binary  and  therefore  works  only  on  UNIX
 systems.
 
-The ``Example'' package is bundled in with the accepted share packages
-.zoo  archive:  `acceptedpkg<XXX>.zoo',  for  some  <XXX>.  When  this
-archive is unpacked in the `pkg' subdirectory via:
+The ``Example'' package is bundled in with the accepted  GAP  packages
+.zoo archive: `acceptedpkg<XXX>.zoo',  for  some  GAP  version  number
+<XXX>. When this archive is unpacked in the `pkg' subdirectory via:
 
   unzoo -x acceptedpkg<XXX>
 
 a directory `example',  along  with  the  directories  for  the  other
 accepted packages in the archive, will have been created.
+
+It  may  also  be  unpacked  individually  from  the   .zoo   archive:
+`example-<XXX>.zoo', for some package version <XXX>. At  the  time  of
+writing the ``Example'' package version was 1.2.
 
 To complete the installation of the  ``Example''  package  go  to  the
 directory `example' created (the directory contains  a  copy  of  this
@@ -37,3 +41,5 @@ configure/make steps for  the  ``Example''  package  on  each  of  the
 architectures  immediately  after  configuring  GAP  itself  on   this
 architecture.
 
+  Werner Nickel,
+  Greg Gamble -- 12 February, 2002.

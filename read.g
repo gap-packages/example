@@ -1,6 +1,7 @@
 #############################################################################
 ##
 #W    read.g                 The Example package                Werner Nickel
+#W                                                                Greg Gamble
 ##
 ##    @(#)$Id$
 ##

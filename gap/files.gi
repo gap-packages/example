@@ -141,4 +141,91 @@ local hello;
     Exec(hello);
 end );
 
+#############################################################################
+##
+#V  FruitCake . . . . . . . . . . . . . things one needs to make a fruit cake
+##
+InstallValue( FruitCake, rec( 
+    name        := "Fruit Cake",
+    ovenTemp    := "160 C then 150 C",
+    cookingTime := "2/3 + 1 1/2 hours",
+    tin         := "18cm square or 20cm round, greased and papered",
+    ingredients := [ 
+        "3/4_cup sugar (optional)",
+        "1/3_bottle brandy",
+        "2 1/2 + 1/3_cups mixed fruit + mixed peel + glace cherries + figs",
+        "1_tsp nutmeg (or mixed spice)",
+        "1_tsp bicarbonate of soda (NaHCO3)",
+        "1/2 - 3/4_cup butter (125g - 200g)",
+        "2_beaten eggs",
+        "1_cup SR flour (i.e. flour with yeast added)",
+        "1_cup plain flour" ],
+    method      := [
+        "Preheat oven to 160 C.",
+        "Collect ingredients.",
+        ["In a saucepan place (sugar,) water, fruit, peel,  cherries,  diced",
+         "figs, nutmeg, soda, brandy and butter and stir them until boiling.",
+         "Allow to cool for 5 minutes."],
+        "Sift flours and stir in the flour and eggs, and mix thoroughly.",
+        ["Place in  tin  and  bake  at 160 C  for  40 minutes.  Then reduce",
+         "temperature to 150 C and continue to bake cake for 1 1/2 hours."],
+        "Allow to stand in tin for 15 mins. Then turn on to cake rack to cool."
+        ],
+    notes       := [
+        "1 cup is approx. 225ml",
+        "1 bottle is 750ml" ]
+    )
+);
+
+#############################################################################
+##
+#M  Recipe( <cake> ) . . . . . . . . . . . . . . . . . . . . display a recipe
+##
+InstallMethod( Recipe, "record", [ IsRecord ],
+    function( cake )
+    local field, blanks, str, ingredient, pos, step, lines, line;
+      Print( "\n" );
+      blanks := "                                ";
+      for field in RecNames( cake ) do
+        if field <> "name" then
+          str := ReplacedString(field, "T", " T");
+          Print( CHARS_UALPHA{[ Position(CHARS_LALPHA, str[1]) ]},
+                 str{[2 .. Length(str)]}, ":" );
+        fi;
+        if IsString( cake.(field) ) then
+          if field = "name" then
+            str := Concatenation( cake.(field), " Recipe" );
+            Print( blanks{[1 .. Int( ( 80 - Length(str) ) / 2 )]}, str);
+          else
+            Print( " ", cake.(field), "." );
+          fi;
+          Print( "\n\n" );
+        else
+          Print( "\n" );
+          if field = "ingredients" then
+            for ingredient in cake.ingredients do
+              pos := Position(ingredient, '_');
+              Print( blanks{[1 .. 16 - pos]}, 
+                     ingredient{[1 .. pos - 1]}, " ",
+                     ingredient{[pos + 1 .. Length(ingredient)]}, "\n" );
+            od;
+          else
+            for step in [1 .. Length( cake.(field) )] do
+              Print( step, ". " );
+              lines := cake.(field)[step];
+              if IsString( lines ) then
+                Print( lines, "\n" );
+              else
+                Print( lines[1], "\n" );
+                for line in lines{[2 .. Length( lines )]} do
+                  Print( "   ", line, "\n" );
+                od;
+              fi;
+            od;
+          fi;
+          Print( "\n" );
+        fi;
+      od;
+    end );
+
 #E  files.gi  . . . . . . . . . . . . . . . . . . . . . . . . . . . ends here

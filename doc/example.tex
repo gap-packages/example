@@ -1,6 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %W  example.tex            GAP documentation                Werner Nickel
+%W                                                            Greg Gamble
 %%
 %H  $Id$
 %%
@@ -14,6 +15,9 @@
 This chapter  describes  the  {\GAP}  package  {\Example}.  As  its  name
 suggests it is an example of how to  create  a  {\GAP}  package.  It  has
 little functionality except for being a package.
+
+See Sections~"Installing the Example Package"  and~"Loading  the  Example
+Package" for how to install and load the {\Example} package.
 
 If you are viewing this with on-line help, type: 
 
@@ -67,6 +71,21 @@ gap> WhereIsPkgProgram( "hello" );
 \>HelloWorld() F
 
 executes the C program `hello' provided by the {\Example} package.
+
+\>`FruitCake' V
+
+is a record with the bits and pieces needed to make a boiled fruit  cake.
+Its fields satisfy the criteria for `Recipe' (see~"Recipe");
+
+\>Recipe( <cake> ) M
+
+displays the recipe for cooking <cake>, where <cake>  is  a  record.  The
+fields of <cake> recognised are `name' (a string giving the type of  cake
+or  cooked  item),  `ovenTemp'  (a  string),  `cookingTime'  (a  string),
+`ingredients' (a list of strings each containing an `_' which is used  to
+line up the entries and is replaced by a  blank),  `method'  (a  list  of
+steps, each of which is a string or list of strings), and `notes' (a list
+of strings).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%

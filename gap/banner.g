@@ -13,7 +13,7 @@ Revision.("example/gap/banner_g") :=
 
 Print("\n");
 Print("           The Example package\n");
-Print("               Version 1.1    \n");
+Print("               Version 1.2    \n");
 Print("            by Werner Nickel \n");
 Print("\n");
 Print("     For help, type: ?Example package\n");
