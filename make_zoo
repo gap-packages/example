@@ -35,10 +35,10 @@ $prune = "[._]cvs|[.]bbl|[.]aux|[.]toc|[.][ib]lg|[.]log|[.]lab|[.]ind|[.]idx".
          "|[.]sw[op]|[.-]bak|~|[.][#]";
 
 # Create the .zoo file
-system( "find $pname -path '*/CVS' -prune -o -print | egrep -v '$prune' |".
+system( "find $pname -name CVS -prune -o -print | egrep -v '$prune' |".
         "zoo ahI $pname-$version.zoo" );
 
-@files = `find $pname -path '*/CVS' -prune -o -print | egrep -v '$prune'`;
+@files = `find $pname -name CVS -prune -o -print | egrep -v '$prune'`;
 # Mark some files as text files
 for $file ( @files ) {
   chomp $file;
