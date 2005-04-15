@@ -315,6 +315,10 @@ AvailabilityTest := function()
     return true;
   end,
 
+##  *Optional*: path relative to package root to a file which 
+##  shall be read immediately before the package is loaded.
+#PreloadFile := "...",
+
 ##  The LoadPackage mechanism can produce a default banner from the info
 ##  in this file. If you are not happy with it, you can provide a string
 ##  here that is used as a banner. GAP decides when the banner is shown and
