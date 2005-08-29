@@ -341,6 +341,11 @@ Autoload := false,
 
 ##  *Optional*, but recommended: path relative to package root to a file which 
 ##  contains as many tests of the package functionality as sensible.
+##  The file can either consist of 'ReadTest' calls or it is itself read via
+##  'ReadTest'; it is assumed that the latter case occurs if and only if
+##  the file contains the string 'gap> START_TEST('.
+##  For submitted packages, these tests are run regularly, as a part of the
+##  standard GAP test suite.
 #TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
