@@ -36,12 +36,12 @@ system( "cp -f README ../README.$pname" );
 ### Create new .zoo files in pkg directory ##################################
 
 # substrings (mainly suffixes) that determine files we want to exclude
-$prune = "[._]cvs|[.]bbl|[.]aux|[.]toc|[.][ib]lg|[.]log|[.]lab|[.]ind|[.]idx".
+$prune = "[._]cvs|[.]bbl|[.]aux|[.][ib]lg|[.]log|[.]ind|[.]idx".
 #         "|zoo|make_".         # uncomment to exclude make_doc, make_zoo etc.
          "|[.]sw[op]|[.-]bak|~|[.][#]";
 
 # patterns that indicate a file is a text file (first line has suffixes)
-$text = "(([.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|bib|six|tst|mst)\$)".
+$text = "(([.](txt|ps|g(|[id])|htm(|l)|[ch]|xml|tex|toc|lab|bib|six|[tm]st)\$)".
         "|(VERSION|README|INSTALL|Makefile|configure|make_))";
 
 # Create doc .zoo file (containing just the doc and htm directories)

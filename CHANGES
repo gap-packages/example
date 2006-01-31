@@ -16,6 +16,7 @@ Version 2.0: 2006/01/31
     - updated for changes in 2.0 and GAP 4.4 GG
   o make_zoo:
     - reads the version from VERSION GG
+    - do not exclude .toc and .lab files GG
 Version 1.5: 2003/06/18
   Updated for new package loading mechanism to GAP 4.3 level
   o PkgInfo.g:
