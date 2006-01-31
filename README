@@ -2,17 +2,40 @@
 
 This is the README file for the GAP package "Example".
 
-This package serves as an example how to add a package to GAP 4.  This
-package uses an external binary  and  therefore  works  only  on  UNIX
-systems.
+This package serves as an example of how to create a  GAP  4  package.
+This release (2.0) has  been  updated  for  the  new  package  loading
+mechanism introduced in GAP 4.4. Some indications of what changes were
+necessary will be found in comments.
 
 The  package is  distributed with  the main  GAP archive.  For updates
 between releases of GAP itself check the package Web page
      http://www.math.rwth-aachen.de/~Greg.Gamble/Example
   
-It may  also be  unpacked individually  from the  .zoo (or  .tar.gz or
--win.zip) archive "example-<XXX>.zoo"  (or "example-<XXX>.zoo" or ...)
-for some package version <XXX>.
+or the Australian mirrors
+
+http://www.maths.uwa.edu.au/~gregg/Example/      (Perth, Australia)
+http://www.itee.uq.edu.au/~gregg/Example/        (Queensland, Australia)
+
+or via the Packages links from the GAP sites
+
+http://www.gap-system.org/                       (UK)
+http://www.math.rwth-aachen.de/~GAP/             (Germany)
+
+or the GAP ftp servers
+
+ftp://ftp-gap.dcs.st-and.ac.uk/pub/gap/gap4/zoo/packages/
+ftp://ftp.math.rwth-aachen.de/pub/gap4/zoo/packages/
+
+If you prefer tar.gz or tar.bz2 to zoo archives, substitute tar.gz  or
+tar.bz2 (as appropriate) for zoo in the above paths.
+
+The Example package uses an external binary and therefore  a  complete
+installation only works on UNIX systems  or  systems  that  support  a
+UNIX-like environment, e.g. Macintosh OSX,  or  Windows  with  Cygwin.
+However,  a  partial  installation  without  the  external  binary  is
+possible on any system.
+
+     Installing  a complete Example package (with external binary)
 
 To  complete the  installation of  the ``Example''  package go  to the
 directory `example'  created (the  directory contains  a copy  of this
@@ -25,7 +48,7 @@ would call
 
   /bin/sh ./configure ../..
 
-(the ../.. is the default and can be left out) and then call
+(the ../.. is the default and so may be omitted) and then call
 
   make 
   
@@ -36,5 +59,20 @@ configure/make steps for  the  ``Example''  package  on  each  of  the
 architectures  immediately  after  configuring  GAP  itself  on   this
 architecture.
 
+That's it. Now start GAP and type
+
+  LoadPackage("example");
+
+The ``Example" package banner should appear on the screen. If you have
+not compiled the external binary, you  should  receive  a  warning  of
+this.
+
+For details on  how  to  use  the  Example  package  see  the  package
+documentation in the `doc' subdirectory (view either `manual.dvi'  via
+`xdvi' or or `manual.pdf' via a PDF viewer). You will find  additional
+information on how to create a GAP package  in  the  Appendix  of  the
+manual.
+
   Werner Nickel,
-  Greg Gamble -- 12 February, 2002; 13 January, 2003, 20 June, 2003.
+  Greg Gamble -- 12 February, 2002; 13 January, 2003; 20 June, 2003;
+                 31 January, 2006.
