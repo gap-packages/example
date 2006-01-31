@@ -92,11 +92,11 @@ end );
 
 #############################################################################
 ##
-#F  LoadedPackages() . . . . . . . . . . . . which share packages are loaded?
+#F  LoadedPackages() . . . . . . . . . . . . . which GAP packages are loaded?
 ##
 InstallGlobalFunction( LoadedPackages, function()
 
-    return RecNames( LOADED_PACKAGES );
+    return RecNames( GAPInfo.PackagesLoaded );
 end );
 
 #############################################################################

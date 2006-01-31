@@ -48,7 +48,14 @@ of this file as a list of strings.
 \>LoadedPackages() F
 
 returns a list with the names of the packages that have  been  loaded  so
-far.
+far. All this does is execute
+
+\beginexample
+gap> RecNames( GAPInfo.PackagesLoaded );
+\endexample
+
+You might like to check out some of the other information in the `GAPInfo'
+record.
 
 \>Which( <prg> ) F
 

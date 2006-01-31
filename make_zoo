@@ -11,13 +11,15 @@
 ##  to README.<pname> (each is placed in the pkg directory).
 ##
 
-#set values of <pname> and <version>
+#set value of <pname>
 $pname = "example";
-$version = "1.5";
 
-#if <version> is in file VERSION uncomment and capture it this way
-#$version = `cat VERSION`;
-#chomp $version;
+#read <version> from file VERSION
+$version = `cat VERSION`;
+chomp $version;
+#if you don't store <version> in such a file, just do it explicitly
+#(comment out two previous lines, and uncomment next line after editing ...)
+#$version = "...";
 
 #package documentation prefix
 $pdoc = $pname . "doc";

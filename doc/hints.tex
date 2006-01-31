@@ -13,14 +13,14 @@
 The {\Example} package is intended to be a prototype for a package.  Here
 we describe just what features one should emulate when writing one's  own
 {\GAP} package for popular consumption, and a few pointers as to where to
-go for more information.
+go for more information. Much of what is written here is amplified in the
+section "ext:Writing a GAP Package" in the Extending {\GAP} Manual.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Structure of a GAP Package}
 
 This  section  is  intended  to  amplify  the  recommendations  made   in
-Section~"ext:The Files of  a  GAP  Package"  of  the  Extending  {\GAP}~4
-Reference Manual.
+Section~"ext:The Files of a GAP Package" of the Extending {\GAP} Manual.
 
 A {\GAP} package should have an alphanumeric name (<package-name>,  say);
 mixed case is fine, but there should  be  no  whitespace.  The  directory
@@ -77,33 +77,33 @@ should be used as a prototype.
 
 `init.g', `read.g'&
 A {\GAP} package *must* have a file `init.g' (see Section~"ext:The  Files
-of a GAP Package" in the Extending  {\GAP}~4  Reference  Manual).  As  of
-{\GAP}~4.4, the typical  `init.g'  and  `read.g'  files  should  normally
-consist entirely of `ReadPackage' (see~"ref:ReadPackage" in the  {\GAP}~4
-Reference Manual) commands (and possibly also `Read'  commands).  If  the
-``declaration'' and ``implementation'' parts of the package are separated
-(and  this  is  recommended),  there  should  be  a  `read.g'  file.  The
-``declaration'' part of a  package  consists  of  function  and  variable
-*name* declarations and these go in files with  `.gd'  extensions;  these
-files are read in via `ReadPackage' commands in the  `init.g'  file.  The
-``implementation'' part of a package consists of the  actual  definitions
-of  the  functions  and  variables  whose  names  were  declared  in  the
-``declaration'' part, and these go in files with `.gi' extensions;  these
-files are read in via `ReadPackage' commands in the  `read.g'  file.  The
-reason for following the above dichotomy is that  the  `read.g'  file  is
-read *after* the `init.g'  file,  thus  enabling  the  possibility  of  a
-function's implementation to refer to  another  function  whose  name  is
-known but is not actually defined yet. The {\GAP} code (whether or not it
-is split into ``declaration'' and ``implementation'' parts) should go  in
-the package's `lib' directory (see below).
+of a GAP Package" in the Extending {\GAP} Manual). As of {\GAP}~4.4,  the
+typical `init.g' and `read.g' files should normally consist  entirely  of
+`ReadPackage' (see~"ref:ReadPackage" in the  {\GAP}~4  Reference  Manual)
+commands (and possibly also `Read' commands). If the ``declaration''  and
+``implementation'' parts of  the  package  are  separated  (and  this  is
+recommended), there should be a `read.g' file. The  ``declaration''  part
+of a package consists of function and variable  *name*  declarations  and
+these go in files with `.gd' extensions; these  files  are  read  in  via
+`ReadPackage' commands in the `init.g' file. The ``implementation''  part
+of a package consists of the actual  definitions  of  the  functions  and
+variables whose names were declared  in  the  ``declaration''  part,  and
+these go in files with `.gi' extensions; these  files  are  read  in  via
+`ReadPackage' commands in the `read.g' file. The reason for following the
+above dichotomy is that the `read.g' file is read  *after*  the  `init.g'
+file, thus enabling the possibility of  a  function's  implementation  to
+refer to another function whose name is known but is not actually defined
+yet. The {\GAP} code (whether or not it is split into ``declaration'' and
+``implementation'' parts) should go in the package's `lib' directory (see
+below).
 
 `doc'&
 This directory should contain the package's documentation. Traditionally,
 a {\TeX}-based system has been used for {\GAP}  documentation,  which  is
 thoroughly described in Section~"ext:The gapmacro.tex Manual  Format"  of
-the Extending {\GAP}~4 Reference Manual.  There  is  now  an  alternative
-XML-based  system  provided  by  the  {\GAP}   package   \package{GAPDoc}
-(see Chapter~"gapdoc:Introduction and Example"  of  the  \package{GAPDoc}
+the Extending {\GAP} Manual. There is now an alternative XML-based system
+provided    by    the    {\GAP}     package     \package{GAPDoc}     (see
+Chapter~"gapdoc:Introduction  and  Example"   of   the   \package{GAPDoc}
 Manual). Please spend some time reading the documentation  for  whichever
 system you decide to use for writing your  package's  documentation.  The
 {\Example} package's documentation  was  written  using  the  traditional
@@ -175,7 +175,7 @@ To produce the `.dvi', `.ps' and `.pdf'  manual  formats,  the  following
 {\GAP} tools (usually located  in  {\GAP}'s  main  `doc'  directory)  are
 needed (provided by `tools<XXX>.zoo' for some version number <XXX> at the
 {\GAP}  `ftp'-  or  web-sites,   or   can   be   obtained   by   emailing
-\Mailto{gap-trouble@dcs.st-and.ac.uk}).
+\Mailto{support@gap-system.org}).
 
 \beginitems
 
@@ -211,8 +211,8 @@ manual is needed (this includes the ``main'' manuals, e.g.~those  in  the
 
 If your manual cross-refers to \package{GAPDoc}-produced manuals (and  so
 has  `\\UseGapDocReferences'  commands   in   its   `manual.tex'),   then
-`manual.lab' files need to be generated for these too. This  is  done  by
-starting {\GAP} (at least {\GAP}~4.3) and running:
+`manual.lab' files need to be generated for these too. Since  {\GAP}~4.3,
+this is done by starting {\GAP} and running:
 
 \){\kernttindent}gap> GapDocManualLab( "<package>" );
 
@@ -224,7 +224,7 @@ To produce an HTML version of the manual one needs  the  Perl  5  program
 {\GAP}  distribution.  The  `etc'  directory  files  are  obtained   from
 `tools<XXX>.zoo' for some version number <XXX> at the  {\GAP}  `ftp'-  or
 web-sites,      or      can      be      obtained       by       emailing
-\Mailto{gap-trouble@dcs.st-and.ac.uk}.
+\Mailto{support@gap-system.org}.
 
 Finally, to ensure the mathematics formulae are rendered as well as  they
 can be in the HTML version,  one  should  also  have  the  program  `tth'
@@ -235,12 +235,12 @@ to compile and can be obtained from
 
 As a package author, you are not obliged to provide an  HTML  version  of
 your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
-Section~"ext:The gapmacro.tex Manual Format" of  the  Extending  {\GAP}~4
-Reference Manual,  you  should  have  no  trouble  in  producing  one.  A
-prototype of the command to execute is in the file `make_doc'; note  that
-the HTML manual  is  produced  in  files  with  `.htm'  extensions  in  a
-directory `htm' outside the `doc' directory. The beginning  of  the  file
-`convert.pl' contains instructions on its usage should you need them.
+Section~"ext:The gapmacro.tex Manual  Format"  of  the  Extending  {\GAP}
+Manual, you should have no trouble in producing one. A prototype  of  the
+command to execute is in the file `make_doc'; note that the  HTML  manual
+is produced in files with `.htm' extensions in a directory `htm'  outside
+the `doc' directory. The beginning  of  the  file  `convert.pl'  contains
+instructions on its usage should you need them.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Functions and Variables and Choices of Their Names}
@@ -339,9 +339,9 @@ that the expression list is  only  printed  (or  even  executed)  if  the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{The Banner}
 
-Since {\GAP}~4.4, a default package  banner  is  provided  which  may  be
-over-ridden by assigning a string to  the  `BannerString'  field  of  the
-record argument of `SetPackageInfo' in the `PackageInfo.g' file.
+Since {\GAP}~4.4, the package  banner,  if  one  is  desired,  should  be
+provided by assigning a string to the `BannerString' field of the  record
+argument of `SetPackageInfo' in the `PackageInfo.g' file.
 
 It is a good idea to have a hook into  your  package  documentation  from
 your banner. The {\Example} package suggests to the {\GAP} user:
@@ -364,14 +364,32 @@ documentation (you will need some different scheme to achieve this  using
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{Packing up your GAP Package}
 
-Ideally, your {\GAP} package should  be  packed  via  the  `zoo'  program
-(Section "ext:Wrapping Up  a  GAP  Package"  in  the  Extending  {\GAP}~4
-Reference Manual contains more information). The {\Example} package  file
-`make_zoo' provides a template packing-up script  that  uses  `zoo'.  The
-`etc' directory obtained from `tools<XXX>.zoo' for  some  version  number
-<XXX> (this is described above in Section~"Documentation  Software  Tools
+In the past, it was recommended that your {\GAP} package should be packed
+via the `zoo' program, but now any of four different archive formats  are
+accepted (see Section "ext:Wrapping Up a GAP Package"  in  the  Extending
+{\GAP} Manual for the details). The {\Example}  package  file  `make_zoo'
+provides  a  template  packing-up  script  that  uses  `zoo'.  The  `etc'
+directory obtained from `tools<XXX>.zoo' for some  version  number  <XXX>
+(this  is  described  above  in  Section~"Documentation  Software   Tools
 Needed") contains a file  `packpack'  which  provides  a  more  versatile
 packing-up script.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Section{New versions of your GAP Package}
+
+You will notice that there is a file `VERSION' which contains the current
+version of the {\Example} package. Such a file is entirely optional. Note
+that this file is *not* read at all when {\GAP} loads the package. {\GAP}
+establishes the package version by reading the `PackageInfo.g' file.  The
+current maintainer of the {\Example} package finds it convenient to  have
+a file `VERSION' that is read both by `doc/manual.tex' and `make_zoo'. It
+is however important that each new version of a package has a new  number
+and  that  version  numbers  of  successive  package  versions   increase
+(see~"ext:Version  Numbers"  in  the  Extending  {\GAP}  Manual  for  the
+details).
+
+It's also useful to have a `CHANGES' file that records the  main  changes
+between versions of your package.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \Section{CVS}
@@ -379,7 +397,7 @@ packing-up script.
 When your package is ready to be refereed and/or  made  available  as  an
 ``accepted'' {\GAP} package, it may be of benefit to obtain CVS access to
 {\GAP}; as a first step towards this you should make  a  request  to  the
-{\GAP} team via an email to \Mailto{gap-trouble@dcs.st-and.ac.uk}.
+{\GAP} team via an email to \Mailto{support@gap-system.org}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%

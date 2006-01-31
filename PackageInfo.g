@@ -28,7 +28,7 @@
 SetPackageInfo( rec(
 
 ##  This is case sensitive, use your preferred spelling.
-#
+##
 PackageName := "Example",
 
 ##  This may be used by a default banner or on a Web page, should fit on
@@ -38,11 +38,11 @@ Subtitle := "A Demo for Package Authors",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "1.5",
+Version := "2.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-# 
-Date := "20/06/2003",
+##
+Date := "31/01/2006",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -53,7 +53,7 @@ Date := "20/06/2003",
 ##  example/init.g, ...    or  example-1.3/init.g, ...  )
 # 
 ArchiveURL := 
-          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-1.5",
+          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-2.0",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -96,8 +96,9 @@ ArchiveFormats := ".zoo",
 #BinaryFiles := ["doc/manual.dvi", ......],
 
 
-##  Information about authors and maintainers. Specify for each person a 
-##  record with the following information:
+##  Information about authors and maintainers is contained in the `Persons'
+##  field which is a list of records, one record for each person; each 
+##  person's record should be as per the following example: 
 ##  
 ##     rec(
 ##     # these are compulsory, characters are interpreted as latin-1, so
@@ -150,7 +151,7 @@ Persons := [
     WWWHome       := "http://www.math.rwth-aachen.de/~Greg.Gamble",
     PostalAddress := Concatenation( [
                        "Greg Gamble\n",
-                       "School of Mathematics and Statistics\n",
+                       "Department of Mathematics and Statistics\n",
                        "Curtin University of Technology\n",
                        "GPO Box U 1987\n",
                        "Perth WA 6845\n",
@@ -245,7 +246,7 @@ PackageDoc := rec(
   BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
   Archive := 
-      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-1.5.zoo",
+      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-2.0.zoo",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",
@@ -254,7 +255,7 @@ PackageDoc := rec(
   # a longer title of the book, this together with the book name should
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
-  LongTitle := "",
+  LongTitle := "Example/Template of a GAP Package",
   # Should this help book be autoloaded when GAP starts up? This should
   # usually be 'true', otherwise say 'false'. 
   Autoload  := true
@@ -266,7 +267,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use version strings for specifying exact versions,
   # prepend a '>=' for specifying a least version.
-  GAP := ">=4.3",
+  GAP := ">=4.4",
   # list of pairs [package name, (least) version],  package name is case
   # insensitive, least version denoted with '>=' prepended to version string.
   # without these, the package will not load
@@ -295,10 +296,10 @@ Dependencies := rec(
 ##  done automatically and need not be included in this function.
 #AvailabilityTest := ReturnTrue,
 AvailabilityTest := function()
-  local path,file;
+  local path, file;
     # test for existence of the compiled binary
-    path:=DirectoriesPackagePrograms("example");
-    file:=Filename(path,"hello");
+    path := DirectoriesPackagePrograms("example");
+    file := Filename(path,"hello");
     if file=fail then
       Info(InfoWarning,1,
         "Package ``Example'': The program `hello' is not compiled");
@@ -351,7 +352,7 @@ Autoload := false,
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := []
+Keywords := ["package example", "package template", "package creation hints"]
 
 ));
 
