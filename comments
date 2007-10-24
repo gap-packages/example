@@ -8,40 +8,29 @@ documentation of the `Example' package to GAPDoc format.
   so one can look at them,
   but if you use them then you do it at your own risk.)
 
-- Then I started to polish the result by hand; in this case just the
-  newly created files `doc/*.xml' are subject to changes,
-  since the files in the `gap' directory of the package do not contain
+- Then I started to polish the result by hand.
+  In the case of the manual for the `Example' package,
+  just the newly created files `doc/*.xml' are subject to changes,
+  since the files in the `gap' directory of the package did not contain
   parts of the documentation.
   A detailed list of the changes can be found at the end of this file.
-  Note that meanwhile the situation may be different, since the debugging
-  facilities of GAPDoc have been improved substantially,
+  Note that meanwhile the situation may be different,
+  since the debugging facilities of GAPDoc have been improved substantially,
   so one gets better error messages than in earlier versions.
 
-- Further improvements to be done:
+- Further formal improvements to be done:
   - In `doc/main.xml', add the author's homepage (which was not available
     in the old format).
   - There are several <C> elements which can be turned into <Ref> elements
-    pointing to the GAP Reference Manual.
-  - Reformat the text if you want,
-    but take care not to destroy labels.
+    (pointing to the GAP Reference Manual) or into <F> elements.
 
-change to svn?
-
-cross-ref. <Ref Chap="The gapmacro.tex Manual Format" BookName="ext"/>
-will be soon outdated!
-
-mult. def. labels?
-
-example.xml: ``unstableoutput'' -- not clear how to deal with this, removed
-removed ``of the ... Manual'' for external references
-added <P/> in a list of lines
-
-- Suggestions for changes of the contents:
+- Suggested changes of the *contents* (not related to the manual format):
   - The function `ListDirectory' uses the system program `ls';
     this should be mentioned,
     perhaps this should even be regarded as an entry for
     `Dependencies.ExternalConditions' in the `PackageInfo.g' file.
-    (Would it be reasonable to add a cross-reference to `DirectoryContents'?)
+    (Would it be reasonable to add a cross-reference to the function
+    `DirectoryContents' in the Reference Manual?)
   - It seems that `FindFile' can run into an infinite loop if the files in
     the directory in question do not form a tree; the documentation assumes
     this, but it could be stated more explicitly.
@@ -66,17 +55,22 @@ added <P/> in a list of lines
     since processing the documentation with GAPDoc is so much simpler
     (because GAP does the conversion, and external programs are needed only
     in the end)?
+  - The cross-reference to the chapter ``The gapmacro.tex Manual Format''
+    in the book ``Extending GAP'' will not be available in the future,
+    this information will be moved to a separate document.
   - Should the `LoadPackage' example in `install.xml' involve the
     `VERSION' file, in order to avoid adjusting the version number here
     with each release of the package?
   - In the section ``CVS'', cvs access to GAP is mentioned;
     as soon as we change this to svn, this section must be adjusted.
 
------------------------------------------------------------------------------
-And here is the promised list of explicit changes by hand.
 
-- created main.xml
-- in `gapmacro2gapdoc.g', added the replacement
+-----------------------------------------------------------------------------
+
+And here is the promised explicit list of conversion steps by hand.
+
+- create main.xml
+- in `gapmacro2gapdoc.g', add the replacement
   [ "{\\Example}", "&Example;" ]
   to the function `RewriteText'
 - start gap, read  `gapmacro2gapdoc.g'
@@ -100,7 +94,7 @@ And here is the promised list of explicit changes by hand.
     to be found at ???
   - change <Chapter>...</Chapter> in hints.xml to
     <Appendix>...</Appendix>
-  - remove the <P/> elements before the chapter start (which are illegal)
+  - remove the <P/> elements above the beginning of the chapter
 - now `makedocrel.g' runs through and produces some error messages
   (= hints how to proceed)
   - non resolved references: space and line breaks are now relevant
@@ -112,15 +106,15 @@ And here is the promised list of explicit changes by hand.
     - replace the `\ ' by &nbsp;
     - replace the `#' by &hash;
     - a problem with a list item that consists of several paragraphs
-      (rare case, not handled ...)
+      (rare case, not handled by the tools)
     - deal with the line \kernttindent...  in Section ``The Banner''
   - problem: \URL inside a list item was not found
   - problem: \begintt ... \endtt inside a list was not found
-- now the manual compiles.
+- (now the manual compiles.)
 - copy manual.css into doc, check the HTML version.
 - check the txt version.
 
-- still the manual is not good.
+- still the manual is not good!
   - follow the ``MOVE DOWN'' instructions in the .xml files
     (Note that the end of a ``subsection'' was not explicit
     in the old format.)
@@ -133,6 +127,13 @@ And here is the promised list of explicit changes by hand.
   - in <ManSection>, introduce <Description>
     (this does not happen in the case of function descriptions inside
     GAP code files)
-  - introduce <P/> in an implicit enumeration
+  - introduce <P/> in an implicit enumeration (in the old version,
+    empty lines were sufficient)
   - comment out parts that are obviously not true anymore
+  - removed the ``unstableoutput'' remark in `doc/example.xml',
+    since it seemed to make no sense
+  - change the text around cross-references to other manuals;
+    the specification ``of the ... Manual'' is no longer necessary
+  - ...
+
 
