@@ -17,8 +17,8 @@
 ##  
 
 ##  For the LoadPackage mechanism in GAP >= 4.4 only the entries
-##  .PackageName, .Version, .PackageDoc, .Dependencies, .AvailabilityTest
-##  .Autoload   are needed. The other entries are relevant if the
+##  .PackageName, .Version, .PackageDoc, .Dependencies, and .AvailabilityTest
+##  are needed. The other entries are relevant if the
 ##  package shall be distributed for other GAP users, in particular if it
 ##  shall be redistributed via the GAP Website.
 
@@ -333,12 +333,6 @@ BannerString := Concatenation(
         " (", ~.Persons[2].WWWHome, ")\n",
   "For help, type: ?Example package \n",
   "----------------------------------------------------------------\n" ),
-
-##  Suggest here if the package should be *automatically loaded* when GAP is 
-##  started.  This should usually be 'false'. Say 'true' only if your package 
-##  provides some improvements of the GAP library which are likely to enhance 
-##  the overall system performance for many users.
-Autoload := false,
 
 ##  *Optional*, but recommended: path relative to package root to a file which 
 ##  contains as many tests of the package functionality as sensible.
