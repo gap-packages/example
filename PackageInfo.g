@@ -16,7 +16,7 @@
 ##  especially in the case where the Example package's entry is blank.
 ##  
 
-##  For the LoadPackage mechanism in GAP >= 4.4 only the entries
+##  For the LoadPackage mechanism in GAP >= 4.5 only the entries
 ##  .PackageName, .Version, .PackageDoc, .Dependencies, and .AvailabilityTest
 ##  are needed. The other entries are relevant if the
 ##  package shall be distributed for other GAP users, in particular if it
@@ -265,17 +265,31 @@ PackageDoc := rec(
 ##  Are there restrictions on the operating system for this package? Or does
 ##  the package need other packages to be available?
 Dependencies := rec(
-  # GAP version, use version strings for specifying exact versions,
-  # prepend a '>=' for specifying a least version.
-  GAP := ">=4.4",
-  # list of pairs [package name, (least) version],  package name is case
-  # insensitive, least version denoted with '>=' prepended to version string.
+  # GAP version, use the version string for specifying a least version,
+  # prepend a '=' for specifying an exact version.
+  GAP := "4.4",
+
+  # list of pairs [package name, version], package name is case
+  # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
-  # NeededOtherPackages := [["GAPDoc", ">= 0.99"]],
+  # NeededOtherPackages := [["GAPDoc", "0.99"]],
   NeededOtherPackages := [],
-  # without these the package will issue a warning while loading
+
+  # list of pairs [package name, version] as above,
+  # these package are will be loaded if they are available,
+  # but the current package will be loaded if they are not available
   # SuggestedOtherPackages := [],
   SuggestedOtherPackages := [],
+
+  # *Optional*: a list of pairs as above, denoting those needed packages
+  # that must be completely loaded before loading of the current package
+  # is started (if this is not possible due to a cyclic dependency
+  # then the current package is regarded as not loadable);
+  # this component should be used only if functions from the needed packages
+  # in question are called (or global lists or records are accessed)
+  # while the current package gets loaded
+  # OtherPackagesLoadedInAdvance := [],
+
   # needed external conditions (programs, operating system, ...)  provide 
   # just strings as text or
   # pairs [text, URL] where URL  provides further information
@@ -288,10 +302,11 @@ Dependencies := rec(
 ),
 
 ##  Provide a test function for the availability of this package.
-##  For packages which will not fully work, use 'Info(InfoWarning, 1,
-##  ".....")' statements. For packages containing nothing but GAP code,
-##  just say 'ReturnTrue' here.
-##  With the new package loading mechanism (GAP >=4.4)  the availability
+##  For packages which will not fully work,
+##  use 'LogPackageLoadingMessage( PACKAGE_WARNING, ... )' statements,
+##  do not call `Print'.
+##  For packages containing nothing but GAP code, just say 'ReturnTrue' here.
+##  With the package loading mechanism of GAP >=4.4, the availability
 ##  tests of other packages, as given under .Dependencies above, will be 
 ##  done automatically and need not be included in this function.
 #AvailabilityTest := ReturnTrue,
@@ -327,10 +342,9 @@ AvailabilityTest := function()
 BannerString := Concatenation( 
   "----------------------------------------------------------------\n",
   "Loading  Example ", ~.Version, "\n",
-  "by ", ~.Persons[1].FirstNames, " ", ~.Persons[1].LastName,
-        " (", ~.Persons[1].WWWHome, ")\n",
-  "   ", ~.Persons[2].FirstNames, " ", ~.Persons[2].LastName,
-        " (", ~.Persons[2].WWWHome, ")\n",
+  "by ",
+  JoinStringsWithSeparator( List( ~.Persons, r -> Concatenation(
+      r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
   "For help, type: ?Example package \n",
   "----------------------------------------------------------------\n" ),
 
