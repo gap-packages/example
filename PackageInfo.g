@@ -313,20 +313,18 @@ Dependencies := rec(
 AvailabilityTest := function()
   local path, file;
     # test for existence of the compiled binary
-    path := DirectoriesPackagePrograms("example");
-    file := Filename(path,"hello");
-    if file=fail then
-      Info(InfoWarning,1,
-        "Package ``Example'': The program `hello' is not compiled");
-      Info(InfoWarning,1,
-        "`HelloWorld()' is thus unavailable");
-      Info(InfoWarning,1,
-        "See the installation instructions; ",
-        "type: ?Installing the Example package");
+    path:= DirectoriesPackagePrograms( "example" );
+    file:= Filename( path, "hello" );
+    if file = fail then
+      LogPackageLoadingMessage( PACKAGE_WARNING,
+          [ "The program `hello' is not compiled,",
+            "`HelloWorld()' is thus unavailable.",
+            "See the installation instructions;",
+            "type: ?Installing the Example package" ] );
     fi;
     # if the hello binary was vital to the package we would return
     # the following ...
-    #return file<>fail;
+    #return file <> fail;
     # since the hello binary is not vital we return ...
     return true;
   end,
