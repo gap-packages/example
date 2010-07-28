@@ -50,7 +50,7 @@ Date := "31/01/2006",
 ##  (and probably somehow contain the package name and version).
 ##  The paths of the files in the archive must begin with the name of the
 ##  directory containing the package (in our "example" probably:
-##  example/init.g, ...    or  example-1.3/init.g, ...  )
+##  example/init.g, ...    or  example-2.0/init.g, ...  )
 # 
 ArchiveURL := 
           "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-2.0",
@@ -101,8 +101,8 @@ ArchiveFormats := ".zoo",
 ##  person's record should be as per the following example: 
 ##  
 ##     rec(
-##     # these are compulsory, characters are interpreted as latin-1, so
-##     # German umlauts and other western European special characters are ok:
+##     # these are compulsory, the strings can be encoded in UTF-8 or latin1,
+##     # so using German umlauts or other special characters is ok:
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
 ##  
