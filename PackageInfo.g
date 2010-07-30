@@ -267,13 +267,13 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.4",
+  GAP := "4.5",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
   # NeededOtherPackages := [["GAPDoc", "0.99"]],
-  NeededOtherPackages := [],
+  NeededOtherPackages := [["GAPDoc", "0.99"]],
 
   # list of pairs [package name, version] as above,
   # these package are will be loaded if they are available,
@@ -361,5 +361,4 @@ BannerString := Concatenation(
 Keywords := ["package example", "package template", "package creation hints"]
 
 ));
-
 
