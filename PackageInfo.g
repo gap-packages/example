@@ -15,13 +15,12 @@
 ##  and are there for purposes of illustration of a possible alternative,
 ##  especially in the case where the Example package's entry is blank.
 ##  
-
 ##  For the LoadPackage mechanism in GAP >= 4.5 only the entries
 ##  .PackageName, .Version, .PackageDoc, .Dependencies, and .AvailabilityTest
 ##  are needed. The other entries are relevant if the
 ##  package shall be distributed for other GAP users, in particular if it
 ##  shall be redistributed via the GAP Website.
-
+##
 ##  With a new release of the package at least the entries .Version, .Date and
 ##  .ArchiveURL must be updated.
 
@@ -38,11 +37,11 @@ Subtitle := "A Demo for Package Authors",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "2.0",
+Version := "3.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "31/01/2006",
+Date := "29/01/2011",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -50,10 +49,10 @@ Date := "31/01/2006",
 ##  (and probably somehow contain the package name and version).
 ##  The paths of the files in the archive must begin with the name of the
 ##  directory containing the package (in our "example" probably:
-##  example/init.g, ...    or  example-2.0/init.g, ...  )
+##  example/init.g, ...    or  example-3.0/init.g, ...  )
 # 
 ArchiveURL := 
-          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-2.0",
+          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-3.0",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -246,7 +245,7 @@ PackageDoc := rec(
   BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
   Archive := 
-      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-2.0.zoo",
+      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-3.0.zoo",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",

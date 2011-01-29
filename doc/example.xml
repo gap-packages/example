@@ -23,7 +23,7 @@ for hints on how  to  write  a &GAP; package.
 If you are viewing this with on-line help, type: 
 <P/>
 <Example><![CDATA[
-gap> ?>
+gap> ?Example: Example package
 ]]></Example>
 <P/>
 to see the functions provided by the &Example; package.
@@ -79,7 +79,7 @@ returns the path of the program executed if <C>Exec(<A>prg</A>);</C> is called, 
 gap> Which("date");         
 "/bin/date"
 gap> Exec("date");
-Sun Oct  7 16:23:45 CEST 2001
+Fri 28 Jan 2011 16:22:53 GMT
 ]]></Example>
 </Description>
 </ManSection>
@@ -115,7 +115,7 @@ Its fields satisfy the criteria for <Ref Func="Recipe"/>.
 </ManSection>
 
 <ManSection>
-<Meth Name="Recipe" Arg="cake"/>
+<Oper Name="Recipe" Arg="cake"/>
 
 <Description>
 displays the recipe for cooking <A>cake</A>, where <A>cake</A>  is  a  record.  The

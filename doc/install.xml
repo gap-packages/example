@@ -26,6 +26,7 @@ home directory is that one  must  start  &GAP;  with  the  <C>-l</C>  switch,
 e.g.&nbsp;if your private <F>pkg</F> directory is a subdirectory of <F>mygap</F> in your
 home directory you might type:
 <P/>
+<!-- TODO: update installation instructions for non-default locations -->
 <!-- %begintt -->
 &nbsp;&nbsp;<C>gap -l ";<A>myhomedir</A>/mygap"</C>
 <!-- %endtt -->
@@ -66,7 +67,7 @@ done by calling
 <Example><![CDATA[
 gap> LoadPackage("example");
 ----------------------------------------------------------------
-Loading  Example 2.0
+Loading  Example 3.0
 by Werner Nickel (http://www.mathematik.tu-darmstadt.de/~nickel)
    Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble)
 For help, type: ?Example package 
@@ -74,14 +75,17 @@ For help, type: ?Example package
 true
 ]]></Example>
 <P/>
-The <C>LoadPackage</C> command is described  in  Section&nbsp;<Ref Func="LoadPackage" BookName="ref"/>.
+The <C>LoadPackage</C> command is described  in  
+Section&nbsp;<Ref Func="LoadPackage" BookName="ref"/>.
 <P/>
 If &GAP; cannot find a working binary, the call  to  <C>LoadPackage</C>  will
 still succeed but a warning is issued informing that  the  <C>HelloWorld()</C>
 function will be unavailable.
 <P/>
 If you want to load the &Example; package by default, you  can  put  the
-<C>LoadPackage</C> command  into  your  <F>.gaprc</F>  file  (see  Section&nbsp;<Ref Sect="The .gaprc file" BookName="ref"/>).
+<C>LoadPackage</C> command  into  your  <F>.gaprc</F>  file  
+(see  Section&nbsp;<Ref Sect="The gap.ini and gaprc files" BookName="ref"/>).
+<!-- TODO: update this -->
 
 </Section>
 </Chapter>
