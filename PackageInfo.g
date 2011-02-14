@@ -41,7 +41,7 @@ Version := "3.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "29/01/2011",
+Date := "08/02/2011",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.zoo', which are given next.
@@ -52,7 +52,7 @@ Date := "29/01/2011",
 ##  example/init.g, ...    or  example-3.0/init.g, ...  )
 # 
 ArchiveURL := 
-          "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/example-3.0",
+          "http://www.cs.st-andrews.ac.uk/~alexk/example/example-3.0",
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -157,7 +157,22 @@ Persons := [
                        "Australia" ] ),
     Place         := "Perth",
     Institution   := "Curtin University of Technology"
-  )
+  ),
+  rec( 
+    LastName      := "Konovalov",
+    FirstNames    := "Alexander",
+    IsAuthor      := false,
+    IsMaintainer  := true,
+    Email         := "konovalov@member.ams.org",
+    WWWHome       := "http://www.cs.st-andrews.ac.uk/~alexk/",
+    PostalAddress := Concatenation( [
+                     "School of Computer Science\n",
+                     "University of St Andrews\n",
+                     "Jack Cole Building, North Haugh,\n",
+                     "St Andrews, Fife, KY16 9SX, Scotland" ] ),
+    Place         := "St Andrews",
+    Institution   := "University of St Andrews"
+     ),  
 # provide such a record for each author and/or maintainer ...
   
 ],
@@ -192,9 +207,9 @@ Status := "deposited",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL := 
-  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/README.example",
+  "http://www.cs.st-andrews.ac.uk/~alexk/example/README.example",
 PackageInfoURL := 
-  "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/PackageInfo.g",
+  "http://www.cs.st-andrews.ac.uk/~alexk/example/PackageInfo.g",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -211,7 +226,7 @@ AbstractHTML :=
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package",
 
-PackageWWWHome := "http://www.math.rwth-aachen.de/~Greg.Gamble/Example",
+PackageWWWHome := "http://www.cs.st-andrews.ac.uk/~alexk/example/",
                
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
@@ -245,7 +260,7 @@ PackageDoc := rec(
   BookName  := "Example",
   # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
   Archive := 
-      "http://www.math.rwth-aachen.de/~Greg.Gamble/Example/exampledoc-3.0.zoo",
+      "http://www.cs.st-andrews.ac.uk/~alexk/example/exampledoc-3.0.zoo",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",
