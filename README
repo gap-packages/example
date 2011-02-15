@@ -20,12 +20,11 @@ or via the Packages links from the GAP website
 
 	http://www.gap-system.org/                     
 
-or the GAP ftp server
+or the GAP ftp server, dependently on the preferred archive format:
 
-	ftp://ftp-gap.dcs.st-and.ac.uk/pub/gap/gap4/zoo/packages/
-
-If you prefer tar.gz or tar.bz2 to zoo archives, substitute tar.gz  or
-tar.bz2 (as appropriate) for zoo in the above paths.
+	ftp://ftp.gap-system.org/pub/gap/gap4/tar.gz/packages/
+	ftp://ftp.gap-system.org/pub/gap/gap4/tar.bz2/packages/
+	ftp://ftp.gap-system.org/pub/gap/gap4/win.zip/packages/
 
 The Example package uses an external binary and therefore  a  complete
 installation only works on UNIX systems  or  systems  that  support  a
@@ -74,4 +73,4 @@ manual.
   Werner Nickel,
   Greg Gamble -- 12 February, 2002; 13 January, 2003; 20 June, 2003;
                  31 January, 2006.
-  Alexander Konovalov -- January 2011.               
+  Alexander Konovalov -- February 2011.               

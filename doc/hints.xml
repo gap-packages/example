@@ -3,6 +3,11 @@
 <!-- %H  $Id$ -->
 <!-- %Y  Copyright (C) 2001, School of Math & Comp. Sci., St Andrews, Scotland -->
 
+<!-- TODO: Document MathJax option -->
+<!-- TODO: revise index and add more entries -->
+<!-- TODO: Remove references to zoo archives -->
+<!-- TODO: refer to tools as an archive wrapped into the main distribution -->
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <Appendix Label="Hints for writing a GAP Package">
 <Heading>Hints for writing a GAP Package</Heading>
@@ -149,6 +154,7 @@ file, thus enabling the possibility of  a  function's  implementation  to
 refer to another function whose name is known but is not actually defined
 yet (see <Ref Sect="Declaration and Implementation Part of a Package"/>
 below for more details).
+<P/>
 The &GAP; code (whether or not it is split into <Q>declaration</Q> and
 <Q>implementation</Q> parts) should go in the package's <F>lib</F> directory 
 (see below). 
@@ -158,30 +164,28 @@ The &GAP; code (whether or not it is split into <Q>declaration</Q> and
 <Item>
 This directory should contain the package's documentation. 
 It is strongly recommended to use an XML-based documentation format 
-supported by the &GAP; package <Package>GAPDoc</Package> 
-(see Chapter&nbsp;<Ref Sect="Introduction  and  Example" BookName="gapdoc"/>)
+supported by the &GAP; package &GAPDoc;
+(see <Ref Sect="Introduction  and  Example" BookName="gapdoc"/>)
 which is used for the &GAP; documenation. An alternative is to use the 
-&TeX;-based system which has been used for the &GAP; documentation in
-&GAP;&nbsp;4.4 and earlier releases, which is still used by some of the 
-&GAP; packages and is described in the document 
-<Q>The gapmacro.tex Manual Format</Q>.
+&TeX;-based system, formerly used for the &GAP; documentation in
+&GAP;&nbsp;4.4 and earlier releases. This system is described in 
+the document <Q>The gapmacro.tex Manual Format</Q>
 <!-- TODO: make a proper reference to gapmacro.tex -->
+and is still used by some of the &GAP; packages whose authors are
+encouraged to switch at some point to the &GAPDoc;-based documenation.
 Please spend some time reading the documentation for whichever
-system you decide to use for writing your  package's documentation. 
+system you decide to use for writing your package's documentation. 
 The &Example; package's documentation is written to be used with the 
 <Package>GAPDoc</Package>. If you plan on using this, please use the &Example;
 package's <F>doc</F> directory as a prototype, which as you will observe
-contains the following files:
-<P/>
-&nbsp;&nbsp;<C>main.xml&nbsp;&hash; master file</C>
-<P/>
-&nbsp;&nbsp;<C><A>chapi</A>.xml&nbsp;&hash; chapter file(s) ... 1 for each chapter</C>
-<P/>
-&nbsp;&nbsp;<C>../makedocrel.g&nbsp;&nbsp;&nbsp;&hash; </C>&GAP;<C> input that generates the manuals</C>
-<P/>
-Generally, one should also provide a <F>manual.bib</F> Bib&TeX; database file
-(or write one's own bibliography <F>manual.bbl</F> file).
-<!-- TODO: or xml bibliography file -->
+contains the master file <F>main.xml</F>, further <F>.xml</F> files for 
+manual chapters (included in the manual via <C>Include</C> directives in 
+the master file) and the &GAP; input file <F>../makedocrel.g</F> which
+generates the manuals.
+Generally, one should also provide a <F>manual.bib</F> Bib&TeX; database 
+file or an <F>xml</F> file in the BibXMLext format (see 
+<Ref Sect="The BibXMLext Format" BookName="gapdoc"/>).
+With <F>gapmacro.tex</F>, it is also possible to use a <F>manual.bbl</F> file.
 <!--  Generating  the
 various formats of the manuals requires various software tools which  are
 called directly or indirectly by  <C>make&uscore;doc</C>  and  these  are  listed  in
@@ -247,9 +251,11 @@ existing packages to get an idea how this could look like.
 Concerning  the  documentation  of  the   use  of  the  package  there
 are  currently  two  recognised   ways  of  producing  &GAP;  package
 documentation.
-First, there is an XML-based documentation format
+<P/>
+First, there is a preferred XML-based documentation format
 that is defined in and can be used with the &GAPDoc; package
 (see&nbsp;<Ref Chap="Introduction and Example" BookName="gapdoc"/>).
+<P/>
 Second, there is a method which requires the documentation to be
 written in &TeX; according to the format described in
 the document <Q>The gapmacro.tex Manual Format</Q>.
@@ -260,77 +266,47 @@ Chapter&nbsp;<Ref Chap="Interface to the GAP Help System" BookName="ref"/>
 to learn how to make your documentation available to the &GAP; help system.
 There should be at least a text version of your documenation provided for use
 in the terminal running  &GAP; and some nicely printable version in
-<C>.pdf</C> and/or <C>.dvi</C> format.
+<C>.pdf</C> or <C>.dvi</C> format.
 Many &GAP; users like to browse the documentation in HTML format
-via their Web browser.
+via their Web browser. As a package author, you are not obliged 
+to provide an HTML version  of your package  manual, but if you  
+will either use the &GAPDoc; package or follow the guidelines in 
+the document <Q>The gapmacro.tex Manual  Format</Q>,
+<!-- TODO: make a proper reference to gapmacro.tex -->
+you should have no trouble in producing one.
 <P/>
-
-Whether you use the traditional  <F>gapmacro.tex</F>  &TeX;-based  system  or
-<Package>GAPDoc</Package> you will need to have the various following &TeX; tools
-installed:
+Whenever you use the <Package>GAPDoc</Package> or <F>gapmacro.tex</F> &TeX;-based  
+system, you need to have the certain &TeX; tools installed: to produce manuals
+in the <C>.pdf</C> format, you need <C>pdflatex</C> if the <Package>GAPDoc</Package> 
+is used, and either <C>pdftex</C> or <C>gs</C> together with <C>ps2pdf</C> if your
+package uses <F>gapmacro.tex</F>.
+Note that using <C>gs</C> and <C>ps2pdf</C> in lieu of <C>pdftex</C> or 
+<C>pdflatex</C> is a poor substitute unless your <C>gs</C> is at least 
+version 6.<A>xx</A> for some <A>xx</A>.
 <P/>
-<List>
-<Mark>
-<C>tex</C> (or <C>latex</C> for <Package>GAPDoc</Package>), <C>bibtex</C> and <C>makeindex</C></Mark>
-<Item>
-for generating <C>.dvi</C>;
-</Item>
-<Mark><C>dvips</C></Mark>
-<Item>
-for generating <C>.ps</C>; and
-</Item>
-<Mark><C>pdftex</C> or <C>gs</C> and <C>ps2pdf</C> (or <C>pdflatex</C> for <Package>GAPDoc</Package>)</Mark>
-<Item>
-for generating <C>.pdf</C>;
-</Item>
-</List>
+In addition, the <C>gapmacro.tex</C> documentation system requires some more tools
+described below. If you intend to use the &GAPDoc; package for the documenation 
+of your package, you may skip the rest of this section and proceed to the next one
+to see a minimalistic example of a &GAP; package.
 <P/>
-Note that using <C>gs</C> and <C>ps2pdf</C> in lieu of <C>pdftex</C> or <C>pdflatex</C> is  a
-poor substitute unless your <C>gs</C> is at  least  version  6.<A>xx</A>  for  some
-<A>xx</A>.
-<P/>
-The rest of this section describes the various  additional  tools  needed
-for the <C>gapmacro.tex</C> documentation system.
-<P/>
-To produce the <C>.dvi</C>, <C>.ps</C> and <C>.pdf</C>  manual  formats,  the  following
-&GAP; tools (usually located  in  &GAP;'s  main  <F>doc</F>  directory)  are
-needed (provided by <C>tools<A>XXX</A>.zoo</C> for some version number <A>XXX</A> at the
-&GAP;  <C>ftp</C>-  or  web-sites,   or   can   be   obtained   by   emailing
-<Email>support@gap-system.org</Email>).
-<P/>
-<List>
-<Mark>
-<F>gapmacro.tex</F></Mark>
-<Item>
-The macros file that dictates the style and mark-up for  the  traditional
-&TeX;-based system of &GAP; documentation.
-</Item>
-<Mark><C>manualindex</C></Mark>
-<Item>
-This is an <C>awk</C> script that adjusts the  &TeX;-produced  index  entries
-and calls <C>makeindex</C> to process them.
-</Item>
-<Mark><F>mrabbrev.bib</F></Mark>
-<Item>
-This is usually supplied with your &TeX; tools but nevertheless  a  copy
-of <F>mrabbrev.bib</F> should be located in &GAP;'s main <F>doc</F> directory.  To
-find it on your system, try:
-<P/>
-<C>kpsewhich mrabbrev.bib</C>
-<P/>
-or if that doesn't work and you can't otherwise find it check out a  CTAN
-site, e.g.&nbsp;search for it at:
-<URL>http://www.dante.de/cgi-bin/ctan-index</URL>
-</Item>
-</List>
-<P/>
-If your manual cross-refers to <F>gapmacro.tex</F>-produced manuals
-(and so  has  <C>\\UseReferences</C>  commands  in  its   <C>manual.tex</C>),
-  then   a
-<F>manual.lab</F> file
- (generated by running <C>tex manual</C>) for each such other
-manual is needed (this includes the <Q>main</Q> manuals, e.g.&nbsp;those  in  the
-<F>doc/ref</F>, <F>doc/ext</F> etc.&nbsp;directories).
+Otherwise, to produce the <C>.pdf</C> manual formats, the following &GAP; 
+tools (usually located in &GAP;'s main <F>doc</F> directory) are needed 
+(provided by <C>tools<A>XXX</A>.zoo</C> for some version number <A>XXX</A> 
+at the &GAP; <C>ftp</C>- or web-sites, or can be obtained by emailing
+<Email>support@gap-system.org</Email>): 
+<F>gapmacro.tex</F>
+(the macros file that dictates the style and mark-up for the traditional
+&TeX;-based system of &GAP; documentation), 
+<C>manualindex</C>
+(an <C>awk</C> script that adjusts the &TeX;-produced index  entries
+and calls <C>makeindex</C> to process them),
+and
+<F>mrabbrev.bib</F>
+(usually supplied with your &TeX; tools but nevertheless a copy of 
+<F>mrabbrev.bib</F> should be located in &GAP;'s main <F>doc</F> directory.
+To find it on your system, try: <C>kpsewhich mrabbrev.bib</C> or, if that 
+doesn't work and you can't otherwise find it check out a CTAN site, 
+e.g.&nbsp;search for it at: <URL>http://www.dante.de/cgi-bin/ctan-index</URL>.
 <P/>
 If your manual cross-refers to <Package>GAPDoc</Package>-produced manuals (and  so
 has  <C>\\UseGapDocReferences</C>  commands   in   its   <C>manual.tex</C>),   then
@@ -339,7 +315,14 @@ this is done by starting &GAP; and running:
 <P/>
 &nbsp;&nbsp;<C>gap> GapDocManualLab( "<A>package</A>" );</C>
 <P/>
-for each <A>package</A> whose manual is cross-referred to.
+for each <A>package</A> whose manual is cross-referred to (this includes the 
+<Q>main</Q> manuals, e.g.&nbsp;those in the <F>doc/ref</F> and <F>doc/tut</F> 
+directories).
+<P/>
+If your manual cross-refers to <F>gapmacro.tex</F>-produced manual of another
+package (and so has <C>\\UseReferences</C> commands in its <C>manual.tex</C>),
+then a <F>manual.lab</F> file (generated by running <C>tex manual</C>) for 
+each such other manual is needed.
 <P/>
 To produce an HTML version of the manual one needs  the  Perl  5  program
 <F>convert.pl</F> which is usually located in the subdirectory  <F>etc</F>  of  the
@@ -349,25 +332,20 @@ To produce an HTML version of the manual one needs  the  Perl  5  program
 web-sites,      or      can      be      obtained       by       emailing
 <Email>support@gap-system.org</Email>.
 <P/>
-Finally, to ensure the mathematics formulae are rendered as well as  they
+Finally, to ensure the mathematical formulae are rendered as well as they
 can be in the HTML version,  one  should  also  have  the  program  <C>tth</C>
 (&TeX;  to  HTML  converter);  <F>convert.pl</F>  calls  <F>tth</F>  to  translate
 mathmode formulae to HTML (if it's available). The <F>tth</F> program is  easy
 to compile and can be obtained from
-<URL>http://hutchinson.belmont.ma.us/tth/tth-noncom/download.html</URL>
+<URL>http://hutchinson.belmont.ma.us/tth/tth-noncom/download.html</URL>.
 <P/>
-As a package author, you are not obliged to provide an  HTML  version  of
-your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
-the document <Q>The gapmacro.tex Manual  Format</Q>,
-<!--TODO: make a proper reference to gapmacro.tex -->
-you should have no trouble in producing one. A prototype  of  the
-command to execute is in the file <F>make_doc</F>; note that the  HTML  manual
-is produced in files with <C>.htm</C> extensions in a directory <F>htm</F>  outside
-the <F>doc</F> directory. The beginning  of  the  file  <F>convert.pl</F>  contains
-instructions on its usage should you need them.
+A prototype of the command to execute is in the file <F>make_doc</F>; 
+note that the HTML manual is produced in files with <C>.htm</C> extensions 
+in a directory <F>htm</F> outside the <F>doc</F> directory. The beginning 
+of the file <F>convert.pl</F> contains instructions on its usage should 
+you need them.
 
 </Section>
-
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -637,6 +615,9 @@ See <Ref Sect="Declaration and Implementation Part of a Package"/>
 for details about this and more generally about the order in which the files
 of the packages in question are read.
 
+<!-- TODO: merge this with a section from GAP 4.5 beta announcement 
+     explaining when LoadPackage may be used in the package and when not -->
+
 </Section>
 
 
@@ -843,13 +824,15 @@ this:
 <P/>
 <Log><![CDATA[
 GAParch=i586-unknown-linux2.0.31-gcc/32-bit
+GAParch_system=i586-unknown-linux2.0.31-gcc
+GAParch_abi=32-bit
 ]]></Log>
 <P/>
 We suggest that your &GAP; package contains a file <F>configure</F> which
 is  called with the  path of  the  &GAP; root directory  as
 parameter. This file then  will  read <F>sysinfo.gap</F> and set  up
 everything for compiling under the given architecture (for example
-creating a <F>Makefile</F> from <F>Makefile.in</F>.
+creating a <F>Makefile</F> from <F>Makefile.in</F>).
 <P/>
 The standard &GAP; distribution contains a &GAP; package
 <Package>example</Package>
@@ -954,8 +937,9 @@ zero default (which means no <C>Info</C> statement is to  output  information)
 via a <C>SetInfoLevel( <A>InfoPkgname</A>, <A>level</A>  );</C>  statement.  An  initial
 <C>InfoLevel</C> of 1 is typical.
 <P/>
-<C>Info</C> statements have the form: <C>Info( <A>InfoPkgname</A>, <A>level</A>,  <A>expr1</A>,
-<A>expr2</A>, ... );</C>  where  the  expression  list  <C><A>expr1</A>,  <A>expr2</A>,  ...</C>
+<C>Info</C> statements have the form: 
+<C>Info( <A>InfoPkgname</A>, <A>level</A>, <A>expr1</A>, <A>expr2</A>, ...);</C>  
+where  the  expression  list  <C><A>expr1</A>,  <A>expr2</A>,  ...</C>
 appears just like it would in a <C>Print</C> statement. The only difference is
 that the expression list is  only  printed  (or  even  executed)  if  the
 <C>InfoLevel</C> of <A>InfoPkgname</A> is at least <A>level</A>.
@@ -973,7 +957,7 @@ provided by assigning a string to the <C>BannerString</C> field of the  record
 argument of <C>SetPackageInfo</C> in the <F>PackageInfo.g</F> file.
 <P/>
 It is a good idea to have a hook into  your  package  documentation  from
-your banner. The &Example; package suggests to the &GAP; user:
+your banner. The banner of the &Example; package suggests to the &GAP; user:
 <P/>
 <Log><![CDATA[
 For help, type: ?Example package
@@ -1031,7 +1015,6 @@ only work if a package has a new version number.
 <Section Label="Wrapping Up a GAP Package">
 <Heading>Wrapping Up a GAP Package</Heading>
 
-<Index Key="zoo"><C>zoo</C></Index>
 In the past, it was recommended that your &GAP; package should be packed
 via the <C>zoo</C> program, but now any of four different archive formats  are
 accepted (see Section <Ref Sect="Wrapping Up a GAP Package"/>
@@ -1041,7 +1024,7 @@ directory obtained from <C>tools<A>XXX</A>.zoo</C> for some  version  number  <A
 (this  is  described  above
 in Section&nbsp;<Ref Sect="Documentation Software Tools Needed"/>) 
 contains a file  <F>packpack</F>  which  provides  a  more  versatile
-packing-up script.
+packing-up script.  
 
 The releases of &GAP; packages are independent of releases of &GAP;.
 Therefore &GAP; packages should be wrapped up in separate files that can be
@@ -1058,39 +1041,36 @@ package to  work. In  particular there should  be a  compiled documentation,
 which includes the <F>manual.six</F>, <F>manual.toc</F> and <F>manual.lab</F>
 file in the
 documentation subdirectory which are created by &TeX;ing the documentation,
-if you  use the  <F>gapmacro.tex</F> or  &GAPDoc; document  formats.
-(The first two are needed by the &GAP; help system,
+if you use &GAPDoc; or the <F>gapmacro.tex</F> document formats.
+(The first two files are needed by the &GAP; help system,
 and the <F>manual.lab</F> file is needed if the main manuals or another
 package is referring to your package.
 Use the command <C>GAPDocManualLab( packagename );</C> to create this file
 for your help books if you use &GAPDoc;.)
 <P/>
-Currently, the &GAP; distribution provides archives in four different
+Currently, the &GAP; distribution provides archives in three different
 formats.
 <P/>
 <List>
+<Mark><F>.tar.gz</F></Mark>
 <Item>
-  <F>.tar.gz</F>, a standard UNIX <C>tar</C> archive,
+  a standard UNIX <C>tar</C> archive,
   compressed with <C>gzip</C>
 </Item>
+<Mark><F>.tar.bz2</F></Mark>
 <Item>
-  <F>.tar.bz2</F>, a standard UNIX <C>tar</C> archive,
+  a standard UNIX <C>tar</C> archive,
   compressed with <C>bzip2</C>
 </Item>
+<Mark><F>-win.zip</F></Mark>
 <Item>
-  <F>.zoo</F>, a special version of <C>zoo</C> archives,
-  that can essentially be used on all operating systems with the
-  <C>unzoo</C> utility provided with the &GAP; distribution
-</Item>
-<Item>
-  <F>-win.zip</F>, an archive in <C>zip</C> format,
+  an archive in <C>zip</C> format,
   where text files should have DOS/Windows style line breaks
 </Item>
 </List>
 <P/>
 For convenience of possible users it is sensible that you archive your
 package also in one or several of these formats.
-<P/>
 For packages which are redistributed via the &GAP; Web site, we offer
 an automatic conversion of any of  the formats listed above to all the
 others.
@@ -1117,9 +1097,9 @@ we may agree to add a link to your package homepage from the &GAP; website
 and to redistribute the current version of your package via the &GAP;
 download sites.
 We can also provide some service for producing several archive formats from
-the archive you  provide (e.g., you produce a <C>.tar.gz</C> version of your
-archive and we produce also a <C>.tar.bz2</C>, a <C>.zoo</C>
-and a <C>-win.zip</C> version from this). 
+the archive you provide (e.g., you produce a <C>.tar.gz</C> version of your
+archive and we produce also a <C>.tar.bz2</C> and a <C>-win.zip</C> version 
+from this). 
 <P/>
 Please,  consider  to  submit  your  package  to  the  &GAP;  package
 refereeing process.
@@ -1136,12 +1116,11 @@ You will notice that there is a file <F>VERSION</F> which contains the current
 version of the &Example; package. Such a file is entirely optional. Note
 that this file is <E>not</E> read at all when &GAP; loads the package. &GAP;
 establishes the package version by reading the <F>PackageInfo.g</F> file.  The
-current maintainer of the &Example; package finds it convenient to  have
-a file <F>VERSION</F> that is read both by <F>doc/manual.tex</F> and <F>make_zoo</F>. It
-is however important that each new version of a package has a new  number
-and  that  version  numbers  of  successive  package  versions   increase
-(see&nbsp;<Ref Sect="Version Numbers"/> for the details).
-<P/>
+current maintainer of the &Example; package finds it convenient to  have a
+file <F>VERSION</F> that is read both by <F>doc/manual.tex</F> and 
+<F>make_zoo</F>. It is however important that each new version of a package 
+has a new  number and  that  version  numbers  of  successive  package  
+versions increase (see&nbsp;<Ref Sect="Version Numbers"/> for the details).
 It's also useful to have a <F>CHANGES</F> file that records the  main  changes
 between versions of your package.
 

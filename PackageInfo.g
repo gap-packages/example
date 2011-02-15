@@ -11,8 +11,8 @@
 ##  the package loading mechanism and the upgrade mechanism for the
 ##  redistribution of the package via the GAP website.
 ##  
-##  Entries that are commented out are those used for the EDIM package 
-##  and are there for purposes of illustration of a possible alternative,
+##  Entries that are commented out are based on the EDIM package and 
+##  are there for purposes of illustration of a possible alternative,
 ##  especially in the case where the Example package's entry is blank.
 ##  
 ##  For the LoadPackage mechanism in GAP >= 4.5 the minimal set of needed
@@ -45,7 +45,7 @@ Version := "3.0",
 Date := "15/02/2011",
 
 ##  URL of the archive(s) of the current package release, but *without*
-##  the format extension(s), like '.tar.gz' or '.zoo', which are given next.
+##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
 ##  (and probably somehow contain the package name and version).
 ##  The paths of the files in the archive must begin with the name of the
@@ -58,8 +58,6 @@ ArchiveURL :=
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
 ##  Currently recognized formats are:
-##      .zoo       the (GAP-traditional) zoo-format with "!TEXT!" comments 
-##                 for text files
 ##      .tar.gz    the UNIX standard
 ##      .tar.bz2   compressed with 'bzip2', often smaller than with gzip
 ##      -win.zip   zip-format for DOS/Windows, text files must have DOS 
@@ -68,8 +66,8 @@ ArchiveURL :=
 ##  In the future we may also provide .deb or .rpm formats which allow
 ##  a convenient installation and upgrading on Linux systems.
 ##  
-# ArchiveFormats := ".zoo", # the others are generated automatically
-ArchiveFormats := ".zoo",
+# ArchiveFormats := ".tar.gz", # the others are generated automatically
+ArchiveFormats := ".tar.gz",
 
 ##  If not all of the archive formats mentioned above are provided, these 
 ##  can be produced at the GAP side. Therefore it is necessary to know which
@@ -259,9 +257,9 @@ PackageWWWHome := "http://www.cs.st-andrews.ac.uk/~alexk/example/",
 PackageDoc := rec(
   # use same as in GAP            
   BookName  := "Example",
-  # format/extension can be one of .zoo, .tar.gz, .tar.bz2, -win.zip
+  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zoo.
   Archive := 
-      "http://www.cs.st-andrews.ac.uk/~alexk/example/exampledoc-3.0.zoo",
+      "http://www.cs.st-andrews.ac.uk/~alexk/example/exampledoc-3.0.tar.gz",
   ArchiveURLSubset := ["doc", "htm"],
   HTMLStart := "htm/chapters.htm",
   PDFFile   := "doc/manual.pdf",

@@ -20,14 +20,15 @@ Alternatively, the &Example; package may be installed using a separate archive,
 for example, for an update or an installation in a non-default location 
 (see <Ref Sect="GAP Root Directory" BookName="ref"/>).
 <P/>
-Below we describe the installation procedure for the <File>.zoo</File> archive format.
-Installation using other archive formats is performed in a similar way.
+Below we describe the installation procedure for the <File>.tar.gz</File> 
+archive format. Installation using other archive formats is performed in a 
+similar way.
 <P/>
 To install the &Example; package, unpack the archive file, which  should
-have a name of form <C>example-<A>XXX</A>.zoo</C> for some version number 
+have a name of form <C>example-<A>XXX</A>.tar.gz</C> for some version number 
 <A>XXX</A>, by typing
 <P/>
-&nbsp;&nbsp;<C>unzoo -x example-<A>XXX</A></C>
+&nbsp;&nbsp;<C>gzip -dc example-<A>XXX</A>.tar.gz | tar xpv</C>
 <P/>
 in the <File>pkg</File> directory of your &GAP;&nbsp;4 installation, 
 or in a directory named <File>.gap/pkg</File> in your home directory
