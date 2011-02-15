@@ -15,14 +15,15 @@
 ##  and are there for purposes of illustration of a possible alternative,
 ##  especially in the case where the Example package's entry is blank.
 ##  
-##  For the LoadPackage mechanism in GAP >= 4.5 only the entries
-##  .PackageName, .Version, .PackageDoc, .Dependencies, and .AvailabilityTest
-##  are needed. The other entries are relevant if the
-##  package shall be distributed for other GAP users, in particular if it
-##  shall be redistributed via the GAP Website.
+##  For the LoadPackage mechanism in GAP >= 4.5 the minimal set of needed
+##  entries is .PackageName, .Version, and .AvailabilityTest, and an error
+##  will occur if any of them is missing. Other important entries are
+##  .PackageDoc and .Dependencies. The other entries are relevant if the
+##  package will be distributed for other GAP users, in particular if it
+##  will be redistributed via the GAP Website.
 ##
-##  With a new release of the package at least the entries .Version, .Date and
-##  .ArchiveURL must be updated.
+##  With a new release of the package at least the entries .Version, .Date 
+##  and .ArchiveURL must be updated.
 
 SetPackageInfo( rec(
 
@@ -41,10 +42,10 @@ Version := "3.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "08/02/2011",
+Date := "15/02/2011",
 
 ##  URL of the archive(s) of the current package release, but *without*
-##  the format extension(s), like '.zoo', which are given next.
+##  the format extension(s), like '.tar.gz' or '.zoo', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
 ##  (and probably somehow contain the package name and version).
 ##  The paths of the files in the archive must begin with the name of the
@@ -347,10 +348,10 @@ AvailabilityTest := function()
 ##  shall be read immediately before the package is loaded.
 #PreloadFile := "...",
 
-##  The LoadPackage mechanism can produce a default banner from the info
-##  in this file. If you are not happy with it, you can provide a string
-##  here that is used as a banner. GAP decides when the banner is shown and
-##  when it is not shown. *optional* (note the ~-syntax in this example)
+##  *Optional*: the LoadPackage mechanism can produce a default banner from
+##  the info in this file. If you are not happy with it, you can provide
+##  a string here that is used as a banner. GAP decides when the banner is 
+##  shown and when it is not shown (note the ~-syntax in this example).
 BannerString := Concatenation( 
   "----------------------------------------------------------------\n",
   "Loading  Example ", ~.Version, "\n",

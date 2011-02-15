@@ -385,22 +385,25 @@ Then inside the directory <F>.gap/pkg/test</F> create an empty file
 SetPackageInfo( rec(
   PackageName := "test",
   Version := "1.0",
-  AvailabilityTest := ReturnTrue,
-  BannerString := Concatenation( [
-      "#I  loading the GAP package ``", ~.PackageName, "'' in version ",
-      ~.Version, "\n" ] ),
   PackageDoc := rec(
       BookName  := "test",
       SixFile   := "doc/manual.six",
-      Autoload  := true ) ) );
+      Autoload  := true ),
+  Dependencies := rec(
+      GAP       := "4.5",
+      NeededOtherPackages := [ ["GAPDoc", "0.99"] ],
+      SuggestedOtherPackages := [ ] ),
+  AvailabilityTest := ReturnTrue ) );
 ]]></Log>
 <P/>
-This file  declares the &GAP; package with name <Q>test</Q> in version
-1.0. There are no requirements that have to be tested,
-so <Ref Func="ReturnTrue" BookName="ref"/> is used as test function.
-The package has its individual banner string.
-The package  documentation consists of  one autoloaded
-book; the <C>SixFile</C> component is needed by the &GAP; help system.
+This file  declares the &GAP; package with name <Q>test</Q> in version 1.0. 
+The package documentation consists of one autoloaded book; the <C>SixFile</C> 
+component is needed by the &GAP; help system. Package dependencies require at
+least &GAP;&nbsp;4.5 and &GAPDoc; package at version at least 0.99, and these
+conditions will be checked when the package will be loaded 
+(see <Ref Sect="Version Numbers"/>). 
+Since there are no requirements that have to be tested, 
+<C>AvailabilityTest</C> just uses <Ref Func="ReturnTrue" BookName="ref"/>.
 <P/>
 Now start &GAP; (without using the <C>-r</C> option) and the <F>.gap</F>
 directory will be added to the &GAP; root directory to
@@ -409,7 +412,6 @@ allow &GAP; to find the packages installed there
 <P/>
 <Log><![CDATA[
 gap> LoadPackage("test");
-#I  loading the GAP package ``test'' in version 1.0
 true
 ]]></Log>
 <P/>
