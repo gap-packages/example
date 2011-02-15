@@ -14,16 +14,17 @@ This chapter  describes  the  &GAP;  package  &Example;.  As  its  name
 suggests it is an example of how to  create  a  &GAP;  package.  It  has
 little functionality except for being a package.
 <P/>
-See Sections&nbsp;<Ref Sect="Installing the Example Package"/>
+See Sections&nbsp;<Ref Sect="Unpacking the Example Package"/>,
+<Ref Sect="Compiling binaries of the Example Package"/>
 and&nbsp;<Ref Sect="Loading the Example Package"/>
-for  how  to  install  and  load  the  &Example;  package,  or
+for  how  to  install, compile and  load  the  &Example;  package,  or
 Appendix&nbsp;<Ref Chap="Hints for writing a GAP Package"/>
 for hints on how  to  write  a &GAP; package.
 <P/>
 If you are viewing this with on-line help, type: 
 <P/>
 <Example><![CDATA[
-gap> ?Example: Example package
+gap> ?Example package
 ]]></Example>
 <P/>
 to see the functions provided by the &Example; package.
@@ -68,7 +69,7 @@ gap> RecNames( GAPInfo.PackagesLoaded );
 </ManSection>
 <P/>
 You might like to check out some of the other information in the <C>GAPInfo</C>
-record.
+record (see <Ref Sect="GAPInfo" BookName="ref"/>).
 <ManSection>
 <Func Name="Which" Arg="prg"/>
 

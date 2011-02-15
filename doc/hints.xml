@@ -22,9 +22,10 @@ submitted  to a  refereeing process.  Check out  the &GAP;  Web pages
 <URL>http://www.gap-system.org</URL> for more details.
 <P/>
 We start this  chapter with a description how  the directory structure
-of a  &GAP; package must  look like and  then add remarks  on certain
+of a  &GAP; package must  look like and then add remarks  on certain
 aspects  of creating  a  package, some  of these  only  apply to  some
-packages. 
+packages. Finally, we provide guidelines for the release preparation,
+wrapping and distribution.
 <P/>
 <!-- 
 The &Example; package is intended to be a prototype for a package.  Here
@@ -43,16 +44,16 @@ All files of a &GAP; package <A>package-name</A> must be collected in a
 single directory <A>package-dir</A>, where <A>package-dir</A> should  be
 just <A>package-name</A> converted to lowercase (the restriction that
 <A>package-dir</A> must contain only lowercase characters may change in 
-the future).
+the future). Let us call this directory the <E>home directory</E> of the 
+package.
 <P/>
 To use the  package with &GAP;, the directory <A>package-dir</A> must 
 be a subdirectory of a <F>pkg</F> directory in (one of) the &GAP; root 
-directories, (see <Ref Sect="GAP Root Directory" BookName="ref"/>.
-(For  example, if  &GAP; is  installed in <F>/usr/local/gap4</F> then the
+directories (see <Ref Sect="GAP Root Directory" BookName="ref"/>).
+For  example, if  &GAP; is  installed in <F>/usr/local/gap4</F> then the
 files of the package <C>MyPack</C> may be placed in the directory 
-<F>/usr/local/gap4/pkg/mypack</F>.) 
-Let us call this directory the <E>home directory</E> of the package.
-<P/>
+<F>/usr/local/gap4/pkg/mypack</F>.
+
 The directory <A>package-dir</A> preferably should have the following 
 structure (below, a trailing  <C>/</C> distinguishes directories from 
 ordinary files):
@@ -98,19 +99,21 @@ package's documentation (which should be in the <F>doc</F> directory).
 <Mark><F>configure</F>, <F>Makefile.in</F></Mark>
 <Item>
 These files are only necessary if the package has a non-&GAP; component,
-e.g.&nbsp;some C code (the files of which should be in the  <F>src</F>  directory).
-The <F>configure</F> and <F>Makefile.in</F> files of the &Example; package provide
-prototypes. The <F>configure</F> file typically takes a  path  <A>path</A>  to  the
-&GAP; root  directory  as  argument  and  uses  the  value  assigned  to
-<C>GAParch</C> in the file <F>sysinfo.gap</F> (created when &GAP; was compiled) 
-<!-- TODO: what else is stored in sysinfo.gap -->
-to determine the compilation architecture, inserts  this  in  place  of  the
-string <C>@GAPARCH@</C> in <F>Makefile.in</F> and creates a file  <F>Makefile</F>.  When
-<C>make</C> is run (which, of course, reads  the  constructed  <F>Makefile</F>),  a
-directory <F>bin</F> (if necessary) and a  subdirectory  of  <F>bin</F>  with  name
-equal to the string assigned  to  <C>GAParch</C>  in  the  file  <F>sysinfo.gap</F>
-should be created; any binaries constructed  by  compiling  the  code  in
-<F>src</F> should end up in this subdirectory of <F>bin</F>.
+e.g.&nbsp;some C code (the files of which should be in the <F>src</F>
+directory). The <F>configure</F> and <F>Makefile.in</F> files of the &Example;
+package provide prototypes. The <F>configure</F> file typically takes a path
+<A>path</A> to the &GAP; root directory as argument and uses the value
+assigned to <C>GAParch</C> in the file <F>sysinfo.gap</F>, created when &GAP;
+was compiled (<C>GAParch</C> is a path of the form
+<C>GAParch_system/GAParch_abi</C>; the two latter variables are also stored
+in <F>sysinfo.gap</F> in case some package needs them) to determine the
+compilation architecture, inserts this in place of the string <C>@GAPARCH@</C>
+in <F>Makefile.in</F> and creates a file <F>Makefile</F>. When <C>make</C> is
+run (which, of course, reads the constructed <F>Makefile</F>), a directory
+<F>bin</F> (if necessary) and subdirectories of <F>bin</F> with the path equal 
+to the string assigned to <C>GAParch</C> in the file <F>sysinfo.gap</F> should 
+be created; any binaries constructed by compiling the code in <F>src</F> should
+end up in this subdirectory of <F>bin</F>.
 </Item>
 
 <Mark><F>PackageInfo.g</F></Mark>
@@ -162,7 +165,7 @@ which is used for the &GAP; documenation. An alternative is to use the
 &GAP;&nbsp;4.4 and earlier releases, which is still used by some of the 
 &GAP; packages and is described in the document 
 <Q>The gapmacro.tex Manual Format</Q>.
-<!-- TODO: make a proper reference -->
+<!-- TODO: make a proper reference to gapmacro.tex -->
 Please spend some time reading the documentation for whichever
 system you decide to use for writing your  package's documentation. 
 The &Example; package's documentation is written to be used with the 
@@ -177,7 +180,7 @@ contains the following files:
 &nbsp;&nbsp;<C>../makedocrel.g&nbsp;&nbsp;&nbsp;&hash; </C>&GAP;<C> input that generates the manuals</C>
 <P/>
 Generally, one should also provide a <F>manual.bib</F> Bib&TeX; database file
-(or write one's  own  bibliography  <F>manual.bbl</F> file).
+(or write one's own bibliography <F>manual.bbl</F> file).
 <!-- TODO: or xml bibliography file -->
 <!--  Generating  the
 various formats of the manuals requires various software tools which  are
@@ -197,7 +200,7 @@ packages (the &Example; package included), the directory <F>gap</F> has  been
 used instead of <F>lib</F>; <F>lib</F> has the slight  advantage  that  it  is  the
 default  subdirectory  of  a  package  directory  searched  for  by   the
 <Ref Func="DirectoriesPackageLibrary" BookName="ref"/> command.
-<!-- TODO: rename 'gap' to 'lib' in the Example package -->
+<!-- TODO: shall we rename eventually 'gap' to 'lib' in the Example package? -->
 </Item>
 
 <Mark><F>src</F></Mark>
@@ -356,7 +359,7 @@ to compile and can be obtained from
 As a package author, you are not obliged to provide an  HTML  version  of
 your  package  manual,  but  if  you  have  kept  to  the  guidelines  in
 the document <Q>The gapmacro.tex Manual  Format</Q>,
-<!--TODO: make a proper reference -->
+<!--TODO: make a proper reference to gapmacro.tex -->
 you should have no trouble in producing one. A prototype  of  the
 command to execute is in the file <F>make_doc</F>; note that the  HTML  manual
 is produced in files with <C>.htm</C> extensions in a directory <F>htm</F>  outside
@@ -374,10 +377,9 @@ instructions on its usage should you need them.
 We illustrate the creation of a &GAP; package by an example of a basic package. 
 <P/>
 Create the following directories in your home area: 
-<F>pkg</F> and <F>pkg/test</F>.
-Inside the directory <F>pkg/test</F> create an empty file <F>init.g</F>,
-and a file <F>PackageInfo.g</F> with the following contents.
-<!-- TODO: better give an example using ~/.gap -->
+<F>.gap</F>, <F>.gap/pkg</F> and <F>.gap/pkg/test</F>.
+Then inside the directory <F>.gap/pkg/test</F> create an empty file 
+<F>init.g</F>, and a file <F>PackageInfo.g</F> with the following contents:
 <P/>
 <Log><![CDATA[
 SetPackageInfo( rec(
@@ -400,14 +402,10 @@ The package has its individual banner string.
 The package  documentation consists of  one autoloaded
 book; the <C>SixFile</C> component is needed by the &GAP; help system.
 <P/>
-Now start &GAP; with the command
-<Log><![CDATA[
-gap -l "./;"
-]]></Log>
-<P/>
-(The <C>-l "./;"</C>  option adds the current directory to  the &GAP; root
-directories and  allows &GAP; to  find the packages installed  in the
-<F>./pkg</F> directory.)
+Now start &GAP; (without using the <C>-r</C> option) and the <F>.gap</F>
+directory will be added to the &GAP; root directory to
+allow &GAP; to find the packages installed there
+(see <Ref Sect="GAP Root Directory" BookName="ref"/>).
 <P/>
 <Log><![CDATA[
 gap> LoadPackage("test");
@@ -450,15 +448,15 @@ file. (Do not mistake these revision numbers for the version number of
 -->
 In manuals whose format is based on the &TeX; macros described in
 the document <Q>The gapmacro.tex Manual Format</Q>,
-<!-- TODO: proper reference to this document --> such headers 
-are actually used for the manuals and have the type
+<!-- TODO: make a proper reference to gapmacro.tex --> 
+such headers are actually used for the manuals and have the type
 <P/>
 <Log><![CDATA[
 #############################################################################
 ##
 #X  ExampleFunction(<A>,<B>)
 ##
-##  This function does nothing.
+##  This function does great things.
 ]]></Log>
 <P/>
 where <Q>X</Q> is one of the letters: <C>F</C>, <C>A</C>, <C>P</C>, <C>O</C>,
@@ -480,29 +478,27 @@ manual source, if there is a <C>\Declaration</C> line in some
 <Section Label="The PackageInfo.g File">
 <Heading>The PackageInfo.g File</Heading>
 
+As a first step the example in <Ref Sect="An Example of a GAP Package"/>
+shows the information needed for the package loading mechanism to load 
+a simple package. However, if your  package  depends on  the  functionality  
+of other packages, the component <C>Dependencies</C>  given in  the
+<F>PackageInfo.g</F> file becomes  important
+(see <Ref Sect="Requesting one GAP Package from within Another"/> below),
+and more entries become relevant if you want to 
+distribute  your package: they  contain lists  of authors and/or  
+maintainers including contact information,  URLs of the  package archives 
+and  README files, status information, text for a package overview Web 
+page,  and so on.
+<P/> 
 We  suggest to  create  a  <F>PackageInfo.g</F> file  for  your package  by
 copying the one in the <Package>Example</Package> package,
-distributed with &GAP;, and to adjust it for your package.
-Within &GAP; you can look at that file by
-<P/>
+distributed with &GAP;, and then adjusting it for your package.
+Within &GAP; you can look at this template file for a list and explanation 
+of all recognized entries by
 <Log><![CDATA[
 Pager(StringFile(Filename(DirectoriesLibrary(), 
                           "../pkg/example/PackageInfo.g")));
 ]]></Log>
-<P/>
-As a first step the example in <Ref Sect="An Example of a GAP Package"/>
-shows the information needed for the package loading mechanism of a simple
-package.  If  your  package  depends on  the  functionality  of  other
-packages, the  component <C>Dependencies</C>  given in  the
-<F>PackageInfo.g</F> file becomes  important,
-see <Ref Sect="Requesting one GAP Package from within Another"/> below.
-<P/>
-The  other entries  become relevant  if  you want  to distribute  your
-package: they  contain lists  of authors and/or  maintainers including
-contact information,  URLs of the  package archives and  README files,
-status information, text  for a package overview Web page,  and so on.
-See the  mentioned template  file for  a list  and explanation  of all
-recognized entries.
 <P/>
 Once you have created the <F>PackageInfo.g</F> file for your package,
 you can test its validity with the command 
@@ -515,9 +511,6 @@ you can test its validity with the command
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <Section Label="Functions and Variables and Choices of Their Names">
 <Heading>Functions and Variables and Choices of Their Names</Heading>
-
-<!-- TODO: Refer to naming conventions  -->
-<!-- TODO: Refer to namespaces  -->
 
 In writing the &GAP; code for your package  you  need  to  be  a  little
 careful on just how you define your functions and variables.
@@ -535,11 +528,12 @@ overwritten</E> and what's more you are not warned about it when it happens.
 To protect a function  or  variable  against  overwriting  there  is  the
 command  <Ref Func="BindGlobal" BookName="ref"/>,
 or alternatively (and equivalently)  you  may  define  a  global
-function via a <C>DeclareGlobalFunction</C> and  <C>InstallGlobalFunction</C>  pair
-or a global variable via  a  <C>DeclareGlobalVariable</C>  and  <C>InstallValue</C>
-pair. There are also operations and their methods,  and  related  objects
-like attributes and filters which also have <C>Declare...</C> and <C>Install...</C>
-pairs.
+function via a <Ref Func="DeclareGlobalFunction" BookName="ref"/>
+and <Ref Func="InstallGlobalFunction" BookName="ref"/> pair 
+or a global variable via a <Ref Func="DeclareGlobalVariable" BookName="ref"/> 
+and <Ref Func="InstallValue" BookName="ref"/> pair. There are also operations 
+and their methods,  and  related  objects like attributes and filters which 
+also have <C>Declare...</C> and <C>Install...</C> pairs.
 <P/>
 <E>Secondly</E>,  it's  a  good  idea  to  reduce  the  chance  of  accidental
 overwriting by choosing names for your functions and variables that begin
@@ -553,15 +547,25 @@ important  for  functions  and  variables   defined   via   <C>BindGlobal</C>,
 <C>DeclareGlobalFunction</C>/<C>InstallGlobalFunction</C>                       and
 <C>DeclareGlobalVariable</C>/<C>InstallValue</C>, in order to  avoid  name  clashes
 that may  occur  with  (extensions  of)  the  &GAP;  library  and  other
-packages. On the other hand, operations and their  methods  (defined  via
-<C>DeclareOperation</C>, <C>InstallMethod</C> etc.&nbsp;pairs) and  their  relatives  do
-not need this consideration, as they avoid name clashes by  allowing  for
-more than one <Q>method</Q> for the same-named object.
+packages.
 <P/>
-The method <C>Recipe</C> was included in the &Example; package to demonstrate
-the definition of a  function  via  a  <C>DeclareOperation</C>/<C>InstallMethod</C>
-pair; <C>Recipe( FruitCake );</C> gives a <Q>method</Q> for making a  fruit  cake
-(forgive the pun).
+Additionally, since &GAP;&nbsp;4.5 a package may place global variables into
+a local namespace as explained in 
+<Ref Sect="Namespaces for GAP Packages" BookName="ref"/> in order to avoid 
+name clashes and preserve compatibility.
+<P/>
+On the other hand, operations and their methods (defined  via
+<Ref Func="DeclareOperation" BookName="ref"/>, 
+<Ref Func="InstallMethod" BookName="ref"/> etc.&nbsp;pairs) 
+and their  relatives  do not need this consideration, as they 
+avoid name clashes by allowing for more than one <Q>method</Q> 
+for the same-named object.
+<P/>
+To demonstrate the definition of a function via a 
+<C>DeclareOperation</C>/<C>InstallMethod</C> pair,
+the method <Ref Oper="Recipe"/> was included in the &Example; package;
+<C>Recipe( FruitCake );</C> gives a <Q>method</Q> for making a 
+fruit cake (forgive the pun).
 <P/>
 <E>Thirdly</E>, functions or variables with  <C>Set<A>XXX</A></C>  or  <C>Has<A>XXX</A></C>  names
 (even if they are defined as operations) should be avoided as  these  may
@@ -575,9 +579,15 @@ functions and variables  (i.e.&nbsp;the  functions  and  variables  you  don't
 intend for the  user  to  use).  For  example,  they  might  be  entirely
 capitalised.
 <P/>
-<E>Finally</E>,        note        the        advantage        of        using
+It is a good practice to follow naming conventions used in &GAP; as 
+explained in <Ref Sect="Naming Conventions" BookName="ref"/> and
+<Ref Sect="Changing the Structure" BookName="tut"/>, which 
+might help users to memorize or even guess names of functions 
+provided by the package.
+<P/>
+<E>Finally</E>, note the advantage of using
 <C>DeclareGlobalFunction</C>/<C>InstallGlobalFunction</C>,
-<C>DeclareGlobalVariable</C>/<C>InstallValue</C>,    etc.&nbsp;pairs    (rather     than
+<C>DeclareGlobalVariable</C>/<C>InstallValue</C>, etc.&nbsp;pairs (rather than
 <C>BindGlobal</C>) to define functions and variables, which allow the  package
 author to organise her function- and variable- definitions in  any  order
 without worrying about any interdependence. The  <C>Declare...</C>  statements
@@ -743,13 +753,6 @@ variables that are created in the initialization into a separate file
 and to declare these variables in the <F>init.g</F> file of the package,
 via a call to <Ref Func="DeclareAutoreadableVariables" BookName="ref"/>.
 <P/>
-See Section&nbsp;<Ref Sect="Declaration and Implementation Part of a Package"/>
-which discusses further the commands that should appear in the
-declaration part (i.e., in the files read with
-<Ref Func="ReadPackage" BookName="ref"/> from <F>init.g</F>)
-and in the implementation part (i.e., in the files read with
-<Ref Func="ReadPackage" BookName="ref"/> from <F>read.g</F>) of a package.
-<P/>
 It can happen that some code of a package depends on the availability of
 suggested packages, i.&nbsp;e., different initializations are performed
 depending on whether a suggested package will eventually be loaded or not.
@@ -837,7 +840,7 @@ For example on a Linux system, the file <F>sysinfo.gap</F> may look like
 this:
 <P/>
 <Log><![CDATA[
-GAParch=i586-unknown-linux2.0.31-gcc
+GAParch=i586-unknown-linux2.0.31-gcc/32-bit
 ]]></Log>
 <P/>
 We suggest that your &GAP; package contains a file <F>configure</F> which
