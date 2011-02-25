@@ -15,10 +15,10 @@ suggests it is an example of how to  create  a  &GAP;  package.  It  has
 little functionality except for being a package.
 <P/>
 See Sections&nbsp;<Ref Sect="Unpacking the Example Package"/>,
-<Ref Sect="Compiling binaries of the Example Package"/>
+<Ref Sect="Compiling Binaries of the Example Package"/>
 and&nbsp;<Ref Sect="Loading the Example Package"/>
 for  how  to  install, compile and  load  the  &Example;  package,  or
-Appendix&nbsp;<Ref Chap="Hints for writing a GAP Package"/>
+Appendix&nbsp;<Ref Chap="Hints for Writing a GAP Package"/>
 for hints on how  to  write  a &GAP; package.
 <P/>
 If you are viewing this with on-line help, type: 
@@ -31,8 +31,8 @@ to see the functions provided by the &Example; package.
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<Section Label="The main functions">
-<Heading>The main functions</Heading>
+<Section Label="The Main Functions">
+<Heading>The Main Functions</Heading>
 
 The following functions are available:
 

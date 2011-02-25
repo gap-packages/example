@@ -15,7 +15,7 @@
 
 If the &Example; package was obtained as a part of the &GAP; distribution
 from the <Q>Download</Q> section of the &GAP; website, you may proceed
-to Section <Ref Sect="Compiling binaries of the Example Package"/>.
+to Section <Ref Sect="Compiling Binaries of the Example Package"/>.
 Alternatively, the &Example; package may be installed using a separate archive,
 for example, for an update or an installation in a non-default location 
 (see <Ref Sect="GAP Root Directory" BookName="ref"/>).
@@ -51,8 +51,8 @@ directory).
 </Section>
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<Section Label="Compiling binaries of the Example Package">
-<Heading>Compiling binaries of the Example Package</Heading>
+<Section Label="Compiling Binaries of the Example Package">
+<Heading>Compiling Binaries of the Example Package</Heading>
 
 After unpacking the archive, go to the newly created <F>example</F>  directory
 and call <C>./configure <A>path</A></C> where <A>path</A> is the path to the 
