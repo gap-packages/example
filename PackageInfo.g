@@ -42,7 +42,7 @@ Version := "3.0",
 
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "15/02/2011",
+Date := "16/03/2011",
 
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.
