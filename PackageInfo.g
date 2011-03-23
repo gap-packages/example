@@ -235,8 +235,6 @@ PackageWWWHome := "http://www.cs.st-andrews.ac.uk/~alexk/example/",
 ##       - the name of the book (.BookName)
 ##       - a long title, shown by ?books (.LongTitle, optional)
 ##       - the path to the manual.six file for this book (.SixFile)
-##       - a decision if the book should be (auto)loaded, probably 'true'
-##         (.Autoload)
 ##  
 ##  For an online version on a Web page further entries are needed, 
 ##  if possible, provide an HTML- and a PDF-version:
@@ -269,9 +267,6 @@ PackageDoc := rec(
   # fit on a single text line (appears with the '?books' command in GAP)
   # LongTitle := "Elementary Divisors of Integer Matrices",
   LongTitle := "Example/Template of a GAP Package",
-  # Should this help book be autoloaded when GAP starts up? This should
-  # usually be 'true', otherwise say 'false'. 
-  Autoload  := true
 ),
 
 
