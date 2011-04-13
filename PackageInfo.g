@@ -44,6 +44,10 @@ Version := "3.0",
 ##
 Date := "16/03/2011",
 
+PackageWWWHome :=
+  Concatenation( "http://www.cs.st-andrews.ac.uk/~alexk/",
+      LowercaseString( ~.PackageName ), "/" ),
+
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
@@ -52,8 +56,7 @@ Date := "16/03/2011",
 ##  directory containing the package (in our "example" probably:
 ##  example/init.g, ...    or  example-3.0/init.g, ...  )
 # 
-ArchiveURL := 
-          "http://www.cs.st-andrews.ac.uk/~alexk/example/example-3.0",
+ArchiveURL := Concatenation( ~.PackageWWWHome, "example-3.0" ),
 
 ##  All provided formats as list of file extensions, separated by white
 ##  space or commas.
@@ -206,9 +209,9 @@ Status := "deposited",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL := 
-  "http://www.cs.st-andrews.ac.uk/~alexk/example/README.example",
+  Concatenation( ~.PackageWWWHome, "README.example" ),
 PackageInfoURL := 
-  "http://www.cs.st-andrews.ac.uk/~alexk/example/PackageInfo.g",
+  Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
@@ -225,8 +228,6 @@ AbstractHTML :=
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package",
 
-PackageWWWHome := "http://www.cs.st-andrews.ac.uk/~alexk/example/",
-               
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
 ##  documentation on the GAP website.
@@ -257,9 +258,9 @@ PackageDoc := rec(
   BookName  := "Example",
   # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zoo.
   Archive := 
-      "http://www.cs.st-andrews.ac.uk/~alexk/example/exampledoc-3.0.tar.gz",
+      Concatenation( ~.PackageWWWHome, "exampledoc-3.0.tar.gz" ),
   ArchiveURLSubset := ["doc", "htm"],
-  HTMLStart := "htm/chapters.htm",
+  HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
   # the path to the .six file used by GAP's help system
   SixFile   := "doc/manual.six",
@@ -349,7 +350,8 @@ BannerString := Concatenation(
   "----------------------------------------------------------------\n",
   "Loading  Example ", ~.Version, "\n",
   "by ",
-  JoinStringsWithSeparator( List( ~.Persons, r -> Concatenation(
+  JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
+                                  r -> Concatenation(
       r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
   "For help, type: ?Example package \n",
   "----------------------------------------------------------------\n" ),
