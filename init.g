@@ -21,7 +21,7 @@
 ##
 #R  Read the declaration files.
 ##
-ReadPackage( "example", "gap/files.gd" );
+ReadPackage( "example", "lib/files.gd" );
 
 #E  init.g . . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here
 

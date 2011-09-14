@@ -10,7 +10,7 @@
 ##
 #R  Read the install files.
 ##
-ReadPackage( "example", "gap/files.gi" );
+ReadPackage( "example", "lib/files.gi" );
 
 #E  read.g . . . . . . . . . . . . . . . . . . . . . . . . . . . .  ends here
 
