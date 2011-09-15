@@ -3,8 +3,6 @@
 #W    init.g                 The Example package                Werner Nickel
 #W                                                                Greg Gamble
 ##
-##    @(#)$Id$
-##
 
 #############################################################################
 ##  Starting from GAP 4.4 and having  a  PackageInfo.g  file  available,  the

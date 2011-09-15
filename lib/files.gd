@@ -5,13 +5,9 @@
 ##
 ##  Declaration file for functions of the Example package.
 ##
-#H  @(#)$Id$
-##
 #Y  Copyright (C) 1999,2001 University of St. Andrews, North Haugh,
 #Y                          St. Andrews, Fife KY16 9SS, Scotland
 ##
-Revision.("example/gap/files_gd") := 
-    "@(#)$Id$";
 
 #############################################################################
 ##
