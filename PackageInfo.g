@@ -33,7 +33,7 @@ PackageName := "Example",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "A Demo for Package Authors",
+Subtitle := "Example/Template of a GAP Package and Guidelines for Package Authors",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
@@ -41,13 +41,13 @@ Subtitle := "A Demo for Package Authors",
 Version := "3.1",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "14/09/2011",
+Date := "15/09/2011",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
 ##  <!ENTITY VERSION "3.1">
-##  <!ENTITY RELEASEDATE "14/09/2011">
+##  <!ENTITY RELEASEDATE "15/09/2011">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -384,7 +384,7 @@ BannerString := Concatenation(
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template", "package creation hints"]
+Keywords := ["package example", "package template", "package creation guidelines"]
 
 ));
 

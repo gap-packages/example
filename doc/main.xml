@@ -12,7 +12,8 @@
 <Book Name="Example"> 
 
 <TitlePage>
-  <Title>&Example; -- A GAP 4 Package</Title>
+  <Title>&Example;</Title>
+  <Subtitle>Example/Template of a &GAP; Package and Guidelines for Package Authors</Subtitle>
   <Version>Version &VERSION;, &RELEASEDATE;</Version>
   <Author> Werner Nickel
     <Email>nickel@mathematik.tu-darmstadt.de</Email>
