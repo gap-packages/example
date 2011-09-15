@@ -55,7 +55,7 @@ go for more information.
 
 <Index Subkey="for a GAP package">home directory</Index>
 A &GAP; package should have an alphanumeric name (<A>package-name</A>, say);
-mixed case is fine, but there should  be  no  whitespace. 
+mixed case is fine, but there should  be  no  whitespaces. 
 All files of a &GAP; package <A>package-name</A> must be collected in a 
 single directory <A>package-dir</A>, where <A>package-dir</A> should  be
 just <A>package-name</A> converted to lowercase (the restriction that
@@ -311,8 +311,11 @@ you should have no trouble in producing one. Moreover, using the
 &GAPDoc; package, it is also possible to produce HTML version of the
 documentation supporting MathJax (<URL>http://www.mathjax.org/</URL>) 
 for the high quality rendering of mathematical symbols while viewing 
-it online.
-
+it online. For example, if you are viewing the HTML version of the manual, 
+compare how how this formula will look with MathJax turned on/off:
+<Display Mode="M">
+[ \chi, \psi ] = \left( \sum_{{g \in G}} \chi(g) \psi(g^{{-1}}) \right) / |G|.
+</Display>
 <P/>
 The manual of the &Example; package is written in the &GAPDoc; format,
 and commands needed to build it are contained in the file <C>makedocrel.g</C>
@@ -1325,11 +1328,11 @@ and conflicts with other packages, test that it may be loaded in various
 configurations:
 <List>
 <Item>
-starting &GAP; with no packages (except needed) using <C>-r -A</C> options
+starting &GAP; with no packages (except needed for &GAP;) using <C>-r -A</C> options
 and calling <C>LoadPackage("your-package-name");</C>
 </Item>
 <Item>
-starting &GAP; with no packages (except needed) using <C>-r -A</C> options
+starting &GAP; with no packages (except needed for &GAP;) using <C>-r -A</C> options
 and calling <C>LoadPackage("your-package-name" : OnlyNeeded );</C>
 </Item>
 <Item>
@@ -1370,7 +1373,7 @@ is known that &GAP; performance is slower if all packages are loaded. To
 allow variations of the order in which packages will be loaded,
 <Ref Func="LoadAllPackages"/> accepts one or both options: 
 <C>Reversed</C> and <C>OnlyNeeded</C> which will start from the list of 
-all packages in the reverse alphabetical and which will load each package
+all packages in the reverse alphabetical order and which will load each package
 without loading its suggested packages, respectively.
 </Description>
 </ManSection>
@@ -1774,9 +1777,7 @@ The following checklist may be used by package authors, members of the
     <Item>
     follows the guidelines of Section 
     <Ref Label="Functions and Variables and Choices of Their Names"/>
-    about names of functions and variables; a useful tool is the function 
-    <C>DisplayPackageVariables</C> which must be called *after* the package
-    is loaded;
+    about names of functions and variables;
     </Item>
     </List>
 </Item>	
@@ -1829,7 +1830,8 @@ The following checklist may be used by package authors, members of the
     <List>
     <Item>
         have correct permisisons for all files and directories after their 
-        unpacking;
+        unpacking (755 for directories and executables, if any; 644 for other
+        files);
     </Item>
     <Item>
         contain files with correct line breaks;
@@ -1870,6 +1872,9 @@ The following checklist will help you to check how well your package is
 readyto work with &GAP;&nbsp;4.5.
 <P/>
 
+<List>
+
+<Item>
 Mandatory changes need for package upgrade to work with &GAP;&nbsp;4.5:
 
 <List>
@@ -1878,15 +1883,24 @@ Mandatory changes need for package upgrade to work with &GAP;&nbsp;4.5:
 Check that the package works as expected:
 </Mark>
 <Item>
+<List>
+<Item>
 verify that the package functionality works as required, that examples
-in the manual are correct and that test files show no discrepancies.
-Some packages will need to update manual examples and test files
-because the order in which record components are printed has changed,
-but now it will be more consistent and less dependent on how the record 
-was created). Check the usage of names of record components in the code:
+in the manual are correct and that test files show no discrepancies;
+</Item>
+<Item>
+if necessary, update manual examples and test files because the order 
+in which record components are printed has changed
+(but now it will be more consistent and less dependent on how the record 
+was created); 
+</Item>
+<Item>
+check the usage of names of record components in the code:
 take care not to rely on <Ref Func="RecNames" BookName="ref"/>
 always returning names of components in the same order
-(see <Ref Label="Upgrading the package to work with GAP 4.5"/>).
+(see <Ref Label="Upgrading the package to work with GAP 4.5"/>)
+</Item>
+</List>
 </Item>
 
 <Mark>
@@ -1910,24 +1924,22 @@ Rebuild the package documentation:
 </Mark>
 <Item>
 whenever your package documentation is &GAPDoc; or <C>gapmacro.tex</C>-based,
-&GAP;&nbsp;4.5 contains new versions of both tools. This will improve 
-the layout of the package documentation. In particular, &GAPDoc; has a better
-<File>.css</File> file and is capable of producing the HTML version with MathJax
-support to display nicely mathematical formulae. For example, if you are viewing
-the HTML version of the manual, compare how how this formula will look with
-MathJax turned on/off:
-<Display Mode="M">
-[ \chi, \psi ] = \left( \sum_{{g \in G}} \chi(g) \psi(g^{{-1}}) \right) / |G|.
-</Display>
-Moreover, this will also ensure that cross-references from the package 
-manual to the main &GAP; manuals are correct and that the &GAP; help system will 
-be able to navigate to the more precise location in the package manual.
+&GAP;&nbsp;4.5 contains new versions of both tools. This will ensure that 
+cross-references from the package manual to the main &GAP; manuals are 
+correct and that the &GAP; help system will be able to navigate to the more 
+precise location in the package manual. This will also improve the layout of 
+the package documentation. In particular, &GAPDoc; has a better 
+<File>.css</File> file and is capable of producing the HTML version with 
+MathJax support to display nicely mathematical formulae.
 <P/> Note that it's not possible for a package to have an HTML manual which 
 contains correct links to both &GAP;&nbsp;4.4 and &GAP;&nbsp;4.5 main manuals.
 </Item>
-	
+
 </List>
 
+</Item>
+
+<Item>
 Optional changes recommended for package upgrade to work with &GAP;&nbsp;4.5:
 
 <List>
@@ -1945,11 +1957,12 @@ instead of calling <C>Print</C> or <C>Info</C> directly
 <Item>
 It is recommended not to call <Ref Func="LoadPackage" BookName="ref"/>  
 from a package file while this file is read: instead one should list the 
-package in question in the lists of needed or suggested packages. In order 
-to decide whether some package will be available at runtime, use the function
-<Ref Func="IsPackageMarkedForLoading" BookName="ref"/> introduced in 
-&GAP;&nbsp;4.5. To verify whether such calls occur in the package first 
-load it and then call <C>DisplayPackageLoadingLog( PACKAGE_WARNING );</C>.
+package in question in the lists of needed or suggested packages.
+To verify whether such calls occur in the package first load it and 
+then call <C>DisplayPackageLoadingLog( PACKAGE_WARNING );</C>. If there is 
+a genuine need to decide whether some package will be available at runtime, 
+use the function <Ref Func="IsPackageMarkedForLoading" BookName="ref"/> 
+introduced in &GAP;&nbsp;4.5.
 </Item>
 
 <Item>
@@ -1957,7 +1970,8 @@ Check if the package still relies on some obsolete variables
 (see <Ref Chap="Replaced and Removed Command Names" BookName="ref"/>)
 and try to get rid of their usage.
 </Item>
-
+</List>
+</Item>
 </List>
 
 </Subsection>
