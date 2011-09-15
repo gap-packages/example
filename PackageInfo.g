@@ -362,15 +362,15 @@ AvailabilityTest := function()
 ##  the info in this file. If you are not happy with it, you can provide
 ##  a string here that is used as a banner. GAP decides when the banner is 
 ##  shown and when it is not shown (note the ~-syntax in this example).
-##  BannerString := Concatenation( 
-##    "----------------------------------------------------------------\n",
-##    "Loading  Example ", ~.Version, "\n",
-##    "by ",
-##    JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
-##                                    r -> Concatenation(
-##        r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
-##    "For help, type: ?Example package \n",
-##    "----------------------------------------------------------------\n" ),
+BannerString := Concatenation( 
+    "----------------------------------------------------------------\n",
+    "Loading  Example ", ~.Version, "\n",
+    "by ",
+    JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
+                                    r -> Concatenation(
+        r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
+    "For help, type: ?Example package \n",
+    "----------------------------------------------------------------\n" ),
 
 ##  *Optional*, but recommended: path relative to package root to a file which 
 ##  contains as many tests of the package functionality as sensible.
