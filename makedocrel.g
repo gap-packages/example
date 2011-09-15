@@ -17,6 +17,10 @@ MakeGAPDocDoc( "doc",     # path to the directory containing the main file
                           # to produce additional variants of HTML files
                );; 
 
+# Copy the *.css and *.js files from the styles directory of the GAPDoc 
+# package into the directory containing the package manual.
+CopyHTMLStyleFiles( "doc" );
+
 # Create the manual.lab file which is needed if the main manuals or another 
 # package is referring to your package
 GAPDocManualLab( "Example" );; 
