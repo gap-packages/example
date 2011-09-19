@@ -76,7 +76,7 @@ non-default location. So for example if you install the package in the
 then you have to call
 <P/>
 <Log><![CDATA[
-./configure ../../../gap4r5Sep07/
+./configure ../../../gap4r5/
 ]]></Log>
 <P/>
 This will fetch the architecture type for which &GAP; has been compiled
