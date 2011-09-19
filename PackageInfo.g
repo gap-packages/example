@@ -175,7 +175,7 @@ Persons := [
     FirstNames    := "Alexander",
     IsAuthor      := true,
     IsMaintainer  := true,
-    Email         := "konovalov@member.ams.org",
+    Email         := "alexk@mcs.st-andrews.ac.uk",
     WWWHome       := "http://www.cs.st-andrews.ac.uk/~alexk/",
     PostalAddress := Concatenation( [
                      "School of Computer Science\n",
@@ -220,7 +220,7 @@ Status := "deposited",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL := 
-  Concatenation( ~.PackageWWWHome, "README.example" ),
+  Concatenation( ~.PackageWWWHome, "README" ),
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
@@ -379,7 +379,7 @@ BannerString := Concatenation(
 ##  the file contains the string 'gap> START_TEST('.
 ##  For deposited packages, these tests are run regularly, as a part of the
 ##  standard GAP test suite.
-#TestFile := "tst/testall.tst",
+TestFile := "tst/testall.tst",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
