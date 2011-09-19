@@ -1579,14 +1579,20 @@ before &GAP; defaults will be applied;
 </List>     
 <P/>
 
-For most of the packages &GAP; default rules perfecty detect binary and 
-text files, so there is no need for them to use any of these three components.
-However, these components will become useful if the package has e.g. data 
+The <F>etc</F> directory obtained from <C>tools.tar.gz</C> 
+(described  above in 
+Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>) 
+contains a file <F>classifyfiles.py</F> and two files <F>patternscolor.txt</F>
+and <F>patternstextbinary.txt</F> implementing &GAP; default rules used
+to classify files in packages.
+For most of the packages these default rules perfecty detect binary and 
+text files, so there is no need for them to use any of the three optional
+components. However, <C>.TextBinaryFilesPatterns</C>, or <C>.TextFiles</C>,
+or <C>.BinaryFiles</C> will become useful if the package has e.g. data 
 files which are recognised as binary files by the default rules, or if the
 package uses standard extensions in a non-standard way (this is not 
 recommended, of course). If things will go wrong, it is possible that one 
 (or indeed all) created archives have wrong line breaks.
-<!-- TODO: describe classifyfiles.py and include it into the tools archive -->
 <P/>
 
 Utility functions available in <File>gap4r5/lib/lbutil.g</File>, namely
