@@ -1490,14 +1490,17 @@ In the past, it was recommended that your &GAP; package should be packed
 via the <F>zoo</F> program. Now we accept any of <F>.tar.gz</F>, 
 <F>.tar.bz</F> and <F>-win.zip</F> formats, and also <F>.zoo</F> for 
 backwards compatibility (see Section <Ref Sect="Wrapping up a GAP Package"/> 
-for further details). The &Example; package file <F>make_zoo</F>
-still provides a template packing-up script that uses <C>zoo</C>.  
-The <F>etc</F> directory obtained from <C>tools<A>XXX</A>.tar.gz</C> 
-for some  version  number  <A>XXX</A> (this  is  described  above
-in Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>) 
-contains a file  <F>packpack</F>  which  provides  a  more  versatile
+for further details). 
+<P/>
+For example, if you wish to supply only <F>.tar.gz</F> archive,
+you may create it with the command 
+<C>tar -cvzf package-name-version.tar.gz package-name</C>.
+The <F>etc</F> directory obtained from <C>tools.tar.gz</C> 
+(described  above in 
+Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>) 
+contains a file <F>packpack</F>  which  provides  a  more  versatile
 packing-up script.  
-
+<P/>
 The releases of &GAP; packages are independent of releases of &GAP;.
 Therefore &GAP; packages should be wrapped up in separate files that can be
 installed onto any version of &GAP;. Similarly a &GAP; package can be
