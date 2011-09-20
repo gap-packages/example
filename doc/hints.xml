@@ -5,7 +5,7 @@
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <Appendix Label="Guidelines for Writing a GAP Package">
-<Heading>Hints for Writing a GAP Package</Heading>
+<Heading>Guidelines for Writing a GAP Package</Heading>
 
 This appendix explains  the basics of how to write  a &GAP; package so
 that it interfaces properly to &GAP;. For the role of &GAP; packages
