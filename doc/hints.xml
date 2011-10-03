@@ -258,6 +258,14 @@ All other files can be organized as  you like. But we suggest that you
 have a look at existing packages and use a similar scheme, for
 example, put data libraries in extra subdirectories and so on.
 <P/>
+<!-- TODO: 
+if there is a genuine need to have an empty directory
+in a package (e.g. to store some data that may appear there later),
+we advise to put a small README file in that directory to make it
+non-empty. This will ensure that the directory will be included in
+the archive and also will confirm to us that this is not an oversight.
+-->
+<P/>
 Concerning the &GAP; code in packages, it is recommended to use only
 documented &GAP; functions, see <Ref Sect="Undocumented Variables" BookName="ref"/>.
 In particular if you want to make your package available to other &GAP; users
@@ -671,9 +679,8 @@ be loaded via <C>ReadPackage</C> statements in the <F>init.g</F> file.
 In conclusion, there are some practical advises on how to check which variables
 are used by the package.
 <P/>
-<!--TODO: when ShowPackageVariables will be finalised, 
-          document it in the manual and put a cross-reference here -->
-Firstly, there is (currenty undocumented) function 
+<!--TODO: proper cross-ref to ShowPackageVariables which is now documented -->
+Firstly, there is a function 
 <C>ShowPackageVariables</C>. If the package <A>pkgname</A> is available 
 but not yet loaded then <C>DisplayPackageVariables( pkgname )</C>
 prints a list of global variables that become bound and of methods 
@@ -1240,9 +1247,8 @@ so <C>"=1.0"</C> is not a valid version number.
 <P/>
 Package authors should choose a version numbering scheme that admits a
 new  version  number even  after  tiny  changes  to the  package and
-that  version  numbers  of  successive  package  versions increase 
-(see&nbsp;<Ref Sect="Version Numbers"/> for the details)  The
-automatic update of package archives in the  &GAP; distribution will
+that  version  numbers  of  successive  package  versions increase.
+The automatic update of package archives in the  &GAP; distribution will
 only work if a package has a new version number.
 <P/>
 For most of the packages it will be inappropriate to re-use the date 
