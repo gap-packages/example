@@ -256,17 +256,16 @@ to the test files formats and further recommendations.
 
 </List>
 
-All other files can be organized as  you like. But we suggest that you
+All other files can be organized as you like. But we suggest that you
 have a look at existing packages and use a similar scheme, for
 example, put data libraries in extra subdirectories and so on.
 <P/>
-<!-- TODO: 
-if there is a genuine need to have an empty directory
-in a package (e.g. to store some data that may appear there later),
-we advise to put a small README file in that directory to make it
-non-empty. This will ensure that the directory will be included in
-the archive and also will confirm to us that this is not an oversight.
--->
+Sometimes there may be a need to include an empty directory in the
+package distribution (for example, as a place to store some data that 
+may appear at runtime). In this case package authors are
+advised to put in this directory a short <F>README</F> file describing
+its purpose to ensure that such directory will be included in the 
+redistribution.
 <P/>
 Concerning the &GAP; code in packages, it is recommended to use only
 documented &GAP; functions, see <Ref Sect="Undocumented Variables" BookName="ref"/>.
