@@ -192,8 +192,10 @@ supported by the &GAP; package &GAPDoc;
 which is used for the &GAP; documentation. An alternative is to use the 
 &TeX;-based system, formerly used for the &GAP; documentation in
 &GAP;&nbsp;4.4 and earlier releases. This system is described in 
-the document <Q>The gapmacro.tex Manual Format</Q>
-<!-- TODO: make a proper reference to gapmacro.tex -->
+the document <Q>The gapmacro.tex Manual Format</Q> 
+(the file <F>gap4r5/doc/gapmacrodoc.pdf</F> included in the
+tools archive as described in Section 
+<Ref Sect="Writing Documentation and Tools Needed"/>)
 and is still used by some of the &GAP; packages whose authors are
 encouraged to switch at some point to the &GAPDoc;-based documenation.
 Please spend some time reading the documentation for whichever
@@ -314,7 +316,8 @@ via their Web browser. As a package author, you are not obliged
 to provide an HTML version of your package  manual, but if you  
 will either use the &GAPDoc; package or follow the guidelines in 
 the document <Q>The gapmacro.tex Manual  Format</Q>,
-<!-- TODO: make a proper reference to gapmacro.tex -->
+(the file <F>gap4r5/doc/gapmacrodoc.pdf</F> included in the
+tools archive as described in this Section below),
 you should have no trouble in producing one. Moreover, using the 
 &GAPDoc; package, it is also possible to produce HTML version of the
 documentation supporting MathJax (<URL>http://www.mathjax.org/</URL>) 
@@ -342,6 +345,7 @@ described below. If you intend to use the &GAPDoc; package for the documenation
 of your package, you may skip the rest of this section and proceed to the next one
 to see a minimalistic example of a &GAP; package.
 <P/>
+<Index>tools archive for package authors</Index>
 Otherwise, to produce the <C>.pdf</C> manual formats, the following &GAP; 
 tools (supplied as a part of the &GAP; distribution in the archive 
 <C>tools.tar.gz</C> in the in &GAP;'s <F>etc</F> directory and installed
@@ -471,8 +475,10 @@ two blanks, in particular, every declaration or method or function
 installation which is not only of local scope is separated by a header.
 <P/>
 Historically, when the &GAP; main manuals were based on the &TeX; macros 
-described in the document <Q>The gapmacro.tex Manual Format</Q>,
-<!-- TODO: make a proper reference to gapmacro.tex --> 
+described in the document <Q>The gapmacro.tex Manual Format</Q>
+(the file <F>gap4r5/doc/gapmacrodoc.pdf</F> included in the
+tools archive as described in Section 
+<Ref Sect="Writing Documentation and Tools Needed"/>)
 such headers were used for the manuals and have the type
 <P/>
 <Log><![CDATA[
@@ -531,7 +537,7 @@ documentation.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <Section Label="The PackageInfo.g File">
 <Heading>The PackageInfo.g File</Heading>
-
+<Index Key="ValidatePackageInfo"><C>ValidatePackageInfo</C></Index>
 As a first step the example in <Ref Sect="An Example of a GAP Package"/>
 shows the information needed for the package loading mechanism to load 
 a simple package. However, if your  package  depends on  the  functionality  
@@ -544,7 +550,7 @@ maintainers including contact information,  URLs of the  package archives
 and  README files, status information, text for a package overview Web 
 page,  and so on.
 <P/> 
-We  suggest to  create  a  <F>PackageInfo.g</F> file  for  your package  by
+We suggest to create a <F>PackageInfo.g</F> file for your package by
 copying the one in the <Package>Example</Package> package,
 distributed with &GAP;, and then adjusting it for your package.
 Within &GAP; you can look at this template file for a list and explanation 
@@ -676,12 +682,13 @@ in <C>.g</C> files (other than the <F>init.g</F> and <F>read.g</F> files themsel
 be loaded via <C>ReadPackage</C> statements in the <F>init.g</F> file.
 <P/>
 
+<Index Key="ShowPackageVariables"><C>ShowPackageVariables</C></Index>
 In conclusion, there are some practical advises on how to check which variables
 are used by the package.
 <P/>
-<!--TODO: proper cross-ref to ShowPackageVariables which is now documented -->
 Firstly, there is a function 
-<C>ShowPackageVariables</C>. If the package <A>pkgname</A> is available 
+<Ref Func="ShowPackageVariables" BookName="ref"/>. 
+If the package <A>pkgname</A> is available 
 but not yet loaded then <C>DisplayPackageVariables( pkgname )</C>
 prints a list of global variables that become bound and of methods 
 that become installed when the package is loaded (for that, the package 
