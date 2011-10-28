@@ -1,3 +1,11 @@
+Version 3.2.0: 2011/10/28
+* If a package distribution contains an empty directory, advised to put 
+  README there.
+* Added ValidatePackageInfo and ShowPackageVariables to the index
+* Put a proper reference to the document "The gapmacro.tex Manual Format" 
+  (the file gap4r5/doc/gapmacrodoc.pdf included in the tools archive 
+  described in Section "Writing Documentation and Tools Needed").
+  
 Version 3.1.1: 2011/09/20
 * Documented classifyfiles.py script as a part of the tools archive.
 
