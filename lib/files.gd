@@ -151,13 +151,14 @@ DeclareGlobalVariable( "FruitCake",
 ##  
 ##  <Description>
 ##  displays the recipe for cooking <A>cake</A>, where <A>cake</A> is a 
-##  record. The fields of <A>cake</A> recognised are <C>name</C> (a string 
-##  giving the type of cake or cooked  item), <C>ovenTemp</C> (a string),  
-##  <C>cookingTime</C>  (a  string), <C>ingredients</C> (a list of strings 
-##  each containing an <C>_</C> which is used  to line up the entries and 
-##  is replaced by a  blank),  <C>method</C>  (a  list  of steps, each of 
-##  which is a string or list of strings), and <C>notes</C> (a list
-##  of strings).
+##  record satisfying certain criteria explained here: its recognised 
+##  fields are <C>name</C> (a string giving the type of cake or cooked  
+##  item), <C>ovenTemp</C> (a string), <C>cookingTime</C> (a string), 
+##  <C>ingredients</C> (a list of strings each containing an <C>_</C> 
+##  which is used  to line up the entries and is replaced by a  blank),  
+##  <C>method</C>  (a  list  of steps, each of which is a string or list 
+##  of strings), and <C>notes</C> (a list of strings). The global variable
+##  <Ref Var="FruitCake"/> provides an example of such a string.
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>

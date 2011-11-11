@@ -7,40 +7,40 @@
 <Appendix Label="Guidelines for Writing a GAP Package">
 <Heading>Guidelines for Writing a GAP Package</Heading>
 
-This appendix explains  the basics of how to write  a &GAP; package so
-that it interfaces properly to &GAP;. For the role of &GAP; packages
-and the ways to load them, 
-see Chapter&nbsp;<Ref Chap="GAP Packages" BookName="ref"/>.
+This appendix explains the basics of how to write a &GAP; package so that
+it interfaces properly to &GAP;. For the role of &GAP; packages and the
+ways to load them, see Chapter&nbsp;<Ref Chap="GAP Packages" BookName="ref"/>.
 <P/>
 
 There are two basic aspects of creating a &GAP; package. 
 <P/> 
 
-First, it is a convenient possibility to load  additional functionality into
-&GAP; including  a smooth  integration of the  package documentation.
-Secondly,  a  package  is  a way  to  make  your  code  available
-to  other  &GAP; users. 
+First, it is a convenient possibility to load additional functionality into
+&GAP; including a smooth integration of the package documentation. Second,
+a package is a way to make your code available to other &GAP; users.
 <P/>
 
-Second, the  &GAP; Group may provide some help  with
-redistributing your package via the web and ftp site of GAP itself 
-after checking if the package provides some new or improved functionality 
-which looks interesting for other users, if it contains reasonable 
-documentation, and if it seems to work smoothly with the GAP library and 
-other distributed packages. In this case the package can take part in the 
-&GAP; distribution update mechanism and becomes a <E>deposited</E> package.
-<P/>
-Furthermore, package authors are encouraged to check if the package would be 
-appropriate for the refereeing process and <E>submit</E> it. If the 
-refereeing has been successful, the package becomes an <E>accepted</E> package.
-Check out the &GAP; Web site <URL>http://www.gap-system.org</URL> for more details.
+Moreover, the &GAP; Group may provide some help with redistributing your
+package via the web and ftp site of GAP itself after checking if the
+package provides some new or improved functionality which looks interesting
+for other users, if it contains reasonable documentation, and if it seems
+to work smoothly with the GAP library and other distributed packages. In
+this case the package can take part in the &GAP; distribution update
+mechanism and becomes a <E>deposited</E> package.
 <P/>
 
-We start this  chapter with a description how  the directory structure
-of a  &GAP; package must  look like and then add remarks  on certain
-aspects  of creating  a  package, some  of these  only  apply to  some
-packages. Finally, we provide guidelines for the release preparation,
-wrapping and distribution.
+Furthermore, package authors are encouraged to check if the package would
+be appropriate for the refereeing process and <E>submit</E> it. If the
+refereeing has been successful, the package becomes an <E>accepted</E>
+package. Check out the &GAP; Web site <URL>http://www.gap-system.org</URL>
+for more details.
+<P/>
+
+We start this chapter with a description how the directory structure of a
+&GAP; package should be constructed and then add remarks on certain aspects
+of creating a package, some of these only apply to some packages. Finally,
+we provide guidelines for the release preparation, wrapping and
+distribution.
 <P/>
 <!-- 
 The &Example; package is intended to be a prototype for a package.  Here
@@ -105,7 +105,7 @@ We now describe the above files and directories:
 <Index Key="README" Subkey="for a GAP package"><C>README</C></Index>
 This should contain <Q>how to get it</Q> (from the &GAP; <C>ftp</C>- and
 web-sites) instructions, as well as installation instructions and names
-of the package  authors  and their email addresses. The installation
+of the package  authors and their email addresses. The installation
 instructions should be repeated in the package's documentation, which 
 should be in the <F>doc</F> directory
 (see <Ref Sect="Writing Documentation and Tools Needed"/>).
@@ -200,8 +200,9 @@ and is still used by some of the &GAP; packages whose authors are
 encouraged to switch at some point to the &GAPDoc;-based documenation.
 Please spend some time reading the documentation for whichever
 system you decide to use for writing your package's documentation. 
-The &Example; package's documentation is written to be used with the 
-<Package>GAPDoc</Package>. If you plan on using this, please use the &Example;
+The &Example; package's documentation is written in the XML format 
+supported by the <Package>GAPDoc</Package> package. 
+If you intend to use this format, please use the &Example;
 package's <F>doc</F> directory as a prototype, which as you will observe
 contains the master file <F>main.xml</F>, further <F>.xml</F> files for 
 manual chapters (included in the manual via <C>Include</C> directives in 
@@ -258,7 +259,8 @@ to the test files formats and further recommendations.
 
 All other files can be organized as you like. But we suggest that you
 have a look at existing packages and use a similar scheme, for
-example, put data libraries in extra subdirectories and so on.
+example, put examples in the <File>examples</File> subdirectory, data 
+libraries in extra subdirectories, and so on.
 <P/>
 Sometimes there may be a need to include an empty directory in the
 package distribution (for example, as a place to store some data that 
@@ -283,7 +285,7 @@ see <Ref Sect="The gap.ini and gaprc files" BookName="ref"/>.
 <Heading>Writing Documentation and Tools Needed</Heading>
 
 If you  intend to  make your  package available to  other users  it is
-essential  to include  a documentation  how  to install  and use  your
+essential  to include documentation explaining how to install and use your
 programs.
 <P/>
 Concerning the installation  you should produce a  file <F>README</F> which
@@ -322,7 +324,7 @@ you should have no trouble in producing one. Moreover, using the
 documentation supporting MathJax (<URL>http://www.mathjax.org/</URL>) 
 for the high quality rendering of mathematical symbols while viewing 
 it online. For example, if you are viewing the HTML version of the manual, 
-compare how how this formula will look with MathJax turned on/off:
+compare how this formula will look with MathJax turned on/off:
 <Display Mode="M">
 [ \chi, \psi ] = \left( \sum_{{g \in G}} \chi(g) \psi(g^{{-1}}) \right) / |G|.
 </Display>
@@ -332,7 +334,7 @@ and commands needed to build it are contained in the file <C>makedocrel.g</C>
 (you don't need to re-build the manual since it is already included in the package).
 <P/>
 Whenever you use the <Package>GAPDoc</Package> or <F>gapmacro.tex</F> &TeX;-based  
-system, you need to have the certain &TeX; tools installed: to produce manuals
+system, you need to have certain &TeX; tools installed: to produce manuals
 in the <C>.pdf</C> format, you need <C>pdflatex</C> if the <Package>GAPDoc</Package> 
 is used, and either <C>pdftex</C> or <C>gs</C> together with <C>ps2pdf</C> if your
 package uses <F>gapmacro.tex</F>.
@@ -371,6 +373,7 @@ this is done by starting &GAP; and running
 <P/>
 &nbsp;&nbsp;<C>gap> GapDocManualLab( "<A>package</A>" );</C>
 <P/>
+<Alt Only="LaTeX">\noindent</Alt>
 for each such <A>package</A> whose manual is cross-referred to 
 (this includes the <Q>main</Q> manuals, e.g.&nbsp;those in the 
 <F>doc/ref</F> and <F>doc/tut</F> directories). 
@@ -380,7 +383,7 @@ for each package whose manual is cross-referred to.
 In most cases, packages from the &GAP; distribution will already
 have these files since they will be created as a part of building their 
 manuals (see e.g. the last command of the <F>example/makedocrel.g</F> script)
-and included in their distribution, so you will probably need not to 
+and included in their distribution, so you will probably not need to 
 create <C>manual.lab</C> files yourself.
 <P/>
 To produce an HTML version of the manual one needs the Perl 5 program
@@ -436,7 +439,7 @@ SetPackageInfo( rec(
 This file  declares the &GAP; package with name <Q>test</Q> in version 1.0. 
 The package documentation consists of one autoloaded book; the <C>SixFile</C> 
 component is needed by the &GAP; help system. Package dependencies require at
-least &GAP;&nbsp;4.5 and &GAPDoc; package at version at least 0.99, and these
+least &GAP;&nbsp;4.5 and &GAPDoc; package at version at least 1.3, and these
 conditions will be checked when the package will be loaded 
 (see <Ref Sect="Version Numbers"/>). 
 Since there are no requirements that have to be tested, 
@@ -498,9 +501,9 @@ This description was automatically be extracted to build the
 manual source, if there is a <C>\Declaration</C> line in some
 <C>.msk</C> file together with an appropriate configuration file.
 <P/>
-Nowadays, facilities to distribute a document over several files to allow to 
-store the documentation for parts of some code in the same file as the code 
-itself are provided by the &GAPDoc; package (see
+Nowadays, facilities to distribute a document over several files
+to allow the documentation for parts of some code to be stored in
+the same file as the code itself are provided by the &GAPDoc; package (see
 <Ref Sect="Distributing a Document into Several Files" BookName="gapdoc"/>).
 The same approach is demonstrated by the <Package>Example</Package> package.
 E.g. <F>example/doc/example.xml</F> has the statement 
@@ -601,7 +604,7 @@ with a string that identifies it  with  the  package,  e.g.&nbsp;some  of  the
 undocumented functions in the &Example; package begin with <C>Eg</C>. This is
 especially important in cases where you actually want the user to be able
 to change the value of a function or variable defined  by  your  package,
-for which you haved used direct assignments  (for  which  the  user  will
+for which you have used direct assignments  (for  which  the  user  will
 receive no warning  if  she  accidentally  overwrites  them).  It's  also
 important  for  functions  and  variables   defined   via   <C>BindGlobal</C>,
 <C>DeclareGlobalFunction</C>/<C>InstallGlobalFunction</C>                       and
@@ -647,17 +650,16 @@ functions and variables  (i.e.&nbsp;the  functions  and  variables  you  don't
 intend for the  user  to  use).  For  example,  they  might  be  entirely
 CAPITALISED.
 <P/>
-Additionally, there is a recommended naming convention that the &GAP; core 
-system and &GAP; packages should not use global variables starting in the 
+Additionally, there is a recommended naming convention that the &GAP; core
+system and &GAP; packages should not use global variables starting in the
 lowercase. This allows to reserve variables with names starting in lowecase
-to the &GAP; user so they will never clash with the system. 
-Despite many exceptions from this rule could be found, it is extremely
-important to avoid using for package global variables very short names 
-started in lowercase. For example, such names like <C>cs</C>, <C>exp</C>, 
+to the &GAP; user so they will never clash with the system. It is extremely
+important to avoid using for package global variables very short names
+started in lowercase. For example, such names like <C>cs</C>, <C>exp</C>,
 <C>ngens</C>, <C>pc</C>, <C>pow</C> which are perfectly fine for local
 variables, should never be used for globals. Additionally, the package must
-not have writable global variables with very short names even if they are 
-starting in uppercase, for example, <C>C1</C> or <C>ORB</C>, since they 
+not have writable global variables with very short names even if they are
+starting in uppercase, for example, <C>C1</C> or <C>ORB</C>, since they
 also could be easily overwritten by the user.
 <P/>
 It is a good practice to follow naming conventions used in &GAP; as 
@@ -682,7 +684,7 @@ be loaded via <C>ReadPackage</C> statements in the <F>init.g</F> file.
 <P/>
 
 <Index Key="ShowPackageVariables"><C>ShowPackageVariables</C></Index>
-In conclusion, there are some practical advises on how to check which variables
+In conclusion, here is some practical advise on how to check which variables
 are used by the package.
 <P/>
 Firstly, there is a function 
@@ -735,9 +737,6 @@ new operations:
 new methods:
   Recipe( cake )
 ]]></Log>
-This function is under development, but could certainly try it on your 
-package.
-<P/>
 
 Another trick is to start &GAP; with <C>-r -A</C> options, immediately 
 load your package and then call <Ref Func="NamesUserGVars" BookName="ref"/>
@@ -754,10 +753,10 @@ other packages. Nevertheless, it may be a useful check to search for unwanted
 variables appearing after package loading. A potentially dangerous situation
 which should be avoided is when the package uses some simply named temporary
 variables at the loading stage. Such <Q>phantom</Q> variables may then remain 
-unnoticed and will cause that there will be no warnings if the user occasionally 
+unnoticed and, as a result, there will be no warnings if the user occasionally 
 uses the same name as a local variable name in a function. Even more 
 dangerous is the case when the user variable with the same already exists 
-before the package is loaded so it will be silently owerwritten.
+before the package is loaded so it will be silently overwritten.
 
 </Section>
 
@@ -808,7 +807,7 @@ might be sufficient may prevent loading of packages under Windows for
 no good reason.
 <P/>
 
-Firstly, it is not appropriate to explicitly call 
+It is not appropriate to explicitly call 
 <Ref BookName="ref" Func="LoadPackage"/> <E>when the package is loaded</E>,
 since this may distort the order of package loading and result in warning 
 messages. It is recommended to turn such dependencies into needed or 
@@ -823,7 +822,7 @@ then the missing component is <E>needed</E>.
 On the other hand, if <Ref BookName="ref" Func="LoadPackage"/> is called 
 inside functions of the package then there is no such problem, provided 
 that these functions are called only after the package has been loaded, 
-so it is not necessary to specify the other package as suggested. Same 
+so it is not necessary to specify the other package as suggested. The same 
 applies to test files and manual examples, which may be simply extended 
 by calls to <Ref BookName="ref" Func="LoadPackage"/>.
 <P/>
@@ -831,7 +830,7 @@ by calls to <Ref BookName="ref" Func="LoadPackage"/>.
 Secondly, it may happen that a package B that is listed as a suggested 
 package of package A is actually needed by A. 
 If no explicit <Ref BookName="ref" Func="LoadPackage"/> calls for B 
-occurs in A at loading time, this can now be detected using
+occur in A at loading time, this can now be detected using
 the new possibility to load a package without loading its suggested
 packages using the global option <C>OnlyNeeded</C> 
 (see <Ref BookName="ref" Func="LoadPackage"/> for further details); 
@@ -841,13 +840,13 @@ or (since apparently B was not intended to become a needed package) to change
 the code accordingly. 
 Only if package A calls <Ref BookName="ref" Func="LoadPackage"/> for B at 
 loading time (see above) then package B needs to be <E>deinstalled</E> 
-to test loading of A without B.
+(i.e. removed) to test loading of A without B.
 <P/>
 
 Finally, if the package manual is in the &GAPDoc; format, 
 then &GAPDoc; should still be listed as <E>needed</E> for 
 this package (not as <E>suggested</E>), even though &GAPDoc; 
-is now needed package for &GAP; itself.
+is now a needed package for &GAP; itself.
 <P/>
 
 </Section>
@@ -861,7 +860,7 @@ is now needed package for &GAP; itself.
 When &GAP; packages require each other in a circular way,
 a <Q>bootstrapping</Q> problem arises of defining functions before they are
 called.
-The same problem occurs in the &GAP; library, it is resolved there
+The same problem occurs in the &GAP; library, and it is resolved there
 by separating declarations (which define global variables such as
 filters and operations)
 and implementations (which install global functions and methods)
@@ -873,11 +872,11 @@ file.
 (which have a <C>.gi</C> suffix).
 <P/>
 Something similar is possible for &GAP; packages:
-If a file <F>read.g</F> exists in the home directory of the package,
+if a file <F>read.g</F> exists in the home directory of the package,
 this file is read only <E>after</E> all the <F>init.g</F> files of all
 (implicitly) required &GAP; packages are read.
 Thus one can separate declaration and implementation for a &GAP; package
-in the same way as done for the &GAP; library,
+in the same way as is done for the &GAP; library,
 by creating a file <F>read.g</F>,
 restricting the <Ref Func="ReadPackage" BookName="ref"/> statements in
 <F>init.g</F> to only read those files of the package that provide
@@ -909,6 +908,7 @@ each with files <F>init.g</F> and <F>read.g</F>.
 </Item>
 </List>
 <P/>
+
 In general, when &GAP; is asked to load a package then first the dependencies
 between this packages and its needed and suggested packages are inspected
 (recursively), and a list of package sets is computed such that no cyclic
@@ -923,6 +923,21 @@ library is read, only the <F>init.g</F> files of the packages are read;
 as soon as the &GAP; library has been read, the <F>read.g</F> files of these
 packages are also read, and afterwards the above rule holds.)
 <P/>
+
+It can happen that some code of a package depends on the availability of
+suggested packages, i.&nbsp;e., different initializations are performed
+depending on whether a suggested package will eventually be loaded or not.
+One can test this condition with the function
+<Ref Func="IsPackageMarkedForLoading" BookName="ref"/>.
+In particular, one should <E>not</E> call 
+(and use the value returned by this call) the function
+<Ref Func="LoadPackage" BookName="ref"/> inside
+package code that is read during package loading.
+Note that loading suggested packages may have been deliberately disabled,
+via the global option <C>OnlyNeeded</C> 
+(see <Ref Func="LoadPackage" BookName="ref"/>).
+<P/>
+
 Note that the separation of the &GAP; code of packages into declaration
 part and implementation part does in general <E>not</E> allow one to actually
 <E>call</E> functions from a package when the implementation part is read.
@@ -938,6 +953,7 @@ So one can in general not assume that during the loading of <C>A</C>,
 the function <C>f</C> can be called, or that one can access components of
 the record <C>r</C>.
 <P/>
+
 If one wants to call the function <C>f</C> or to access components of the
 record <C>r</C> in the code of the package <C>A</C> then the problem is
 that it may be not possible to determine a cyclic dependency between <C>A</C>
@@ -951,12 +967,14 @@ dependency between <C>A</C> and <C>B</C>,
 and that package <C>A</C> is regarded as not available in the case that
 such a cyclic dependency between <C>A</C> and <C>B</C> exists.
 <P/>
+
 A special case where <C>Dependencies.OtherPackagesLoadedInAdvance</C>
 can be useful is that a package wants to force the complete &GAP; library
 to be read before the file <F>read.g</F> of the package <C>A</C> is read.
 In this situation, the <Q>package name</Q> <C>"gap"</C> should be added
 to this component in the <F>PackageInfo.g</F> file of <C>A</C>.
 <P/>
+
 In the case of cyclic dependencies, one solution for the above problem
 might be to delay those computations (typically initializations)
 in package <C>A</C> that require package <C>B</C> to be loaded
@@ -966,20 +984,6 @@ variables that are created in the initialization into a separate file
 and to declare these variables in the <F>init.g</F> file of the package,
 via a call to <Ref Func="DeclareAutoreadableVariables" BookName="ref"/>
 (see also <Ref Sect="Autoreadable Variables"/>).
-<P/>
-
-It can happen that some code of a package depends on the availability of
-suggested packages, i.&nbsp;e., different initializations are performed
-depending on whether a suggested package will eventually be loaded or not.
-One can test this condition with the function
-<Ref Func="IsPackageMarkedForLoading" BookName="ref"/>.
-In particular, one should <E>not</E> call 
-(and use the value returned by this call) the function
-<Ref Func="LoadPackage" BookName="ref"/> inside
-package code that is read during package loading.
-Note that loading suggested packages may have been deliberately disabled,
-via the global option <C>OnlyNeeded</C> 
-(see <Ref Func="LoadPackage" BookName="ref"/>).
 <P/>
 
 </Section>
@@ -1019,14 +1023,13 @@ We will cover these three points in the following sections.
 If the package does not solely consist of an interface to an external
 binary and if the external program called is not just special-purpose
 code, but a generally available program, chances are high that sooner
-or later other &GAP; packages might also require this program.
+or later other &GAP; packages might also require this program. 
+We therefore strongly recommend the provision of a documented &GAP;
+function that will call the external binary. We also suggest to create
+actually two &GAP; packages; the first providing only the binary and the
+interface and the second (requiring the first, 
+see&nbsp;<Ref Label="Package dependencies"/>) being the actual &GAP; package.
 <P/>
-We therefore strongly suggest to provide a documented &GAP; function
-that will call the external binary. We also suggest to create actually
-two &GAP;  packages; the first providing only the binary and the
-interface and the second (requiring the first,
-see&nbsp;<Ref Label="Package dependencies"/>)
-being the actual &GAP; package.
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -1061,11 +1064,8 @@ We suggest that your &GAP; package contains a file <F>configure</F> which
 is  called with the  path of  the  &GAP; root directory  as
 parameter. This file then  will  read <F>sysinfo.gap</F> and set  up
 everything for compiling under the given architecture (for example
-creating a <F>Makefile</F> from <F>Makefile.in</F>).
-<P/>
-The standard &GAP; distribution contains a &GAP; package
-<Package>example</Package>
-whose installation script shows an example way of how to do this.
+creating a <F>Makefile</F> from <F>Makefile.in</F>). As initial templates, 
+you may use installation scripts of the <Package>Example</Package> package.
 
 </Subsection>
 
@@ -1087,8 +1087,9 @@ for checking for the actual binaries in the path given by
 <Ref Func="DirectoriesPackagePrograms" BookName="ref"/>
 for the respective package.
 For example the <Package>example</Package> &GAP; package could use the
-following commands to test whether the binary <F>hello</F> has been compiled;
-they issue a warning if not and will only load if it is indeed available.
+following function to test whether the binary <F>hello</F> has been compiled;
+it will issue a warning if not, and will only load the package if the binary 
+is indeed available:
 <P/>
 <Log><![CDATA[
 ...
@@ -1122,7 +1123,7 @@ some compilers or default compiler options.
 See&nbsp;<Ref Sect="Testing for the System Architecture" BookName="ref"/>
 for information on how to test for the architecture.
 <P/>
-The last but not least: do not print anything in the <C>AvailabilityTest</C> 
+Last but not least: do not print anything in the <C>AvailabilityTest</C> 
 function of the package via <C>Print</C> or <C>Info</C>. Instead one should 
 call <Ref Func="LogPackageLoadingMessage" BookName="ref"/> to store 
 a message which may be viewed later with 
@@ -1157,7 +1158,7 @@ Some &GAP; packages use kernel modules
 instead of external binaries.
 A kernel module is implemented in C and follows certain conventions to 
 comply with the &GAP; kernel interface, which we plan to document later. 
-In the meantime, we advice to look at existing examples of such packages 
+In the meantime, we advice you to look at existing examples of such packages 
 and get in touch with &GAP; developers if you plan to develop such a package. 
 
 </Subsection>
@@ -1169,6 +1170,10 @@ and get in touch with &GAP; developers if you plan to develop such a package.
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <Section Label="Having an InfoClass">
 <Heading>Having an InfoClass</Heading>
+
+<!-- TODO: (CW) the Example package does not declare an InfoExample, 
+     and it ought to do so! It might be a good idea to suggest 
+     _where_ to put this declaration.-->
 
 <Index Key="InfoClass" Subkey="for a GAP package"><C>InfoClass</C></Index>
 It is a good idea to declare an <C>InfoClass</C> for your package. This  gives
@@ -1214,7 +1219,7 @@ In order for this to display the introduction of the  &Example;  package
 the index-entry
 <C>&tlt;Index&tgt;Example package&tlt;/Index&tgt;</C>
 was added just before the first paragraph of the introductory section  in
-the file <F>example.xml</F>. The &Example; package  uses  the
+the file <F>example.xml</F>. The &Example; package uses 
 <Package>GAPDoc</Package>
 (see Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>)   
 for documentation
@@ -1252,8 +1257,8 @@ As a consequence, version numbers must not start with <C>=</C>,
 so <C>"=1.0"</C> is not a valid version number.
 <P/>
 Package authors should choose a version numbering scheme that admits a
-new  version  number even  after  tiny  changes  to the  package and
-that  version  numbers  of  successive  package  versions increase.
+new  version  number even  after  tiny  changes  to the  package, and
+ensure that  version  numbers  of  successive  package  versions increase.
 The automatic update of package archives in the  &GAP; distribution will
 only work if a package has a new version number.
 <P/>
@@ -1293,7 +1298,7 @@ instructions).
 <Heading>Tests files for a GAP package</Heading>
 
 The (optional) <F>tst</F> directory of your package may contain as 
-many tests of the package functionality as sensible. These tests 
+many tests of the package functionality as appears appropriate. These tests 
 should be organised into test files similarly to those in the <F>tst</F> 
 directory of the &GAP; distribution as documented in 
 <Ref Sect="Test Files" BookName="ref"/>.
@@ -1302,20 +1307,22 @@ For a deposited package, a test file with a basic test of the package
 (for example, to check that it works as expected and/or that the manual 
 examples are correct) may be specified in the <F>PackageInfo.g</F> to be 
 included in the GAP standard test suite. This file can either consist of 
-<Ref BookName="ref" Oper="ReadTest"/> calls or be itself a test file 
-supposed to be read via <Ref BookName="ref" Oper="ReadTest"/>. It is 
-assumed that the latter case occurs if and only if the file contains 
+<Ref BookName="ref" Oper="ReadTest"/> calls (in this case, it is common
+to call it <F>testall.g</F>) or be itself a test file having an extension
+<F>.tst</F> and supposed to be read via <Ref BookName="ref" Oper="ReadTest"/>. 
+It is assumed that the latter case occurs if and only if the file contains 
 the substring<P/>
-<C>"gap> START_TEST("</C>
+&nbsp;<C>"gap> START_TEST("</C>
 <P/>
+<Alt Only="LaTeX">\noindent</Alt>
 (with exactly one space after the &GAP; prompt).
 <P/>
 For deposited packages, these tests are run by the &GAP; Group regularly, 
 as a part of the standard &GAP; test suite. For the efficient testing it
 is important that the test specified in the <F>PackageInfo.g</F> file
 does not display any output (e.g. no test progress indicators) except 
-reporting discrepancies if such occur and the completion report like
-like in the example below:
+reporting discrepancies if such occur and the completion report as
+in the example below:
 <Log><![CDATA[
 gap> ReadTest("tst/testall.tst");
 Line 50 : 
@@ -1324,7 +1331,7 @@ Line 50 :
 + GAP4stones: 10000
 true
 ]]></Log>
-Test which produce extended output and/or requires substantial runtime
+Tests which produce extended output and/or requires substantial runtime
 are not supposed to be a part of the &GAP; standard test suite but may 
 be placed in the <F>tst</F> directory of the packages with further 
 instructions on how to run them elsewhere.
@@ -1364,12 +1371,12 @@ and with/without <C>OnlyNeeded</C> option);
 </Item>
 </List>
 The test of loading all packages is the most subtle one. Quite often
-it reveals problems which does not occur in the default configuration 
+it reveals problems which do not occur in the default configuration 
 but may cause difficulties to the users of specialised packages. 
 <P/>
 For your convenience, <C>make testpackagesload</C> called in the &GAP; 
-root directory will run all tests listed in this subsection and write their 
-output in its <C>dev/log</C> directory. If you observe that 
+root directory will run all package loading tests listed in this subsection 
+and write their output in its <C>dev/log</C> directory. If you observe that 
 <Ref Func="LoadAllPackages"/> is broken and suspect that this is not 
 the fault of your package, please contact the &GAP; Support.
 </Subsection>
@@ -1395,19 +1402,23 @@ without loading its suggested packages, respectively.
 <Heading>Testing a &GAP; package with the &GAP; standard test suite</Heading>
 
 The <F>tst</F> directory of the &GAP; installation contains a selection of
-test files and two scripts, <F>testinstall.g</F> and <F>testinstall.g</F>
+test files and two scripts, <F>testinstall.g</F> and <F>testall.g</F>
 which are a part of the &GAP; standard test suite.
 <P/>
-
-The quicker test, <F>testinstall.g</F>, requires about 512MB of memory and 
-runs about one minute on an Intel Core 2 Duo / 2.53 GHz machine. For a clean
-test you should start a new &GAP; session (to avoid interfering with user
-variables and loaded packages) with the following command (assuming that 
-<C>gap</C> starts &GAP; in your system):
+It is important to check that your package does not break &GAP; standard 
+tests. To perform a clean test and avoid interfering with other packages, 
+first you must start a new &GAP; session with the following command 
+(assuming that <C>gap</C> starts &GAP; in your system):
 <Log><![CDATA[
 gap -N -A -x 80 -r -m 100m -o 512m
 ]]></Log>
-Then load the test with the command
+After that load your package and run either <F>testinstall.g</F> or 
+<F>testinstall.g</F> as demonstrated below.
+<P/>
+
+The quicker test, <F>testinstall.g</F>, requires about 512MB of memory and 
+runs for about one minute on an Intel Core 2 Duo / 2.53 GHz machine. It may 
+be started with the command
 <Log><![CDATA[
 gap> Read( Filename( DirectoriesLibrary( "tst" ), "testinstall.g" ) );
 ]]></Log>
@@ -1422,29 +1433,27 @@ testing: .../gap4r5/tst/gaussian.tst
 gaussian.tst               0             10
 ... further lines deleted ...
 ]]></Log>
-The more thorough test is <F>testall.g</F> which exercises more GAP's 
+<P/>
+
+The more thorough test is <F>testall.g</F> which exercises more of &GAP;'s 
 capabilities, containing all test files from <F>testinstall.g</F> as 
-a subset. It requires about 512MB of memory, runs about one hour 
+a subset. It requires about 512MB of memory, runs for about one hour 
 on an Intel Core 2 Duo / 2.53 GHz machine, and produces an output 
-similar to the testinstall.g test. To run it, also start a new &GAP;
-session with
-<Log><![CDATA[
-gap -N -A -x 80 -r -m 100m -o 512m
-]]></Log>
-and then call
+similar to the testinstall.g test. 
+To run it, also start a new &GAP; session with
+<C>gap -N -A -x 80 -r -m 100m -o 512m</C> and then call
 <Log><![CDATA[
 gap> Read( Filename( DirectoriesLibrary( "tst" ), "testall.g" ) );
 ]]></Log>
-You may also perform individual test from the <F>tst</F> directory of the 
+You may repeat the same check loading your package with <C>OnlyNeeded</C> 
+option. Remember to perform each subsequent test in a new &GAP; session.
+<P/>
+Also you may perform individual tests from the <F>tst</F> directory of the 
 &GAP; installation loading them with <Ref Func="ReadTest" BookName="ref"/>,
 for example, the file <F>bugfix.tst</F>.
 <P/>
-It is important to check that your package does not break &GAP; standard tests.
-To avoid interfering with other packages, start GAP with same options as above
-(<C>-N -A -x 80 -r -m 100m -o 512m</C>), then load your package and run 
-<F>testinstall.g</F> or <F>testinstall.g</F>. You may repeat the same check 
-loading your package with <C>OnlyNeeded</C> option. Remember to perform each 
-subsequent test in a new &GAP; session.
+
+
 </Subsection>
 
 </Section>
@@ -1457,7 +1466,7 @@ subsequent test in a new &GAP; session.
 We are aiming at providing a stable platform for package development and 
 testing with official &GAP; releases. However, when it may be of benefit to 
 obtain access to the &GAP; development version, please contact the &GAP; 
-team mailing to <Email>support@gap-system.org</Email>.
+team by mailing to <Email>support@gap-system.org</Email>.
 <P/>
 </Section>
 
@@ -1477,11 +1486,10 @@ from <URL>http://www.gap-system.org/Packages/Authors/authors.html</URL>
 for further details.
 <P/>
 
-Additionally, in the past many &GAP; packages used the text 
+In the past many &GAP; packages used the text 
 <Q>We adopt the copyright regulations of GAP as detailed in the copyright 
-notice in the &GAP; manual</Q> or a similar statement. In this case
-we advise to be more explicit and make the exact reference to the GPL 
-license, for example: 
+notice in the &GAP; manual</Q> or a similar statement. We now advise to be 
+more explicit and make the exact reference to the GPL license, for example: 
 <P/>
 <E>
 <Package>package-name</Package> is free software; you can redistribute it 
@@ -1501,8 +1509,7 @@ or (at your option) any later version.
 In the past, it was recommended that your &GAP; package should be packed
 via the <F>zoo</F> program. Now we accept any of <F>.tar.gz</F>, 
 <F>.tar.bz</F> and <F>-win.zip</F> formats, and also <F>.zoo</F> for 
-backwards compatibility (see Section <Ref Sect="Wrapping up a GAP Package"/> 
-for further details). 
+backwards compatibility. 
 <P/>
 For example, if you wish to supply only <F>.tar.gz</F> archive,
 you may create it with the command 
@@ -1520,7 +1527,7 @@ upgraded any time without the need to wait for new releases of &GAP;.
 <P/>
 Because it is independent of the version of &GAP;, a &GAP; package should be
 archived from the &GAP; <F>pkg</F>  directory,
-that is all files are archived with the path starting the package's name.
+that is all files are archived with the path starting at the package's name.
 <P/>
 <Index Key="GAPDocManualLab"><C>GAPDocManualLab</C></Index>
 The archive of  a &GAP; package should contain all  files necessary for the
@@ -1715,7 +1722,7 @@ compatibility (see <Ref Sect="The former .gaprc file" BookName="ref"/>).
 </Item>
 
 <Item>
-Various improvements in the packages loading mechanism to make it more
+Various improvements in the packages loading mechanism make it more
 informative, while avoiding confusing the user with warning and error 
 messages for packages they didn't
 know they were loading. For example, many messages are stored but not 
@@ -1787,7 +1794,7 @@ The following checklist may be used by package authors, members of the
     Test that the package:
     <List>
     <Item>
-    does not break <File>testinstall.g</File> and <File>teststandard.g</File> 
+    does not break <File>testinstall.g</File> and <File>testall.g</File> 
     and does not slow them down noticeably
     (see <Ref Label="Testing a GAP package with the GAP standard test suite"/>);
     </Item>    
@@ -1833,7 +1840,7 @@ The following checklist may be used by package authors, members of the
         details as stated in the package manual;
     </Item>
     <Item>
-        has all mandatory components and also optional component where appropriate;  
+        has all mandatory components and also optional components where appropriate;  
     </Item>
     <Item>
         in particular, contains hints to distinguish binary and text files in 
@@ -1889,13 +1896,13 @@ The following checklist may be used by package authors, members of the
 <Heading>Checklist for package upgrade to work with &GAP;&nbsp;4.5</Heading>
 
 The following checklist will help you to check how well your package is 
-readyto work with &GAP;&nbsp;4.5.
+ready to work with &GAP;&nbsp;4.5.
 <P/>
 
 <List>
 
 <Item>
-Mandatory changes need for package upgrade to work with &GAP;&nbsp;4.5:
+Mandatory changes needed for package upgrade to work with &GAP;&nbsp;4.5:
 
 <List>
 
