@@ -841,6 +841,8 @@ the code accordingly.
 Only if package A calls <Ref BookName="ref" Func="LoadPackage"/> for B at 
 loading time (see above) then package B needs to be <E>deinstalled</E> 
 (i.e. removed) to test loading of A without B.
+<!-- TODO: write a new subsection in Reference manual Chapter 77 GAP 
+Packages how to uninstall GAP package and refer to it from "Example".-->
 <P/>
 
 Finally, if the package manual is in the &GAPDoc; format, 
@@ -924,6 +926,8 @@ as soon as the &GAP; library has been read, the <F>read.g</F> files of these
 packages are also read, and afterwards the above rule holds.)
 <P/>
 
+<Index Key="OnlyNeeded"><C>OnlyNeeded</C> option</Index>
+<Index Key="IsPackageMarkedForLoading"><C>IsPackageMarkedForLoading</C></Index>
 It can happen that some code of a package depends on the availability of
 suggested packages, i.&nbsp;e., different initializations are performed
 depending on whether a suggested package will eventually be loaded or not.
@@ -975,6 +979,7 @@ In this situation, the <Q>package name</Q> <C>"gap"</C> should be added
 to this component in the <F>PackageInfo.g</F> file of <C>A</C>.
 <P/>
 
+<Index>autoreadable variables</Index>
 In the case of cyclic dependencies, one solution for the above problem
 might be to delay those computations (typically initializations)
 in package <C>A</C> that require package <C>B</C> to be loaded
@@ -1123,6 +1128,7 @@ some compilers or default compiler options.
 See&nbsp;<Ref Sect="Testing for the System Architecture" BookName="ref"/>
 for information on how to test for the architecture.
 <P/>
+<Index Key="LogPackageLoadingMessage"><C>LogPackageLoadingMessage</C></Index>
 Last but not least: do not print anything in the <C>AvailabilityTest</C> 
 function of the package via <C>Print</C> or <C>Info</C>. Instead one should 
 call <Ref Func="LogPackageLoadingMessage" BookName="ref"/> to store 
@@ -1506,28 +1512,53 @@ or (at your option) any later version.
 <Heading>Wrapping up a &GAP; Package</Heading>
 
 <!-- TODO: also accept .zip archives -->
-In the past, it was recommended that your &GAP; package should be packed
-via the <F>zoo</F> program. Now we accept any of <F>.tar.gz</F>, 
-<F>.tar.bz</F> and <F>-win.zip</F> formats, and also <F>.zoo</F> for 
-backwards compatibility. 
+
+Currently, the &GAP; distribution provides archives in three different
+formats.
 <P/>
-For example, if you wish to supply only <F>.tar.gz</F> archive,
-you may create it with the command 
-<C>tar -cvzf package-name-version.tar.gz package-name</C>.
+<List>
+<Mark><F>.tar.gz</F></Mark>
+<Item> 
+  a standard UNIX <C>tar</C> archive, compressed with <C>gzip</C>
+</Item>
+<Mark><F>.tar.bz2</F></Mark>
+<Item>
+  a standard UNIX <C>tar</C> archive, compressed with <C>bzip2</C>
+</Item>
+<Mark><F>-win.zip</F></Mark>
+<Item>
+  an archive in <C>zip</C> format, where text files should have 
+  DOS/Windows style line breaks
+</Item>
+</List>
+<P/>
+For convenience of possible users it is sensible that you provide an
+archive of your package in at least one of these formats. 
+<P/>
+For example, if you wish to supply a <F>.tar.gz</F> archive,
+you may create it with the command
+<P/>
+&nbsp;<C>tar -cvzf package-name-version.tar.gz package-name</C>
+<P/>
+<Alt Only="LaTeX">\noindent</Alt>
 The <F>etc</F> directory obtained from <C>tools.tar.gz</C> 
 (described  above in 
 Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>) 
 contains a file <F>packpack</F>  which  provides  a  more  versatile
 packing-up script.  
 <P/>
-The releases of &GAP; packages are independent of releases of &GAP;.
-Therefore &GAP; packages should be wrapped up in separate files that can be
-installed onto any version of &GAP;. Similarly a &GAP; package can be
-upgraded any time without the need to wait for new releases of &GAP;.
+In the past, it was recommended that your &GAP; package should be packed
+with the <F>zoo</F> archiver. We do not redistribute <F>.zoo</F> archives
+since &GAP;&nbsp;4.5, but we still accept package archives in <F>.zoo</F> 
+format for backwards compatibility, if no other formats are available.
 <P/>
-Because it is independent of the version of &GAP;, a &GAP; package should be
-archived from the &GAP; <F>pkg</F>  directory,
-that is all files are archived with the path starting at the package's name.
+Because the release of the &GAP; package is independent of the version 
+of &GAP;, a &GAP; package should be wrapped up in separate file that 
+can be installed onto any version of &GAP;. In this way, a package can 
+be upgraded any time without the need to wait for new &GAP; releases.
+To ensure this, the package should be archived from the &GAP; <F>pkg</F> 
+directory, that is all files are archived with the path starting at the 
+package's name.
 <P/>
 <Index Key="GAPDocManualLab"><C>GAPDocManualLab</C></Index>
 The archive of  a &GAP; package should contain all  files necessary for the
@@ -1541,30 +1572,6 @@ and the <F>manual.lab</F> file is needed if the main manuals or another
 package is referring to your package.
 Use the command <C>GAPDocManualLab( packagename );</C> to create this file
 for your help books if you use &GAPDoc;.)
-<P/>
-Currently, the &GAP; distribution provides archives in three different
-formats.
-<P/>
-<List>
-<Mark><F>.tar.gz</F></Mark>
-<Item>
-  a standard UNIX <C>tar</C> archive,
-  compressed with <C>gzip</C>
-</Item>
-<Mark><F>.tar.bz2</F></Mark>
-<Item>
-  a standard UNIX <C>tar</C> archive,
-  compressed with <C>bzip2</C>
-</Item>
-<Mark><F>-win.zip</F></Mark>
-<Item>
-  an archive in <C>zip</C> format,
-  where text files should have DOS/Windows style line breaks
-</Item>
-</List>
-<P/>
-For convenience of possible users it is sensible that you archive your
-package also in one or several of these formats. 
 <P/>
 
 For packages which are redistributed via the &GAP; Web site, 
@@ -1782,6 +1789,7 @@ always returning names of components in the same order.
 <Section Label="Checklists">
 <Heading>Checklists</Heading>
 
+<Index>checklists</Index>
 <Subsection Label="Package release checklist">
 <Heading>Package release checklist</Heading>
 
