@@ -714,7 +714,7 @@ For example, for this package it currently produces the following output:
 <Log><![CDATA[
 gap> ShowPackageVariables("example");
 ----------------------------------------------------------------
-Loading  Example 3.1 (Example/Template of a GAP Package)
+Loading  Example 3.3 (Example/Template of a GAP Package)
 by Werner Nickel (http://www.mathematik.tu-darmstadt.de/~nickel),
    Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble), and
    Alexander Konovalov (http://www.cs.st-andrews.ac.uk/~alexk/).
@@ -1281,8 +1281,8 @@ file close to the place where you specified its <C>Version</C> and
 <C>Date</C> components, for example
 <Log><![CDATA[
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.1">
-##  <!ENTITY RELEASEDATE "14/09/2011">
+##  <!ENTITY VERSION "3.3">
+##  <!ENTITY RELEASEDATE "11/11/2011">
 ##  <#/GAPDoc>
 ]]></Log>
 notify <Ref Func="MakeGAPDocDoc" BookName="gapdoc"/> that a part of the
