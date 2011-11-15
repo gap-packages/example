@@ -1311,13 +1311,13 @@ directory of the &GAP; distribution as documented in
 <P/>
 For a deposited package, a test file with a basic test of the package 
 (for example, to check that it works as expected and/or that the manual 
-examples are correct) may be specified in the <F>PackageInfo.g</F> to be 
-included in the GAP standard test suite. This file can either consist of 
-<Ref BookName="ref" Oper="ReadTest"/> calls (in this case, it is common
-to call it <F>testall.g</F>) or be itself a test file having an extension
-<F>.tst</F> and supposed to be read via <Ref BookName="ref" Oper="ReadTest"/>. 
-It is assumed that the latter case occurs if and only if the file contains 
-the substring<P/>
+examples are correct) may be specified in the component <C>TestFile</C>
+in the <F>PackageInfo.g</F> to be included in the GAP standard test suite. 
+This file can either consist of <Ref BookName="ref" Oper="ReadTest"/> 
+calls (in this case, it is common to call it <F>testall.g</F>) or be 
+itself a test file having an extension <F>.tst</F> and supposed to be 
+read via <Ref BookName="ref" Oper="ReadTest"/>. It is assumed that the 
+latter case occurs if and only if the file contains the substring<P/>
 &nbsp;<C>"gap> START_TEST("</C>
 <P/>
 <Alt Only="LaTeX">\noindent</Alt>
