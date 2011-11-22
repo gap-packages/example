@@ -684,7 +684,7 @@ be loaded via <C>ReadPackage</C> statements in the <F>init.g</F> file.
 <P/>
 
 <Index Key="ShowPackageVariables"><C>ShowPackageVariables</C></Index>
-In conclusion, here is some practical advise on how to check which variables
+In conclusion, here is some practical advice on how to check which variables
 are used by the package.
 <P/>
 Firstly, there is a function 
@@ -827,7 +827,7 @@ applies to test files and manual examples, which may be simply extended
 by calls to <Ref BookName="ref" Func="LoadPackage"/>.
 <P/>
 
-Secondly, it may happen that a package B that is listed as a suggested 
+It may happen that a package B that is listed as a suggested 
 package of package A is actually needed by A. 
 If no explicit <Ref BookName="ref" Func="LoadPackage"/> calls for B 
 occur in A at loading time, this can now be detected using
@@ -929,7 +929,7 @@ packages are also read, and afterwards the above rule holds.)
 <Index Key="OnlyNeeded"><C>OnlyNeeded</C> option</Index>
 <Index Key="IsPackageMarkedForLoading"><C>IsPackageMarkedForLoading</C></Index>
 It can happen that some code of a package depends on the availability of
-suggested packages, i.&nbsp;e., different initializations are performed
+suggested packages, i.e., different initializations are performed
 depending on whether a suggested package will eventually be loaded or not.
 One can test this condition with the function
 <Ref Func="IsPackageMarkedForLoading" BookName="ref"/>.
@@ -1164,7 +1164,7 @@ Some &GAP; packages use kernel modules
 instead of external binaries.
 A kernel module is implemented in C and follows certain conventions to 
 comply with the &GAP; kernel interface, which we plan to document later. 
-In the meantime, we advice you to look at existing examples of such packages 
+In the meantime, we advise you to look at existing examples of such packages 
 and get in touch with &GAP; developers if you plan to develop such a package. 
 
 </Subsection>

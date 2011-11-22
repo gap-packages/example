@@ -1,3 +1,8 @@
+Version 3.3.1:
+* Clarified that the standard test file of the package has to be specified
+  in the .TestFile component of the PackageInfo.g file as suggested by Max
+  Horn.
+
 Version 3.3.0: 2011/11/11
 * Implemented a series of suggestions by Chris Wensley
   (improved explanations, fixed typos, extended index)
