@@ -58,10 +58,10 @@ A &GAP; package should have an alphanumeric name (<A>package-name</A>, say);
 mixed case is fine, but there should  be  no  whitespaces. 
 All files of a &GAP; package <A>package-name</A> must be collected in a 
 single directory <A>package-dir</A>, where <A>package-dir</A> should  be
-just <A>package-name</A> converted to lowercase (the restriction that
-<A>package-dir</A> must contain only lowercase characters may change in 
-the future). Let us call this directory the <E>home directory</E> of the 
-package.
+just <A>package-name</A> preferably converted to lowercase and optionally 
+followed by the package version (with or without hyphen to separate the
+version from <A>package-name</A>). 
+Let us call this directory the <E>home directory</E> of the package.
 <P/>
 To use the  package with &GAP;, the directory <A>package-dir</A> must 
 be a subdirectory of a <F>pkg</F> directory in (one of) the &GAP; root 
