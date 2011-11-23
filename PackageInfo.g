@@ -258,8 +258,9 @@ AbstractHTML :=
 ##      - give the paths to the files inside your package directory
 ##        which are needed for the online manual (either as URL .Archive
 ##        if you pack them into a separate archive, or as list 
-##        .ArchiveURLSubset of directory and file names which should be 
-##        copied from your package archive, given in .ArchiveURL above
+##        .ArchiveURLSubset of names of directories and/or files which 
+##        should be copied from your package archive, given in .ArchiveURL 
+##        above (in most cases, ["doc"] or ["doc","htm"] suffices).
 ##  
 ##  For links to other GAP or package manuals you can assume a relative 
 ##  position of the files as in a standard GAP installation.
