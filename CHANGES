@@ -1,3 +1,7 @@
+Version 3.3.2: 2011/11/23
+* Improved the description of .ArchiveURLSubset component, which also 
+  allows directories, in the PackageInfo.g file
+
 Version 3.3.1: 2011/11/22
 * Clarified that the standard test file of the package has to be specified
   in the .TestFile component of the PackageInfo.g file as suggested by Max
