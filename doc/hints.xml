@@ -1419,7 +1419,7 @@ first you must start a new &GAP; session with the following command
 gap -N -A -x 80 -r -m 100m -o 512m
 ]]></Log>
 After that load your package and run either <F>testinstall.g</F> or 
-<F>testinstall.g</F> as demonstrated below.
+<F>testall.g</F> as demonstrated below.
 <P/>
 
 The quicker test, <F>testinstall.g</F>, requires about 512MB of memory and 
