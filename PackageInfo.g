@@ -38,16 +38,16 @@ Subtitle := "Example/Template of a GAP Package and Guidelines for Package Author
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "3.3.2",
+Version := "3.3.3",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "23/11/2011",
+Date := "21/02/2012",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.3.2">
-##  <!ENTITY RELEASEDATE "23 November 2011">
+##  <!ENTITY VERSION "3.3.3">
+##  <!ENTITY RELEASEDATE "21 February 2012">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -122,7 +122,8 @@ ArchiveFormats := ".tar.gz",
 ##     IsAuthor := true;
 ##     IsMaintainer := true;
 ##  
-##     # At least one of the following three entries must be given.
+##     # At least one of the following three entries must be given 
+##     # for each maintainer of the package:
 ##     # - preferably email address and WWW homepage
 ##     # - postal address not needed if email or WWW address available
 ##     # - if no contact known, specify postal address as "no address known"
@@ -289,13 +290,13 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.5",
+  GAP := "4.5.3",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
   # without these, the package will not load
-  # NeededOtherPackages := [["GAPDoc", "1.3"]],
-  NeededOtherPackages := [["GAPDoc", "1.3"]],
+  # NeededOtherPackages := [["GAPDoc", "1.5"]],
+  NeededOtherPackages := [["GAPDoc", "1.5"]],
 
   # list of pairs [package name, version] as above,
   # these package are will be loaded if they are available,
