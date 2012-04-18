@@ -1,3 +1,12 @@
+Version 3.4.0: 2012/04/18
+* Removed PackageDoc.Archive from PackageInfo.g
+* Fixed cross-reference to "GAP Root Directories"
+* Extended description of 'make testpackagesload' test
+
+Version 3.3.3: 2012/02/21
+* Fixed a typo in section "Testing a GAP package with the GAP standard 
+  test suite"
+  
 Version 3.3.2: 2011/11/23
 * Improved the description of .ArchiveURLSubset component, which also 
   allows directories, in the PackageInfo.g file

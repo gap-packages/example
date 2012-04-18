@@ -38,16 +38,16 @@ Subtitle := "Example/Template of a GAP Package and Guidelines for Package Author
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "3.3.3",
+Version := "3.4.0",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "21/02/2012",
+Date := "18/04/2012",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.3.3">
-##  <!ENTITY RELEASEDATE "21 February 2012">
+##  <!ENTITY VERSION "3.4.0">
+##  <!ENTITY RELEASEDATE "18 April 2012">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -257,8 +257,7 @@ AbstractHTML :=
 ##      - if there is a PDF-version the path to the .pdf-file,
 ##        relative to the package home directory (.PDFFile)
 ##      - give the paths to the files inside your package directory
-##        which are needed for the online manual (either as URL .Archive
-##        if you pack them into a separate archive, or as list 
+##        which are needed for the online manual (as a list 
 ##        .ArchiveURLSubset of names of directories and/or files which 
 ##        should be copied from your package archive, given in .ArchiveURL 
 ##        above (in most cases, ["doc"] or ["doc","htm"] suffices).
@@ -271,8 +270,6 @@ PackageDoc := rec(
   # use same as in GAP            
   BookName  := "Example",
   # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zoo.
-  Archive := 
-      Concatenation( ~.PackageWWWHome, "exampledoc-", ~.Version, ".tar.gz" ),
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

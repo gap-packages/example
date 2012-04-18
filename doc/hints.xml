@@ -65,7 +65,7 @@ Let us call this directory the <E>home directory</E> of the package.
 <P/>
 To use the  package with &GAP;, the directory <A>package-dir</A> must 
 be a subdirectory of a <F>pkg</F> directory in (one of) the &GAP; root 
-directories (see <Ref Sect="GAP Root Directory" BookName="ref"/>).
+directories (see <Ref Sect="GAP Root Directories" BookName="ref"/>).
 For  example, if  &GAP; is  installed in <F>/usr/local/gap4</F> then the
 files of the package <C>MyPack</C> may be placed in the directory 
 <F>/usr/local/gap4/pkg/mypack</F>.
@@ -448,7 +448,7 @@ Since there are no requirements that have to be tested,
 Now start &GAP; (without using the <C>-r</C> option) and the <F>.gap</F>
 directory will be added to the &GAP; root directory to
 allow &GAP; to find the packages installed there
-(see <Ref Sect="GAP Root Directory" BookName="ref"/>).
+(see <Ref Sect="GAP Root Directories" BookName="ref"/>).
 <P/>
 <Log><![CDATA[
 gap> LoadPackage("test");
@@ -1382,9 +1382,63 @@ but may cause difficulties to the users of specialised packages.
 <P/>
 For your convenience, <C>make testpackagesload</C> called in the &GAP; 
 root directory will run all package loading tests listed in this subsection 
-and write their output in its <C>dev/log</C> directory. If you observe that 
-<Ref Func="LoadAllPackages"/> is broken and suspect that this is not 
-the fault of your package, please contact the &GAP; Support.
+and write their output in its <C>dev/log</C> directory. 
+<P/>
+It will produce four files with test logs, corresponding to the 
+four cases above (the letter <C>N</C> in the filename stands for 
+<Q>needed</Q>, <C>A</C> stands for <Q>autoloaded</Q>):
+<List>
+<Item>
+<F>dev/log/testpackagesload1_...</F> 
+</Item>
+<Item>
+<F>dev/log/testpackagesloadN1_...</F>
+</Item>
+<Item>
+<F>dev/log/testpackagesloadA_...</F>
+</Item>
+<Item>
+<F>dev/log/testpackagesloadNA_...</F>
+</Item>
+</List>
+Each file contains small sections for loading individual packages: among those,
+you need to find the section related to your package and may ignore all other 
+sections. For example, the section for the &Example; package looks like 
+<Log><![CDATA[
+%%% Loading example 3.3.3
+[  ]
+### Loaded example 3.3.3
+]]></Log>
+so it has clearly passed the test. If there are any error messages displayed
+between <C>Loading ...</C> and <C>Loaded ...</C> lines, they will signal on
+errors during loading of your package.
+<P/>
+Additionally, this test collects information about variables created since
+the library was read (obtained using <Ref Func="NamesUserGVars" BookName="ref"/>)
+with either short names (no more than three characters) or names breaking a 
+recommended naming convention that the &GAP; core system and &GAP; packages 
+should not use global variables starting in the lowercase 
+(see Section <Ref Sect="Functions and Variables and Choices of Their Names"/>).
+Their list will be displayed in the test log (in the example above, &Example;
+packages does not create any such variables, so an empty list is displayed). 
+It may be hard to attribute a particular identifier to a package, since it 
+may be created by another package loaded because of dependencies, so when 
+a more detailed and precise report on package variables is needed, it may 
+be obtained using <Ref Func="ShowPackageVariables" BookName="ref"/>
+(also, <C>make testpackagesvars</C> called in the &GAP; root directory 
+produces such reports for each package and writes them to a file
+<F>dev/log/testpackagesvars_...</F>).
+<P/>
+Finally, each log file finishes with two large sections for loading all 
+packages in the alphabetical and reverse aplhabetical order (to check more 
+combinations of loading one package after another). We are aiming at 
+releasing only collections of package which do not break 
+<Ref Func="LoadAllPackages"/> in any of the four configurations, so if 
+it is broken when you plug in the development version of your package into 
+the released version of &GAP;, it is likely that your package triggers 
+this error. If you observe that <Ref Func="LoadAllPackages"/> is broken 
+and suspect that this is not the fault of your package, please contact 
+the &GAP; Support.
 </Subsection>
 
 <ManSection>
@@ -1721,7 +1775,7 @@ still loaded if present.
 
 <Item>
 Optional <File>~/.gap</File> directory for user's customisations which may contain e.g.
-locally installed packages (see <Ref BookName="ref" Sect="GAP Root Directory"/>). 
+locally installed packages (see <Ref BookName="ref" Sect="GAP Root Directories"/>). 
 If package installation instructions explain how to install the package in a 
 non-standard location, they may need an update. This is intended to replace
 <File>.gaprc</File> files, but those are still supported for backwards 
@@ -1869,7 +1923,8 @@ The following checklist may be used by package authors, members of the
         files);
     </Item>
     <Item>
-        contain files with correct line breaks;
+        contain files with correct line breaks for the given format 
+        (see <Ref Sect="Wrapping up a GAP Package"/>);
     </Item>
     <Item>
         contain no hidden system files and directories that are not supposed 

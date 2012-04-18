@@ -18,7 +18,7 @@ from the <Q>Download</Q> section of the &GAP; website, you may proceed
 to Section <Ref Sect="Compiling Binaries of the Example Package"/>.
 Alternatively, the &Example; package may be installed using a separate archive,
 for example, for an update or an installation in a non-default location 
-(see <Ref Sect="GAP Root Directory" BookName="ref"/>).
+(see <Ref Sect="GAP Root Directories" BookName="ref"/>).
 <P/>
 
 Below we describe the installation procedure for the <File>.tar.gz</File> 
