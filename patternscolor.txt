@@ -30,6 +30,7 @@
 +tst/*
 # individual files
 +CHANGES
++GPL
 +README
 +configure
 +Makefile.in
