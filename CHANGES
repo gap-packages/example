@@ -1,3 +1,7 @@
+Version 3.4.1:
+* Improved description of `AvailabilityTest' function from Example's 
+  package PackageInfo.g file
+
 Version 3.4.0: 2012/04/18
 * Removed PackageDoc.Archive from PackageInfo.g
 * Fixed cross-reference to "GAP Root Directories"
