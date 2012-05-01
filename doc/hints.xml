@@ -1115,10 +1115,12 @@ AvailabilityTest := function()
 ...
 ]]></Log>
 <P/>
-As you may see in the <F>PackageInfo.g</F> file of the 
-<Package>example</Package> package, its
+However, if you look at the actual <F>PackageInfo.g</F> file of the 
+<Package>example</Package> package, you will see that its
 <C>AvailabilityTest</C> function always returns <K>true</K>,
-and just prints the warnings if the binary is not available.
+and just logs the warning if the binary is not available 
+(which may be later viewed with 
+<Ref Func="DisplayPackageLoadingLog" BookName="ref"/>).
 This means that the binary is not regarded as essential for this
 package.
 <P/>
