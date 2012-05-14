@@ -827,13 +827,15 @@ applies to test files and manual examples, which may be simply extended
 by calls to <Ref BookName="ref" Func="LoadPackage"/>.
 <P/>
 
+<Index Key="OnlyNeeded" Subkey="option"><C>OnlyNeeded</C></Index>
 It may happen that a package B that is listed as a suggested 
 package of package A is actually needed by A. 
 If no explicit <Ref BookName="ref" Func="LoadPackage"/> calls for B 
 occur in A at loading time, this can now be detected using
 the new possibility to load a package without loading its suggested
-packages using the global option <C>OnlyNeeded</C> 
-(see <Ref BookName="ref" Func="LoadPackage"/> for further details); 
+packages using the global option <C>OnlyNeeded</C> which 
+can be used to (recursively) suppress loading the suggested packages
+of the package in question;
 this way, one can check whether errors or warnings appear when B is not 
 available. The consequence can then be either to turn B into a needed package 
 or (since apparently B was not intended to become a needed package) to change
@@ -926,7 +928,6 @@ as soon as the &GAP; library has been read, the <F>read.g</F> files of these
 packages are also read, and afterwards the above rule holds.)
 <P/>
 
-<Index Key="OnlyNeeded"><C>OnlyNeeded</C> option</Index>
 <Index Key="IsPackageMarkedForLoading"><C>IsPackageMarkedForLoading</C></Index>
 It can happen that some code of a package depends on the availability of
 suggested packages, i.e., different initializations are performed
@@ -937,9 +938,8 @@ In particular, one should <E>not</E> call
 (and use the value returned by this call) the function
 <Ref Func="LoadPackage" BookName="ref"/> inside
 package code that is read during package loading.
-Note that loading suggested packages may have been deliberately disabled,
-via the global option <C>OnlyNeeded</C> 
-(see <Ref Func="LoadPackage" BookName="ref"/>).
+Note that for debugging purposes loading suggested packages may 
+have been deliberately disabled, via the global option <C>OnlyNeeded</C>.
 <P/>
 
 Note that the separation of the &GAP; code of packages into declaration
