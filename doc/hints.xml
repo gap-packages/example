@@ -1270,6 +1270,12 @@ ensure that  version  numbers  of  successive  package  versions increase.
 The automatic update of package archives in the  &GAP; distribution will
 only work if a package has a new version number.
 <P/>
+It is very important that there should not ever be, for a given &GAP; 
+package, two different archives with the same package version number. 
+If you make changes to your package and place a new archive of the 
+package onto the public server, please ensure that a new archive has 
+a new version number. This should be done even for very minor changes.
+<P/>
 For most of the packages it will be inappropriate to re-use the date 
 of the release as a version number. It's much more obvious how big are
 the changes between versions "4.4.12", "4.5.1" and "4.5.2" than between 
