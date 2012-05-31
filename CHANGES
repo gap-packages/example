@@ -1,4 +1,6 @@
-Version 3.4.1:
+Version 3.4.1: 2012/05/31
+* Additionally emphasized importance of not having two different archives 
+  with the same package version number
 * Improved description of `AvailabilityTest' function from Example's 
   package PackageInfo.g file
 
