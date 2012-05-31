@@ -1569,7 +1569,7 @@ or (at your option) any later version.
 
 <!-- TODO: also accept .zip archives -->
 
-Currently, the &GAP; distribution provides archives in three different
+Currently, the &GAP; distribution provides archives in four different
 formats.
 <P/>
 <List>
@@ -1580,6 +1580,11 @@ formats.
 <Mark><F>.tar.bz2</F></Mark>
 <Item>
   a standard UNIX <C>tar</C> archive, compressed with <C>bzip2</C>
+</Item>
+<Mark><F>.zip</F></Mark>
+<Item>
+  an archive in <C>zip</C> format, where text files should have 
+  UNIX style line breaks
 </Item>
 <Mark><F>-win.zip</F></Mark>
 <Item>
@@ -1633,7 +1638,7 @@ for your help books if you use &GAPDoc;.)
 For packages which are redistributed via the &GAP; Web site, 
 we offer an automatic conversion of any of the formats listed 
 above to all the others. To use this service, you can provide any of 
-the three archive formats or even more than one, however you should 
+the four archive formats or even more than one, however you should 
 adhere to the following rule: text files in <File>.tar.gz</File> 
 and <File>.tar.bz2</File> archives must have UNIX style line breaks, 
 while text files in <File>-win.zip</File> archives must have 
