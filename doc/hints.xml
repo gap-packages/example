@@ -835,11 +835,14 @@ occur in A at loading time, this can now be detected using
 the new possibility to load a package without loading its suggested
 packages using the global option <C>OnlyNeeded</C> which 
 can be used to (recursively) suppress loading the suggested packages
-of the package in question;
-this way, one can check whether errors or warnings appear when B is not 
-available. The consequence can then be either to turn B into a needed package 
-or (since apparently B was not intended to become a needed package) to change
-the code accordingly. 
+of the package in question. Using this option, one can check whether 
+errors or warnings appear when B is not available (note that this option
+should be used only for such checks to simulate the situation when 
+package B is not available; it is not supposed to be used in an actual
+&GAP; session when package B will be loaded later, since this may cause 
+problems). In case of any errors or warnings, their consequence can 
+then be either turning B into a needed package or (since apparently B 
+was not intended to become a needed package) changing the code accordingly. 
 Only if package A calls <Ref BookName="ref" Func="LoadPackage"/> for B at 
 loading time (see above) then package B needs to be <E>deinstalled</E> 
 (i.e. removed) to test loading of A without B.
@@ -939,7 +942,7 @@ In particular, one should <E>not</E> call
 <Ref Func="LoadPackage" BookName="ref"/> inside
 package code that is read during package loading.
 Note that for debugging purposes loading suggested packages may 
-have been deliberately disabled, via the global option <C>OnlyNeeded</C>.
+have been deliberately disabled via the global option <C>OnlyNeeded</C>.
 <P/>
 
 Note that the separation of the &GAP; code of packages into declaration
@@ -1378,10 +1381,9 @@ and calling <C>LoadPackage("your-package-name" : OnlyNeeded );</C>
 </Item>
 <Item> 
 finally, together with all other packages using 
-<Ref Func="LoadAllPackages"/> (see below) in eight possible combinations 
-( starting &GAP; with/without <C>-r -A</C> options;
-calling <Ref Func="LoadAllPackages"/> with/without <C>Reversed</C> option
-and with/without <C>OnlyNeeded</C> option); 
+<Ref Func="LoadAllPackages"/> (see below) in four possible combinations
+of starting &GAP; with/without <C>-r -A</C> options and calling 
+<Ref Func="LoadAllPackages"/> with/without <C>Reversed</C> option.
 </Item>
 </List>
 The test of loading all packages is the most subtle one. Quite often
@@ -1450,18 +1452,16 @@ the &GAP; Support.
 </Subsection>
 
 <ManSection>
-<Func Name="LoadAllPackages" Arg=": Reversed, OnlyNeeded"/>
+<Func Name="LoadAllPackages" Arg=": Reversed"/>
 <Description>
-loads all &GAP; packages, starting from the top of their list sorted
-in alphabetical order and then following dependencies.
-This is a technical function to check packages 
-compatibility, so it should NOT be used to run anything except tests; it 
-is known that &GAP; performance is slower if all packages are loaded. To
-allow variations of the order in which packages will be loaded,
-<Ref Func="LoadAllPackages"/> accepts one or both options: 
-<C>Reversed</C> and <C>OnlyNeeded</C> which will start from the list of 
-all packages in the reverse alphabetical order and which will load each package
-without loading its suggested packages, respectively.
+loads all &GAP; packages from their list sorted in alphabetical order 
+(needed and suggested packages will be loaded when required). This is a 
+technical function to check packages compatibility, so it should NOT be 
+used to run anything except tests; it is known that &GAP; performance is 
+slower if all packages are loaded. To introduce some variations of the 
+order in which packages will be loaded for testing purposes,
+<Ref Func="LoadAllPackages"/> accepts version <C>Reversed</C> to load 
+packages from their list sorted in the reverse alphabetical order.
 </Description>
 </ManSection>
 

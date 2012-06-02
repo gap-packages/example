@@ -1,3 +1,8 @@
+Version 3.4.2: 2012/06/02
+* Mentioned that OnlyNeeded option for LoadPackage is used only for testing
+  and debugging. Updated the description of 'make testpackagesload' target
+  which now does not use OnlyNeeded option in calls to LoadAllPackages.
+
 Version 3.4.1: 2012/05/31
 * Additionally emphasized importance of not having two different archives 
   with the same package version number
