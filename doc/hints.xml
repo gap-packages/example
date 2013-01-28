@@ -1273,6 +1273,12 @@ ensure that  version  numbers  of  successive  package  versions increase.
 The automatic update of package archives in the  &GAP; distribution will
 only work if a package has a new version number.
 <P/>
+It is a well-established custom to name package archives like
+<F>name-version.tar.gz</F>, <F>name-version.tar.bz2</F> etc.,
+where <C>name</C> is the lower case name, and <C>version</C> is 
+the version (another custom is that the archive then should extract 
+to a directory that has exactly the name <F>name-version</F>).
+<P/>
 It is very important that there should not ever be, for a given &GAP; 
 package, two different archives with the same package version number. 
 If you make changes to your package and place a new archive of the 
@@ -1284,7 +1290,6 @@ of the release as a version number. It's much more obvious how big are
 the changes between versions "4.4.12", "4.5.1" and "4.5.2" than between 
 versions "2008.12.17", "2011.04.15" and "2011.09.14".
 <P/>
-
 Since version information is duplicated in several places throughout the 
 package documentation, for &GAPDoc;-based manuals you may define the 
 version and the release manual in the comments in <F>PackageInfo.g</F> 
