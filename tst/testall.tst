@@ -31,7 +31,6 @@ gap> a:=Set(RecNames(FruitCake));
 gap> List(a, t -> Length(FruitCake.(t)));
 [ 17, 9, 6, 10, 2, 16, 46 ]
 
-
 #############################################################################
 # tasting the FruitCake :)
 gap> Recipe( FruitCake );
@@ -70,13 +69,13 @@ Method:
    temperature to 150 C and continue to bake cake for 1 1/2 hours.
 6. Allow to stand in tin for 15 mins. Then turn on to cake rack to cool.
 
+gap> STOP_TEST( "testall.tst", 10000 );
 ## The first argument of STOP_TEST should be the name of the test file.
 ## The number is a proportionality factor that is used to output a 
 ## "GAPstone" speed ranking after the file has been completely processed.
 ## For the files provided with the distribution this scaling is roughly 
 ## equalized to yield the same numbers as produced by the test file 
 ## tst/combinat.tst. For package tests, you may leave it unchnaged. 
-gap> STOP_TEST( "testall.tst", 10000 );
 
 #############################################################################
 ##
