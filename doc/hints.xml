@@ -690,7 +690,7 @@ are used by the package.
 Firstly, there is a function 
 <Ref Func="ShowPackageVariables" BookName="ref"/>. 
 If the package <A>pkgname</A> is available 
-but not yet loaded then <C>DisplayPackageVariables( pkgname )</C>
+but not yet loaded then <C>ShowPackageVariables( pkgname )</C>
 prints a list of global variables that become bound and of methods 
 that become installed when the package is loaded (for that, the package 
 will be actually loaded, so <C>ShowPackageVariables</C> can be called 
