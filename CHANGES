@@ -1,3 +1,6 @@
+Version 3.4.4: 2013/10/30
+* Corrected wrong name of a function reported by Chris Wensley
+
 Version 3.4.3: 2013/03/27
 * Added a suggestion about a naming scheme for package archives
 * Updated C syntax to avoid an error while compiling external binary with clang
