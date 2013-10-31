@@ -9,7 +9,7 @@
 
 This appendix explains the basics of how to write a &GAP; package so that
 it interfaces properly to &GAP;. For the role of &GAP; packages and the
-ways to load them, see Chapter&nbsp;<Ref Chap="GAP Packages" BookName="ref"/>.
+ways to load them, see Chapter&nbsp;<Ref Chap="Using GAP Packages" BookName="ref"/>.
 <P/>
 
 There are two basic aspects of creating a &GAP; package. 
