@@ -1648,7 +1648,14 @@ for your help books if you use &GAPDoc;.)
 
 For packages which are redistributed via the &GAP; Web site, 
 we offer an automatic conversion of any of the formats listed 
-above to all the others. To use this service, you can provide any of 
+above to all the others (note that this, as well as wrapping 
+the &GAP; distribution as a single archive containing the 
+core system and all currently redistributed packages, will 
+change file timestamps, so one should not rely on them anywhere 
+in the package).
+<P/>
+
+To use the conversion and repackaging service, you can provide any of 
 the four archive formats or even more than one, however you should 
 adhere to the following rule: text files in <File>.tar.gz</File> 
 and <File>.tar.bz2</File> archives must have UNIX style line breaks, 
@@ -1693,7 +1700,7 @@ recommended, of course). If things will go wrong, it is possible that one
 (or indeed all) created archives have wrong line breaks.
 <P/>
 
-Utility functions available in <File>gap4r5/lib/lbutil.g</File>, namely
+Utility functions available in <File>gap4r7/lib/lbutil.g</File>, namely
 <C>DosUnixLinebreaks</C>, <C>UnixDosLinebreaks</C>, <C>MacUnixLinebreaks</C>
 may be helpful. They are described in the comments to their source code.
 
