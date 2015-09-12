@@ -225,6 +225,28 @@ README_URL :=
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 
+##  Optional:
+##    - Type and the URL of the source code repository
+##    - URL of the public issue tracker
+##    - Support email address
+##
+##  SourceRepository :=
+##    rec( Type := "git/hg/svn/cvs", # must be one of "git", "hg", "svn", "cvs"
+##         URL  := "http://hosting-service.com/mypackage"),
+##  IssueTrackerURL := "http://issue-tracker.com/mypackage",
+##  SupportEmail := "support@mypackage.org",
+#
+# SourceRepository :=
+#    rec( Type := "git/hg/svn/cvs", # must be one of "git", "hg", "svn", "cvs"
+#         URL := ""),
+# IssueTrackerURL := "",
+# SupportEmail := "",
+
+SourceRepository :=
+  rec( Type := "git", URL := "https://github.com/gap-system/example"),
+IssueTrackerURL := "https://github.com/gap-system/example/issues",
+SupportEmail := "alexk@mcs.st-andrews.ac.uk",
+
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
 ##  for a Webpage with more detailed information about the package
