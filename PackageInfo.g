@@ -231,13 +231,13 @@ PackageInfoURL :=
 ##    - Support email address
 ##
 ##  SourceRepository :=
-##    rec( Type := "git/hg/svn/cvs", # must be one of "git", "hg", "svn", "cvs"
+##    rec( Type := "vcs", # e.g. "git", "hg", "svn", "cvs", etc.
 ##         URL  := "http://hosting-service.com/mypackage"),
 ##  IssueTrackerURL := "http://issue-tracker.com/mypackage",
 ##  SupportEmail := "support@mypackage.org",
-#
+##
 # SourceRepository :=
-#    rec( Type := "git/hg/svn/cvs", # must be one of "git", "hg", "svn", "cvs"
+#    rec( Type := "git/hg/svn/cvs", # edit as necessary
 #         URL := ""),
 # IssueTrackerURL := "",
 # SupportEmail := "",
