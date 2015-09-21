@@ -755,7 +755,7 @@ which should be avoided is when the package uses some simply named temporary
 variables at the loading stage. Such <Q>phantom</Q> variables may then remain 
 unnoticed and, as a result, there will be no warnings if the user occasionally 
 uses the same name as a local variable name in a function. Even more 
-dangerous is the case when the user variable with the same already exists 
+dangerous is the case when the user variable with the same name already exists 
 before the package is loaded so it will be silently overwritten.
 
 </Section>
