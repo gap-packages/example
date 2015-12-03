@@ -1329,10 +1329,10 @@ For a deposited package, a test file with a basic test of the package
 (for example, to check that it works as expected and/or that the manual 
 examples are correct) may be specified in the component <C>TestFile</C>
 in the <F>PackageInfo.g</F> to be included in the GAP standard test suite. 
-This file can either consist of <Ref BookName="ref" Oper="ReadTest"/> 
+This file can either consist of <Ref BookName="ref" Oper="Test"/>
 calls (in this case, it is common to call it <F>testall.g</F>) or be 
 itself a test file having an extension <F>.tst</F> and supposed to be 
-read via <Ref BookName="ref" Oper="ReadTest"/>. It is assumed that the 
+read via <Ref BookName="ref" Oper="Test"/>. It is assumed that the
 latter case occurs if and only if the file contains the substring<P/>
 &nbsp;<C>"gap> START_TEST("</C>
 <P/>
@@ -1346,11 +1346,9 @@ does not display any output (e.g. no test progress indicators) except
 reporting discrepancies if such occur and the completion report as
 in the example below:
 <Log><![CDATA[
-gap> ReadTest("tst/testall.tst");
-Line 50 : 
-+ Example package: testall.tst
-Line 50 : 
-+ GAP4stones: 10000
+gap> Test("tst/testall.tst");
+Example package: testall.tst
+GAP4stones: 3333
 true
 ]]></Log>
 Tests which produce extended output and/or requires substantial runtime
@@ -1522,7 +1520,7 @@ You may repeat the same check loading your package with <C>OnlyNeeded</C>
 option. Remember to perform each subsequent test in a new &GAP; session.
 <P/>
 Also you may perform individual tests from the <F>tst</F> directory of the 
-&GAP; installation loading them with <Ref Func="ReadTest" BookName="ref"/>,
+&GAP; installation loading them with <Ref Func="Test" BookName="ref"/>,
 for example, the file <F>bugfix.tst</F>.
 <P/>
 
