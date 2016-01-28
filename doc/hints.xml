@@ -1617,11 +1617,6 @@ Section&nbsp;<Ref Sect="Writing Documentation and Tools Needed"/>)
 contains a file <F>packpack</F>  which  provides  a  more  versatile
 packing-up script.  
 <P/>
-In the past, it was recommended that your &GAP; package should be packed
-with the <F>zoo</F> archiver. We do not redistribute <F>.zoo</F> archives
-since &GAP;&nbsp;4.5, but we still accept package archives in <F>.zoo</F> 
-format for backwards compatibility, if no other formats are available.
-<P/>
 Because the release of the &GAP; package is independent of the version 
 of &GAP;, a &GAP; package should be wrapped up in separate file that 
 can be installed onto any version of &GAP;. In this way, a package can 

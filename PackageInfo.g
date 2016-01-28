@@ -291,7 +291,7 @@ AbstractHTML :=
 PackageDoc := rec(
   # use same as in GAP            
   BookName  := "Example",
-  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zoo.
+  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zip.
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
