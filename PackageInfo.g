@@ -53,6 +53,30 @@ Date := "02/02/2017",
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
 
+##  Optional:
+##    - Type and the URL of the source code repository
+##    - URL of the public issue tracker
+##    - Support email address
+##
+##  SourceRepository :=
+##    rec( Type := "vcs", # e.g. "git", "hg", "svn", "cvs", etc.
+##         URL  := "http://hosting-service.com/mypackage"),
+##  IssueTrackerURL := "http://issue-tracker.com/mypackage",
+##  SupportEmail := "support@mypackage.org",
+##
+# SourceRepository :=
+#    rec( Type := "git/hg/svn/cvs", # edit as necessary
+#         URL := ""),
+# IssueTrackerURL := "",
+# SupportEmail := "",
+
+SourceRepository := rec(
+    Type := "git",
+    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
+),
+IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+SupportEmail := "alexander.konovalov@st-andrews.ac.uk",
+
 ##  URL of the archive(s) of the current package release, but *without*
 ##  the format extension(s), like '.tar.gz' or '-win.zip', which are given next.
 ##  The archive file name *must be changed* with each version of the archive
@@ -225,30 +249,6 @@ README_URL :=
   Concatenation( ~.PackageWWWHome, "/README" ),
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-
-##  Optional:
-##    - Type and the URL of the source code repository
-##    - URL of the public issue tracker
-##    - Support email address
-##
-##  SourceRepository :=
-##    rec( Type := "vcs", # e.g. "git", "hg", "svn", "cvs", etc.
-##         URL  := "http://hosting-service.com/mypackage"),
-##  IssueTrackerURL := "http://issue-tracker.com/mypackage",
-##  SupportEmail := "support@mypackage.org",
-##
-# SourceRepository :=
-#    rec( Type := "git/hg/svn/cvs", # edit as necessary
-#         URL := ""),
-# IssueTrackerURL := "",
-# SupportEmail := "",
-
-SourceRepository := rec(
-    Type := "git",
-    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
-),
-IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-SupportEmail := "alexander.konovalov@st-andrews.ac.uk",
 
 ##  Here you  must provide a short abstract explaining the package content 
 ##  in HTML format (used on the package overview Web page) and an URL 
