@@ -1,3 +1,9 @@
+Version 3.5.0: 2017/02/02
+* Moving the package website to GitHub
+* Removed any mentions of .zoo format
+* Replaced obsolte ReadTest by Test
+* Added PackageInfo.g components for repository, issue tracker and support email.
+
 Version 3.4.5: 2014/10/28
 * Remark on repackaging package archives
 
