@@ -38,20 +38,20 @@ Subtitle := "Example/Template of a GAP Package and Guidelines for Package Author
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "3.5.0",
+Version := "3.5.1",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "02/02/2017",
+Date := "04/02/2017",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.5.0">
-##  <!ENTITY RELEASEDATE "2 February 2017">
+##  <!ENTITY VERSION "3.5.1">
+##  <!ENTITY RELEASEDATE "4 February 2017">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
-  Concatenation( "https://gap-packages.github.io/", ~.PackageName ),
+  Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
 ##  Optional:
 ##    - Type and the URL of the source code repository
@@ -72,7 +72,7 @@ PackageWWWHome :=
 
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/gap-packages/", ~.PackageName ),
+    URL := Concatenation( "https://github.com/gap-packages/", LowercaseString( ~.PackageName ) ),
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
 SupportEmail := "alexander.konovalov@st-andrews.ac.uk",
@@ -246,7 +246,7 @@ Status := "deposited",
 ##  and updating of the package in the GAP distribution.
 #
 README_URL := 
-  Concatenation( ~.PackageWWWHome, "/README" ),
+  Concatenation( ~.PackageWWWHome, "/README.md" ),
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
