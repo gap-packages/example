@@ -250,11 +250,9 @@ README_URL :=
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
-##  Here you  must provide a short abstract explaining the package content 
-##  in HTML format (used on the package overview Web page) and an URL 
-##  for a Webpage with more detailed information about the package
-##  (not more than a few lines, less is ok):
-##  Please, use '<span class="pkgname">GAP</span>' and
+##  Provide a short (up to a few lines) abstract in HTML format, explaining
+##  the package content. This text will be displayed on the package overview
+##  Web page. Please use '<span class="pkgname">GAP</span>' for GAP and
 ##  '<span class="pkgname">MyPKG</span>' for specifing package names.
 ##  
 # AbstractHTML := "This package provides  a collection of functions for \
