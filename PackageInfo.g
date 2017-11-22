@@ -229,7 +229,7 @@ Status := "deposited",
 ##  You must provide the next two entries if and only if the status is 
 ##  "accepted" because is was successfully refereed:
 # format: 'name (place)'
-# CommunicatedBy := "Mike Atkinson (St. Andrews)",
+# CommunicatedBy := "Mike Atkinson (St Andrews)",
 #CommunicatedBy := "",
 # format: mm/yyyy
 # AcceptDate := "08/1999",
