@@ -16,9 +16,10 @@ little functionality except for being a package.
 See Sections&nbsp;<Ref Sect="Unpacking the Example Package"/>,
 <Ref Sect="Compiling Binaries of the Example Package"/>
 and&nbsp;<Ref Sect="Loading the Example Package"/>
-for  how  to  install, compile and  load  the  &Example;  package,  or
-Appendix&nbsp;<Ref Chap="Guidelines for Writing a GAP Package"/>
-for guidelines on how  to  write  a &GAP; package.
+for  how  to  install, compile and  load  the  &Example;  package.
+<P/>
+If you are interested in developing a &GAP; package, see
+<Ref Chap="Using and Developing GAP Packages" BookName="ref"/>.
 <P/>
 If you are viewing this with on-line help, type: 
 <P/>

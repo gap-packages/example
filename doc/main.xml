@@ -13,7 +13,7 @@
 
 <TitlePage>
   <Title>&Example;</Title>
-  <Subtitle>Example/Template of a &GAP; Package and Guidelines for Package Authors</Subtitle>
+  <Subtitle>Example/Template of a &GAP; Package</Subtitle>
   <Version>Version &VERSION;</Version>
   <Date>&RELEASEDATE;</Date>
   <Author> Werner Nickel
@@ -53,8 +53,6 @@
 <#Include SYSTEM "install.xml">
 
 </Body>
-
-<#Include SYSTEM "hints.xml">
 
 <TheIndex/>
 
