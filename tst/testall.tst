@@ -69,6 +69,9 @@ Method:
    temperature to 150 C and continue to bake cake for 1 1/2 hours.
 6. Allow to stand in tin for 15 mins. Then turn on to cake rack to cool.
 
+# Testing the external binary
+gap> IsBoundGlobal("HelloWorld");
+true
 gap> STOP_TEST( "testall.tst", 10000 );
 ## The first argument of STOP_TEST should be the name of the test file.
 ## The number is a proportionality factor that is used to output a 
