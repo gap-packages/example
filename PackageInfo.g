@@ -401,7 +401,7 @@ BannerString := Concatenation(
 ##  if the file contains the string 'gap> START_TEST('.
 ##  For deposited packages, these tests are run regularly, as a part of the
 ##  standard GAP test suite.
-TestFile := "tst/testall.tst",
+TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
