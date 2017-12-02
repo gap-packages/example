@@ -33,7 +33,7 @@ PackageName := "Example",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "Example/Template of a GAP Package and Guidelines for Package Authors",
+Subtitle := "Example/Template of a GAP Package",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
@@ -261,8 +261,7 @@ PackageInfoURL :=
 AbstractHTML := 
   "The <span class=\"pkgname\">Example</span> package, as its name suggests, \
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
-   package. It has little functionality except for being a package, however, \
-   it contains an extensive appendix with guidelines for package authors.",
+   package. It has little functionality except for being a package.",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
@@ -310,7 +309,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.5.3",
+  GAP := "4.8",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
@@ -406,7 +405,7 @@ TestFile := "tst/testall.g",
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template", "package creation guidelines"]
+Keywords := ["package example", "package template"]
 
 ));
 
