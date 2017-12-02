@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/gap-packages/example.svg?branch=master)](https://travis-ci.org/gap-packages/example)
+[![Code Coverage](https://codecov.io/github/gap-packages/example/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/example)
+
 # The Example package
 
 * Website: gap-packages.github.io/example/
