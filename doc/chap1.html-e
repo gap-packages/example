@@ -42,7 +42,7 @@
 
 <p>See Sections <a href="chap2.html#X7A671E2078C9770B"><span class="RefLink">2.1</span></a>, <a href="chap2.html#X79E203C779518B3D"><span class="RefLink">2.2</span></a> and <a href="chap2.html#X7A242BA97D904EDF"><span class="RefLink">2.3</span></a> for how to install, compile and load the <strong class="pkg">Example</strong> package.</p>
 
-<p>If you are interested in developing a <strong class="pkg">GAP</strong> package, see <span class="RefLink">???</span>.</p>
+<p>If you are interested in developing a <strong class="pkg">GAP</strong> package, see <a href="../../../doc/ref/chap76.html#X79F76C1E834BFDCC"><span class="RefLink">Reference: Using and Developing GAP Packages</span></a>.</p>
 
 <p>If you are viewing this with on-line help, type:</p>
 
@@ -63,21 +63,21 @@
 
 <h5>1.1-1 ListDirectory</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListDirectory</code>( [<var class="Arg">dir</var>] )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ListDirectory</code>( [<var class="Arg">dir</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>lists the files in directory <var class="Arg">dir</var> (a string) or the current directory if called with no arguments.</p>
 
 <p><a id="X841462157B10C113" name="X841462157B10C113"></a></p>
 
 <h5>1.1-2 FindFile</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FindFile</code>( <var class="Arg">directory_name</var>, <var class="Arg">file_name</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FindFile</code>( <var class="Arg">directory_name</var>, <var class="Arg">file_name</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>searches for the file <var class="Arg">file_name</var> in the directory tree rooted at <var class="Arg">directory_name</var> and returns the absolute path names of all occurrences of this file as a list of strings.</p>
 
 <p><a id="X7856BE147FCE91AC" name="X7856BE147FCE91AC"></a></p>
 
 <h5>1.1-3 LoadedPackages</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LoadedPackages</code>(  )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LoadedPackages</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>returns a list with the names of the packages that have been loaded so far. All this does is execute</p>
 
 
@@ -91,7 +91,7 @@
 
 <h5>1.1-4 Which</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Which</code>( <var class="Arg">prg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Which</code>( <var class="Arg">prg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>returns the path of the program executed if <code class="code">Exec(<var class="Arg">prg</var>);</code> is called, e.g.</p>
 
 
@@ -106,7 +106,7 @@ Fri 28 Jan 2011 16:22:53 GMT
 
 <h5>1.1-5 WhereIsPkgProgram</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WhereIsPkgProgram</code>( <var class="Arg">prg</var> )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; WhereIsPkgProgram</code>( <var class="Arg">prg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>returns a list of paths of programs with name <var class="Arg">prg</var> in the current packages loaded. Try:</p>
 
 
@@ -118,21 +118,21 @@ Fri 28 Jan 2011 16:22:53 GMT
 
 <h5>1.1-6 HelloWorld</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HelloWorld</code>(  )</td><td class="tdright">( function )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; HelloWorld</code>(  )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>executes the C program <code class="code">hello</code> provided by the <strong class="pkg">Example</strong> package.</p>
 
 <p><a id="X84DA2EEC8534A70D" name="X84DA2EEC8534A70D"></a></p>
 
 <h5>1.1-7 FruitCake</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FruitCake</code></td><td class="tdright">( global variable )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FruitCake</code></td><td class="tdright">(&nbsp;global variable&nbsp;)</td></tr></table></div>
 <p>is a record with the bits and pieces needed to make a boiled fruit cake. Its fields satisfy the criteria for <code class="func">Recipe</code> (<a href="chap1.html#X85B83BDB83B1C910"><span class="RefLink">1.1-8</span></a>).</p>
 
 <p><a id="X85B83BDB83B1C910" name="X85B83BDB83B1C910"></a></p>
 
 <h5>1.1-8 Recipe</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Recipe</code>( <var class="Arg">cake</var> )</td><td class="tdright">( operation )</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Recipe</code>( <var class="Arg">cake</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>displays the recipe for cooking <var class="Arg">cake</var>, where <var class="Arg">cake</var> is a record satisfying certain criteria explained here: its recognised fields are <code class="code">name</code> (a string giving the type of cake or cooked item), <code class="code">ovenTemp</code> (a string), <code class="code">cookingTime</code> (a string), <code class="code">ingredients</code> (a list of strings each containing an <code class="code">_</code> which is used to line up the entries and is replaced by a blank), <code class="code">method</code> (a list of steps, each of which is a string or list of strings), and <code class="code">notes</code> (a list of strings). The global variable <code class="func">FruitCake</code> (<a href="chap1.html#X84DA2EEC8534A70D"><span class="RefLink">1.1-7</span></a>) provides an example of such a string.</p>
 
 
