@@ -1,3 +1,13 @@
+Version 4.0.0: 2017/12/10
+* Preparations for the release of GAP 4.9: appendix to the Example package
+  manual with the guidance for package authors moved from this package to
+  the GAP Reference manual
+* Switch to TestDirectory and demonstration how to use multiple test files
+* Updated instructions for AbstractHTML in the PackageInfo.g file
+
+Version 3.5.1: 2017/02/04
+* README file renamed to README.md with text converted to markdown
+
 Version 3.5.0: 2017/02/02
 * Moving the package website to GitHub
 * Removed any mentions of .zoo format

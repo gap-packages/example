@@ -38,16 +38,16 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "3.5.1",
+Version := "4.0.0",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "04/02/2017",
+Date := "10/12/2017",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.5.1">
-##  <!ENTITY RELEASEDATE "4 February 2017">
+##  <!ENTITY VERSION "4.0.0">
+##  <!ENTITY RELEASEDATE "10 December 2017">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
