@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#A  testall.tst            Example package                Alexander Konovalov
+#A  hello.tst              Example package                Alexander Konovalov
 ##
 ##  To create a test file, place GAP prompts, input and output exactly as
 ##  they must appear in the GAP session. Do not remove lines containing 
@@ -72,13 +72,11 @@ Method:
 # Testing the external binary
 gap> IsBoundGlobal("HelloWorld");
 true
-gap> STOP_TEST( "testall.tst", 10000 );
+
+## Each test file should finish with the call of STOP_TEST.
 ## The first argument of STOP_TEST should be the name of the test file.
-## The number is a proportionality factor that is used to output a 
-## "GAPstone" speed ranking after the file has been completely processed.
-## For the files provided with the distribution this scaling is roughly 
-## equalized to yield the same numbers as produced by the test file 
-## tst/combinat.tst. For package tests, you may leave it unchnaged. 
+## The second argument is redundant and is used for backwards compatibility.
+gap> STOP_TEST( "testall.tst", 10000 );
 
 #############################################################################
 ##
