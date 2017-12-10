@@ -88,7 +88,7 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">RecNames( GAPInfo.PackagesLoaded );</span>
 </pre></div>
 
-<p>You might like to check out some of the other information in the <code class="code">GAPInfo</code> record (see <a href="https://www.gap-system.org/Manuals/doc/ref/chap3_mj.html#X8354754E7935F935"><span class="RefLink">Reference: GAPInfo</span></a>).</p>
+<p>You might like to check out some of the other information in the <code class="code">GAPInfo</code> record (see <a href="../../../doc/ref/chap3_mj.html#X8354754E7935F935"><span class="RefLink">Reference: GAPInfo</span></a>).</p>
 
 <p><a id="X7838D0477D8C0571" name="X7838D0477D8C0571"></a></p>
 

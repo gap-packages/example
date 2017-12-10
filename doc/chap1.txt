@@ -6,7 +6,10 @@
   except for being a package.[133X
   
   [33X[0;0YSee  Sections [14X2.1[114X,  [14X2.2[114X  and [14X2.3[114X  for  how  to install, compile and load the
-  [5XExample[105X package, or Appendix [14XA[114X for guidelines on how to write a [5XGAP[105X package.[133X
+  [5XExample[105X package.[133X
+  
+  [33X[0;0YIf  you are interested in developing a [5XGAP[105X package, see [14XUsing and Developing
+  GAP Packages???[114X.[133X
   
   [33X[0;0YIf you are viewing this with on-line help, type:[133X
   

@@ -1,7 +1,7 @@
 name: Example
-version: 3.5.1
-date: 04/02/2017
-description: Example/Template of a GAP Package and Guidelines for Package Authors
+version: 4.0.0
+date: 10/12/2017
+description: Example/Template of a GAP Package
 
 authors:
     - name: Werner Nickel
@@ -17,7 +17,7 @@ maintainers:
     - name: Alexander Konovalov
       url: http://www.cs.st-andrews.ac.uk/~alexk/
 
-GAP: "4.5.3"
+GAP: "4.8"
 
 needed-pkgs:
     - name: "GAPDoc"
@@ -30,9 +30,9 @@ packageinfo: https://gap-packages.github.io/example/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/example/releases/download/v3.5.1/Example-3.5.1.tar.gz
+      url: https://github.com/gap-packages/example/releases/download/v4.0.0/Example-4.0.0.tar.gz
 
-abstract: The <span class="pkgname">Example</span> package, as its name suggests,    is an example of how to create a <span class="pkgname">GAP</span>    package. It has little functionality except for being a package, however,    it contains an extensive appendix with guidelines for package authors.
+abstract: The <span class="pkgname">Example</span> package, as its name suggests,    is an example of how to create a <span class="pkgname">GAP</span>    package. It has little functionality except for being a package.
 
 status: deposited
 doc-html: doc/chap0.html

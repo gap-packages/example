@@ -33,21 +33,21 @@ PackageName := "Example",
 
 ##  This may be used by a default banner or on a Web page, should fit on
 ##  one line.
-Subtitle := "Example/Template of a GAP Package and Guidelines for Package Authors",
+Subtitle := "Example/Template of a GAP Package",
 
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "3.5.1",
+Version := "4.0.0",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "04/02/2017",
+Date := "10/12/2017",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "3.5.1">
-##  <!ENTITY RELEASEDATE "4 February 2017">
+##  <!ENTITY VERSION "4.0.0">
+##  <!ENTITY RELEASEDATE "10 December 2017">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -229,7 +229,7 @@ Status := "deposited",
 ##  You must provide the next two entries if and only if the status is 
 ##  "accepted" because is was successfully refereed:
 # format: 'name (place)'
-# CommunicatedBy := "Mike Atkinson (St. Andrews)",
+# CommunicatedBy := "Mike Atkinson (St Andrews)",
 #CommunicatedBy := "",
 # format: mm/yyyy
 # AcceptDate := "08/1999",
@@ -250,11 +250,9 @@ README_URL :=
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
-##  Here you  must provide a short abstract explaining the package content 
-##  in HTML format (used on the package overview Web page) and an URL 
-##  for a Webpage with more detailed information about the package
-##  (not more than a few lines, less is ok):
-##  Please, use '<span class="pkgname">GAP</span>' and
+##  Provide a short (up to a few lines) abstract in HTML format, explaining
+##  the package content. This text will be displayed on the package overview
+##  Web page. Please use '<span class="pkgname">GAP</span>' for GAP and
 ##  '<span class="pkgname">MyPKG</span>' for specifing package names.
 ##  
 # AbstractHTML := "This package provides  a collection of functions for \
@@ -263,8 +261,7 @@ PackageInfoURL :=
 AbstractHTML := 
   "The <span class=\"pkgname\">Example</span> package, as its name suggests, \
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
-   package. It has little functionality except for being a package, however, \
-   it contains an extensive appendix with guidelines for package authors.",
+   package. It has little functionality except for being a package.",
 
 ##  Here is the information on the help books of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
@@ -312,7 +309,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.5.3",
+  GAP := "4.8",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
@@ -403,12 +400,12 @@ BannerString := Concatenation(
 ##  if the file contains the string 'gap> START_TEST('.
 ##  For deposited packages, these tests are run regularly, as a part of the
 ##  standard GAP test suite.
-TestFile := "tst/testall.tst",
+TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template", "package creation guidelines"]
+Keywords := ["package example", "package template"]
 
 ));
 
