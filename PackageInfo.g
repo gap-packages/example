@@ -289,9 +289,7 @@ AbstractHTML :=
 ##  
 # in case of several help books give a list of such records here:
 PackageDoc := rec(
-  # use same as in GAP            
   BookName  := "Example",
-  # format/extension can be one of .tar.gz, .tar.bz2, -win.zip, .zip.
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",
