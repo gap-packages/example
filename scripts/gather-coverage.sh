@@ -6,7 +6,7 @@ if [[ -n $NO_COVERAGE ]]; then
     exit 0
 fi
 
-GAP="$GAPROOT/bin/gap.sh -l $PWD; --quitonbreak -q"
+GAP="$GAPROOT/bin/gap.sh -l $PWD/externpkgs; --quitonbreak -q"
 
 # generate library coverage reports
 $GAP -a 500M -m 500M -q <<GAPInput

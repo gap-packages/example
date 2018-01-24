@@ -20,5 +20,6 @@ elif [[ -x configure ]]; then
     make -j4
 fi
 
-# trick to allow the package directory to be used as a GAP root dir
-ln -s . pkg
+# trick to allow the package directory to be found in a GAP root dir
+mkdir externpkgs
+ln -s $PWD externpkgs/pkg
