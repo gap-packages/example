@@ -1,3 +1,8 @@
+Version 4.1.0: 2017/04/26
+* Demonstrate how to set up Travis CI and CodeCov
+* Don't mention PreloadFile in PackageInfo.g
+* Use C99 init for StructInitInfo
+
 Version 4.0.0: 2017/12/10
 * Preparations for the release of GAP 4.9: appendix to the Example package
   manual with the guidance for package authors moved from this package to
