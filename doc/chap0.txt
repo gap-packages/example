@@ -6,10 +6,10 @@
                        [1XExample/Template of a [5XGAP[105X Package[101X
   
   
-                                 Version 4.0.0
+                                 Version 4.1.0
   
   
-                                10 December 2017
+                                 26 April 2018
   
   
                                  Werner Nickel
