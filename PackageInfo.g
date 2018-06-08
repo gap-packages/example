@@ -387,13 +387,15 @@ BannerString := Concatenation(
     "For help, type: ?Example package \n",
     "----------------------------------------------------------------\n" ),
 
-##  *Optional*, but recommended: path relative to package root to a file which 
-##  contains as many tests of the package functionality as sensible.
-##  The file can either consist of 'Test' calls or be a test file to be read
-##  via 'Test' itself; it is assumed that the latter case occurs if and only
-##  if the file contains the string 'gap> START_TEST('.
-##  For deposited packages, these tests are run regularly, as a part of the
-##  standard GAP test suite.
+##  *Optional*, but recommended: path relative to package root to a file
+##  which contains a short test (to run for no more than several minutes)
+##  which may be used to check that a package works as expected.
+##  This file can either consist of 'Test' calls or be a test file to be
+##  read via 'Test' itself; it is assumed that the latter case occurs if
+##  and only if the file contains the string 'gap> START_TEST('. For
+##  deposited packages, these tests are run regularly as a part of the
+##  standard GAP test suite. See  '?Tests files for a GAPpackage',
+##  '?TestPackage', and also '?TestDirectory' for more information.
 TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
