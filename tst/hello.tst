@@ -19,50 +19,6 @@ gap> START_TEST("Example package: testall.tst");
 # Note that you may use comments in the test file
 # and also separate parts of the test by empty lines
 
-# Check that the data are consistent  
-gap> a:=Set(RecNames(FruitCake));
-[ "cookingTime", "ingredients", "method", "name", "notes", "ovenTemp", "tin" ]
-gap> List(a, t -> Length(FruitCake.(t)));
-[ 17, 9, 6, 10, 2, 16, 46 ]
-
-#############################################################################
-# tasting the FruitCake :)
-gap> Recipe( FruitCake );
-
-                               Fruit Cake Recipe
-
-Notes:
-1. 1 cup is approx. 225ml
-2. 1 bottle is 750ml
-
-Oven Temp: 160 C then 150 C.
-
-Cooking Time: 2/3 + 1 1/2 hours.
-
-Tin: 18cm square or 20cm round, greased and papered.
-
-Ingredients:
-            3/4 cup sugar (optional)
-            1/3 bottle brandy
-    2 1/2 + 1/3 cups mixed fruit + mixed peel + glace cherries + figs
-              1 tsp nutmeg (or mixed spice)
-              1 tsp bicarbonate of soda (NaHCO3)
-      1/2 - 3/4 cup butter (125g - 200g)
-              2 beaten eggs
-              1 cup SR flour (i.e. flour with yeast added)
-              1 cup plain flour
-
-Method:
-1. Preheat oven to 160 C.
-2. Collect ingredients.
-3. In a saucepan place (sugar,) water, fruit, peel,  cherries,  diced
-   figs, nutmeg, soda, brandy and butter and stir them until boiling.
-   Allow to cool for 5 minutes.
-4. Sift flours and stir in the flour and eggs, and mix thoroughly.
-5. Place in  tin  and  bake  at 160 C  for  40 minutes.  Then reduce
-   temperature to 150 C and continue to bake cake for 1 1/2 hours.
-6. Allow to stand in tin for 15 mins. Then turn on to cake rack to cool.
-
 # Testing the external binary
 gap> IsBoundGlobal("HelloWorld");
 true
