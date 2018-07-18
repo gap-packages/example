@@ -1,13 +1,7 @@
 ---
 layout: default
 ---
-<<<<<<< HEAD
-<pre>
-{% include_relative README.md %}
-</pre>
-=======
 {% capture my_include %}{% include_relative {{ site.data.package.readme }} %}{% endcapture %}
 {% if site.data.package.readme == 'README.md' %}
 {{ my_include | markdownify }}
 {% else %}<pre>{{ my_include }}</pre>{% endif %}
->>>>>>> 80d52327706ef695b7dee696f9cbcc11ee11272d
