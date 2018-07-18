@@ -1,4 +1,10 @@
-Version 4.1.0: 2017/04/26
+Version 4.1.1: 2018/07/18
+* Update the description of the TestFile component in the PackageInfo.g file
+* The method for Recipe required a fix because RecNames is not guaranteed to
+  return a list of component names in a particular order
+* Removed some unnecessary commands from test files
+
+Version 4.1.0: 2018/04/26
 * Demonstrate how to set up Travis CI and CodeCov
 * Don't mention PreloadFile in PackageInfo.g
 * Use C99 init for StructInitInfo
