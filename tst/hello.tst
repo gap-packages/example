@@ -19,12 +19,6 @@ gap> START_TEST("Example package: testall.tst");
 # Note that you may use comments in the test file
 # and also separate parts of the test by empty lines
 
-# First load the package without banner (the banner must be suppressed to 
-# avoid reporting discrepancies in the case when the package is already 
-# loaded)
-gap> LoadPackage("example",false);
-true
-
 # Check that the data are consistent  
 gap> a:=Set(RecNames(FruitCake));
 [ "cookingTime", "ingredients", "method", "name", "notes", "ovenTemp", "tin" ]
