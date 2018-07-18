@@ -38,16 +38,16 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.1.0",
+Version := "4.1.1",
 ##  Release date of the current version in dd/mm/yyyy format.
 ##
-Date := "26/04/2018",
+Date := "18/07/2018",
 ##  Optional: if the package manual uses GAPDoc, you may duplicate the 
 ##  version and the release date as shown below to read them while building
 ##  the manual using GAPDoc facilities to distibute documents across files.
 ##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "4.1.0">
-##  <!ENTITY RELEASEDATE "26 April 2018">
+##  <!ENTITY VERSION "4.1.1">
+##  <!ENTITY RELEASEDATE "18 July 2018">
 ##  <#/GAPDoc>
 
 PackageWWWHome :=
@@ -387,13 +387,15 @@ BannerString := Concatenation(
     "For help, type: ?Example package \n",
     "----------------------------------------------------------------\n" ),
 
-##  *Optional*, but recommended: path relative to package root to a file which 
-##  contains as many tests of the package functionality as sensible.
-##  The file can either consist of 'Test' calls or be a test file to be read
-##  via 'Test' itself; it is assumed that the latter case occurs if and only
-##  if the file contains the string 'gap> START_TEST('.
-##  For deposited packages, these tests are run regularly, as a part of the
-##  standard GAP test suite.
+##  *Optional*, but recommended: path relative to package root to a file
+##  which contains a short test (to run for no more than several minutes)
+##  which may be used to check that a package works as expected.
+##  This file can either consist of 'Test' calls or be a test file to be
+##  read via 'Test' itself; it is assumed that the latter case occurs if
+##  and only if the file contains the string 'gap> START_TEST('. For
+##  deposited packages, these tests are run regularly as a part of the
+##  standard GAP test suite. See  '?Tests files for a GAPpackage',
+##  '?TestPackage', and also '?TestDirectory' for more information.
 TestFile := "tst/testall.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
