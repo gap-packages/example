@@ -181,7 +181,9 @@ InstallMethod( Recipe, "record", [ IsRecord ],
     local field, blanks, str, ingredient, pos, step, lines, line;
       Print( "\n" );
       blanks := "                                ";
-      for field in RecNames( cake ) do
+      # give the list of field names to print them in particular order
+      for field in [ "name", "notes", "ovenTemp", "cookingTime",
+                     "tin", "ingredients", "method" ] do
         if field <> "name" then
           str := ReplacedString(field, "T", " T");
           Print( CHARS_UALPHA{[ Position(CHARS_LALPHA, str[1]) ]},
