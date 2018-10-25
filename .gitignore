@@ -18,3 +18,8 @@ doc/*.six
 doc/*.tex
 doc/*.toc
 doc/*.txt
+
+/Makefile
+/bin/
+/gh-pages/
+/tmp/
