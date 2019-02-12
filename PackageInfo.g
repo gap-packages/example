@@ -50,6 +50,13 @@ Date := "18/07/2018",
 ##  <!ENTITY RELEASEDATE "18 July 2018">
 ##  <#/GAPDoc>
 
+## Optional: license of the package, as an SPDX short-form identifiers;
+## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
+## <https://spdx.org/licenses> for a list of supported licenses.
+## You can also combine multiple licenses via SPDX License Expressions,
+## see <https://spdx.org/ids-how>, and more.
+License := "GPL-2.0-or-later",
+
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
 
