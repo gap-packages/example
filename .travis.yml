@@ -1,31 +1,36 @@
 language: c
 env:
   global:
-    - GAPROOT=gaproot
-    - COVDIR=coverage
+    # For details how this works, and what other configurations you
+    # can make, please look at <https://github.com/gap-system/pkg-ci-scripts>
+    #- GAP_PKGS_TO_CLONE="SomeOtherPackage"
+    #- GAP_PKGS_TO_BUILD="io profiling SomeOtherPackage" # note: io and profiling always must be built
 
 addons:
   apt_packages:
     - libgmp-dev
     - libreadline-dev
-    - libgmp-dev:i386
-    - libreadline-dev:i386
-    - gcc-multilib
-    - g++-multilib
+    - zlib1g-dev
 
 matrix:
   include:
-    - env: GAPBRANCH=master ABI=64
-    - env: GAPBRANCH=master ABI=32
-    - env: GAPBRANCH=stable-4.9
+    - env: GAPBRANCH=master
     - env: GAPBRANCH=stable-4.10
+    - env: GAPBRANCH=stable-4.9
+    - env: GAPBRANCH=master ABI=32
+      addons:
+        apt_packages:
+          - libgmp-dev:i386
+          - libreadline-dev:i386
+          - zlib1g-dev:i386
+          - gcc-multilib
+          - g++-multilib
 
 branches:
   only:
     - master
 
 before_script:
-  - export GAPROOT="$HOME/gap"
   - git clone https://github.com/gap-system/pkg-ci-scripts.git scripts
   - scripts/build_gap.sh
 script:
