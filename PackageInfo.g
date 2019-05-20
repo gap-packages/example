@@ -39,16 +39,9 @@ Subtitle := "Example/Template of a GAP Package",
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := "4.1.1",
+
 ##  Release date of the current version in dd/mm/yyyy format.
-##
 Date := "18/07/2018",
-##  Optional: if the package manual uses GAPDoc, you may duplicate the 
-##  version and the release date as shown below to read them while building
-##  the manual using GAPDoc facilities to distibute documents across files.
-##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "4.1.1">
-##  <!ENTITY RELEASEDATE "18 July 2018">
-##  <#/GAPDoc>
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -177,14 +170,7 @@ Persons := [
     FirstNames    := "Werner",
     IsAuthor      := true,
     IsMaintainer  := false,
-    Email         := "nickel@mathematik.tu-darmstadt.de",
     WWWHome       := "http://www.mathematik.tu-darmstadt.de/~nickel",
-    PostalAddress := Concatenation( [
-                       "AG 2, Fachbereich Mathematik, TU Darmstadt\n",
-                       "Schlossgartenstr. 7, 64289 Darmstadt\n",
-                       "Germany" ] ),
-    Place         := "Darmstadt",
-    Institution   := "TU Darmstadt"
   ),
   rec( 
     LastName      := "Gamble",
@@ -426,7 +412,28 @@ TestFile := "tst/testall.g",
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template"]
+Keywords := ["package example", "package template"],
+
+##  *Optional*: If you are using AutoDoc, then you can specify content of
+##  the manual title page it creates for you here
+AutoDoc := rec(
+  TitlePage := rec(
+    Copyright := """
+      <Index>License</Index>
+      &copyright; 1997-2012 by Werner Nickel, Greg Gamble and Alexander Konovalov<P/>
+      &Example; package is free software;
+      you can redistribute it and/or modify it under the terms of the
+      <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+      as published by the Free Software Foundation; either version 2 of the License,
+      or (at your option) any later version.
+      """,
+    Acknowledgements := """
+      We appreciate very much all past and future comments, suggestions and
+      contributions to this package and its documentation provided by &GAP;
+      users and developers.
+      """,
+  ),
+),
 
 ));
 

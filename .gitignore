@@ -18,6 +18,8 @@ doc/*.six
 doc/*.tex
 doc/*.toc
 doc/*.txt
+doc/main.xml
+doc/title.xml
 
 /Makefile
 /bin/
