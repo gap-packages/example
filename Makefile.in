@@ -1,5 +1,5 @@
 # sample makefile
-CC=cc
+CC ?= cc
 GAPARCH=@GAPARCH@
 
 all: default
@@ -8,7 +8,7 @@ default: bin/$(GAPARCH)/hello
 
 bin/$(GAPARCH)/hello: src/hello.c
 	mkdir -p bin/$(GAPARCH)
-	$(CC) -o bin/$(GAPARCH)/hello src/hello.c
+	$(CC) -o bin/$(GAPARCH)/hello src/hello.c $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -rf bin
