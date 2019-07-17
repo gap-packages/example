@@ -1,3 +1,15 @@
+Version 4.2.0: 2019/07/17
+* PackageInfo.g: add License field
+* Document optional BannerFunction component, introduced in GAP 4.10
+  (see https://github.com/gap-system/gap/pull/2598)
+* Update setup for Travis CI integration to use scripts from a central
+  repository. This allows us to apply fixes and improvements to these
+  scripts for all packages, and also removes some clutter from package
+  repositories.
+* Update setup for ReleaseTools, in particular add the .release script
+* Use AutoDoc package to generate the manual
+* add CFLAGS and LDFLAGS, and do not use cc compiler by default
+
 Version 4.1.1: 2018/07/18
 * Update the description of the TestFile component in the PackageInfo.g file
 * The method for Recipe required a fix because RecNames is not guaranteed to
