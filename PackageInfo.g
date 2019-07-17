@@ -38,17 +38,17 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.1.1",
+Version := "4.2.0",
+
 ##  Release date of the current version in dd/mm/yyyy format.
-##
-Date := "18/07/2018",
-##  Optional: if the package manual uses GAPDoc, you may duplicate the 
-##  version and the release date as shown below to read them while building
-##  the manual using GAPDoc facilities to distibute documents across files.
-##  <#GAPDoc Label="PKGVERSIONDATA">
-##  <!ENTITY VERSION "4.1.1">
-##  <!ENTITY RELEASEDATE "18 July 2018">
-##  <#/GAPDoc>
+Date := "17/07/2019",
+
+## Optional: license of the package, as an SPDX short-form identifiers;
+## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
+## <https://spdx.org/licenses> for a list of supported licenses.
+## You can also combine multiple licenses via SPDX License Expressions,
+## see <https://spdx.org/ids-how>, and more.
+License := "GPL-2.0-or-later",
 
 PackageWWWHome :=
   Concatenation( "https://gap-packages.github.io/", LowercaseString( ~.PackageName ) ),
@@ -170,14 +170,7 @@ Persons := [
     FirstNames    := "Werner",
     IsAuthor      := true,
     IsMaintainer  := false,
-    Email         := "nickel@mathematik.tu-darmstadt.de",
     WWWHome       := "http://www.mathematik.tu-darmstadt.de/~nickel",
-    PostalAddress := Concatenation( [
-                       "AG 2, Fachbereich Mathematik, TU Darmstadt\n",
-                       "Schlossgartenstr. 7, 64289 Darmstadt\n",
-                       "Germany" ] ),
-    Place         := "Darmstadt",
-    Institution   := "TU Darmstadt"
   ),
   rec( 
     LastName      := "Gamble",
@@ -387,6 +380,24 @@ BannerString := Concatenation(
     "For help, type: ?Example package \n",
     "----------------------------------------------------------------\n" ),
 
+##  *Optional*: if you need a custom BannerString but would like to include
+##  information in it that is only available once your package is being loaded
+##  (i.e., which is computed in your init.g file, such as the presence and
+##  versions of external software your package depends on), then you can
+##  use a BannerFunction instead. The difference is that the BannerString is
+##  usually computed when GAP starts, i.e., long before your init.g is run.
+##  While the BannerFunction is called right before the banner is to be
+##  displayed, which is after your init.g has been executed.
+##
+# BannerFunction := function(info)
+#       local l;
+#       # modify the default banner string, and insert something before
+#       # its last line (which is a separator string)
+#       l:=SplitString(DefaultPackageBannerString(info), "\n");
+#       Add(l, " ...  some extra information ... ", Length(l));
+#       return JoinStringsWithSeparator(l,"\n");
+#     end,
+
 ##  *Optional*, but recommended: path relative to package root to a file
 ##  which contains a short test (to run for no more than several minutes)
 ##  which may be used to check that a package works as expected.
@@ -401,7 +412,28 @@ TestFile := "tst/testall.g",
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template"]
+Keywords := ["package example", "package template"],
+
+##  *Optional*: If you are using AutoDoc, then you can specify content of
+##  the manual title page it creates for you here
+AutoDoc := rec(
+  TitlePage := rec(
+    Copyright := """
+      <Index>License</Index>
+      &copyright; 1997-2012 by Werner Nickel, Greg Gamble and Alexander Konovalov<P/>
+      &Example; package is free software;
+      you can redistribute it and/or modify it under the terms of the
+      <URL Text="GNU General Public License">http://www.fsf.org/licenses/gpl.html</URL>
+      as published by the Free Software Foundation; either version 2 of the License,
+      or (at your option) any later version.
+      """,
+    Acknowledgements := """
+      We appreciate very much all past and future comments, suggestions and
+      contributions to this package and its documentation provided by &GAP;
+      users and developers.
+      """,
+  ),
+),
 
 ));
 

@@ -1,15 +1,15 @@
   
   
-                                    [1X[5XExample[105X[101X
+                                   [1X Example [101X
   
   
-                       [1XExample/Template of a [5XGAP[105X Package[101X
+                      [1X Example/Template of a [5XGAP[105X Package [101X
   
   
-                                 Version 4.1.1
+                                     4.2.0
   
   
-                                  18 July 2018
+                                  17 July 2019
   
   
                                  Werner Nickel
@@ -21,14 +21,27 @@
   
   
   Werner Nickel
-      Email:    [7Xmailto:nickel@mathematik.tu-darmstadt.de[107X
       Homepage: [7Xhttp://www.mathematik.tu-darmstadt.de/~nickel[107X
   Greg Gamble
       Email:    [7Xmailto:gregg@math.rwth-aachen.de[107X
       Homepage: [7Xhttp://www.math.rwth-aachen.de/~Greg.Gamble[107X
+      Address:  [33X[0;14YGreg Gamble[133X
+                [33X[0;14YDepartment of Mathematics and Statistics[133X
+                [33X[0;14YCurtin University of Technology[133X
+                [33X[0;14YGPO Box U 1987[133X
+                [33X[0;14YPerth WA 6845[133X
+                [33X[0;14YAustralia[133X
+  
+  
   Alexander Konovalov
-      Email:    [7Xmailto:alexk@mcs.st-andrews.ac.uk[107X
+      Email:    [7Xmailto:alexander.konovalov@st-andrews.ac.uk[107X
       Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
+      Address:  [33X[0;14YSchool of Computer Science[133X
+                [33X[0;14YUniversity of St Andrews[133X
+                [33X[0;14YJack Cole Building, North Haugh,[133X
+                [33X[0;14YSt Andrews, Fife, KY16 9SX, Scotland[133X
+  
+  
   
   -------------------------------------------------------
   [1XCopyright[101X
