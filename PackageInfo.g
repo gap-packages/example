@@ -366,19 +366,23 @@ AvailabilityTest := function()
     return true;
   end,
 
-##  *Optional*: the LoadPackage mechanism can produce a default banner from
-##  the info in this file. If you are not happy with it, you can provide
+##  *Optional*: the LoadPackage mechanism produces a nice default banner from
+##  the info in this file. Normally, there is no need to change it, and we
+##  recommend that you don't as this minimizes work for everybody (you and the
+##  GAP team) on the long run.
+##
+##  However, if you reall think that you need a custom banner, you can provide
 ##  a string here that is used as a banner. GAP decides when the banner is 
 ##  shown and when it is not shown (note the ~-syntax in this example).
-BannerString := Concatenation( 
-    "----------------------------------------------------------------\n",
-    "Loading  Example ", ~.Version, "\n",
-    "by ",
-    JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
-                                    r -> Concatenation(
-        r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
-    "For help, type: ?Example package \n",
-    "----------------------------------------------------------------\n" ),
+# BannerString := Concatenation( 
+#     "----------------------------------------------------------------\n",
+#     "Loading  Example ", ~.Version, "\n",
+#     "by ",
+#     JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
+#                                     r -> Concatenation(
+#         r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
+#     "For help, type: ?Example package \n",
+#     "----------------------------------------------------------------\n" ),
 
 ##  *Optional*: if you need a custom BannerString but would like to include
 ##  information in it that is only available once your package is being loaded
