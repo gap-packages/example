@@ -142,10 +142,15 @@ ArchiveFormats := ".tar.gz",
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
 ##  
-##     # At least one of the following two entries must be given and set 
-##     # to 'true' (an entry can be left out if value is not 'true'):
-##     IsAuthor := true;
-##     IsMaintainer := true;
+##     # The following entries should be used to specify a role.
+##     # All combinations are possible: a person may be an author
+##     # and a maintainer simultaneously, only an author or a
+##     # maintainer, or a contributor who is neither an author nor a
+##     # maintainer (the latter option may be used to give credit to
+##     # contributors who are in neither of the two categories.
+##     # An entry can be left out if value is not 'true'.
+##     IsAuthor := true,
+##     IsMaintainer := true,
 ##  
 ##     # At least one of the following three entries must be given 
 ##     # for each maintainer of the package:
