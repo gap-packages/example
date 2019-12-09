@@ -1,3 +1,10 @@
+Version 4.2.1: 2019/12/09
+* PackageInfo.g: document that it is permitted for both IsAuthor and
+  IsMaintainer to be false to allow giving credit to contributors who
+  are neither authors nor maintainers.
+* PackageInfo.g: comment out BannerString and recommend to use a
+  default banner produced from the information in the PackageInfo.g file
+
 Version 4.2.0: 2019/07/17
 * PackageInfo.g: add License field
 * Document optional BannerFunction component, introduced in GAP 4.10
