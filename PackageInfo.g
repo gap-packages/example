@@ -38,10 +38,10 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.2.0",
+Version := "4.2.1",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "17/07/2019",
+Date := "09/12/2019",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -142,10 +142,15 @@ ArchiveFormats := ".tar.gz",
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
 ##  
-##     # At least one of the following two entries must be given and set 
-##     # to 'true' (an entry can be left out if value is not 'true'):
-##     IsAuthor := true;
-##     IsMaintainer := true;
+##     # The following entries should be used to specify a role.
+##     # All combinations are possible: a person may be an author
+##     # and a maintainer simultaneously, only an author or a
+##     # maintainer, or a contributor who is neither an author nor a
+##     # maintainer (the latter option may be used to give credit to
+##     # contributors who are in neither of the two categories.
+##     # An entry can be left out if value is not 'true'.
+##     IsAuthor := true,
+##     IsMaintainer := true,
 ##  
 ##     # At least one of the following three entries must be given 
 ##     # for each maintainer of the package:
@@ -366,19 +371,23 @@ AvailabilityTest := function()
     return true;
   end,
 
-##  *Optional*: the LoadPackage mechanism can produce a default banner from
-##  the info in this file. If you are not happy with it, you can provide
+##  *Optional*: the LoadPackage mechanism produces a nice default banner from
+##  the info in this file. Normally, there is no need to change it, and we
+##  recommend that you don't as this minimizes work for everybody (you and the
+##  GAP team) on the long run.
+##
+##  However, if you reall think that you need a custom banner, you can provide
 ##  a string here that is used as a banner. GAP decides when the banner is 
 ##  shown and when it is not shown (note the ~-syntax in this example).
-BannerString := Concatenation( 
-    "----------------------------------------------------------------\n",
-    "Loading  Example ", ~.Version, "\n",
-    "by ",
-    JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
-                                    r -> Concatenation(
-        r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
-    "For help, type: ?Example package \n",
-    "----------------------------------------------------------------\n" ),
+# BannerString := Concatenation( 
+#     "----------------------------------------------------------------\n",
+#     "Loading  Example ", ~.Version, "\n",
+#     "by ",
+#     JoinStringsWithSeparator( List( Filtered( ~.Persons, r -> r.IsAuthor ),
+#                                     r -> Concatenation(
+#         r.FirstNames, " ", r.LastName, " (", r.WWWHome, ")\n" ) ), "   " ),
+#     "For help, type: ?Example package \n",
+#     "----------------------------------------------------------------\n" ),
 
 ##  *Optional*: if you need a custom BannerString but would like to include
 ##  information in it that is only available once your package is being loaded
