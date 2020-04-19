@@ -23,7 +23,7 @@ However, this will require documenting more rules of kernel programming.
 
 #include <stdio.h>
 
-#include "src/compiled.h"
+#include "compiled.h"
 
 static Obj FuncHELLO_WORLD(Obj self)
 {
