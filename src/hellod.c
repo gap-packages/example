@@ -22,16 +22,18 @@ However, this will require documenting more rules of kernel programming.
 ****************************************************************************/
 
 #include <stdio.h>
+
 #include "src/compiled.h"
-   
-Obj FuncHELLO_WORLD( Obj self ) {
-  Pr("Hello World!\n",0L, 0L);
-  return (Obj) 0; 
-  }
 
-static StructGVarFunc GVarFuncs [] = {
+static Obj FuncHELLO_WORLD(Obj self)
+{
+    Pr("Hello World!\n", 0, 0);
+    return 0;
+}
 
-{ "HELLO_WORLD", 0, "", FuncHELLO_WORLD, "src/string.c:FuncHELLO_WORLD" },
+static StructGVarFunc mystruct [] = {
+
+    GVAR_FUNC(HELLO_WORLD, 0, ""),
 
 };
 
