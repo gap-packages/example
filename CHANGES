@@ -1,3 +1,14 @@
+Version 4.3.0: 2021/02/11
+* Require GAP 4.10
+* Move from Travis CI to GitHub Actions for automated tests
+* Reformat code and use `GVAR_FUNC` in the "Hello World!" example
+* Change #include "src/compiled.h" to just #include "compiled.h"
+  to allow future GAP versions to simplify their GAP_CPPFLAGS,
+  which currently need to contain `-I$(abs_srcdir)` just to
+  support this old use case. Also, this in turn makes it easier
+  to have package compatible with future installed version of GAP,
+  which have headers in `PREFIX/include/gap/`.
+ 
 Version 4.2.1: 2019/12/09
 * PackageInfo.g: document that it is permitted for both IsAuthor and
   IsMaintainer to be false to allow giving credit to contributors who
