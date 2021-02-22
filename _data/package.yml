@@ -1,6 +1,6 @@
 name: Example
-version: 4.2.1
-date: 2019-12-09
+version: 4.3.0
+date: 2021-02-22
 description: |
     Example/Template of a GAP Package
 
@@ -18,7 +18,7 @@ maintainers:
     - name: Alexander Konovalov
       url: http://www.cs.st-andrews.ac.uk/~alexk/
 
-GAP: "4.8"
+GAP: "4.10"
 
 needed-pkgs:
     - name: "GAPDoc"
@@ -31,7 +31,7 @@ packageinfo: https://gap-packages.github.io/example/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/example/releases/download/v4.2.1/Example-4.2.1.tar.gz
+      url: https://github.com/gap-packages/example/releases/download/v4.3.0/Example-4.3.0.tar.gz
 
 abstract: |
     The <span class="pkgname">Example</span> package, as its name suggests,    is an example of how to create a <span class="pkgname">GAP</span>    package. It has little functionality except for being a package.

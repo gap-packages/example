@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gap-packages/example.svg?branch=master)](https://travis-ci.org/gap-packages/example)
+[![Build Status](https://github.com/gap-packages/example/workflows/CI/badge.svg?branch=master)](https://github.com/gap-packages/example/actions?query=workflow%3ACI+branch%3Amaster)
 [![Code Coverage](https://codecov.io/github/gap-packages/example/coverage.svg?branch=master&token=)](https://codecov.io/gh/gap-packages/example)
 
 # The Example package
