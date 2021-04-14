@@ -57,6 +57,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: gap-actions/setup-gap@v2
+        with:
+          GAP_PKGS_TO_BUILD: ''
       - uses: gap-actions/build-pkg-docs@v1
         with:
           use-latex: 'true'
