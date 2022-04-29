@@ -1,6 +1,6 @@
 #############################################################################
 ##
-#A  hello.tst              Example package                Alexander Konovalov
+#A  hello.tst              Example package                 Olexandr Konovalov
 ##
 ##  To create a test file, place GAP prompts, input and output exactly as
 ##  they must appear in the GAP session. Do not remove lines containing 

@@ -45,4 +45,4 @@ on how to create a GAP package in the Appendix of the manual.
 Maintainers:
 * Werner Nickel (before 2002)
 * Greg Gamble (2002-2006)
-* Alexander Konovalov (since 2011)
+* Olexandr Konovalov (since 2011)

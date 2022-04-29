@@ -101,10 +101,15 @@ done by calling <Ref Func="LoadPackage" BookName="ref"/>:
 <Example><![CDATA[
 gap> LoadPackage("example");
 ----------------------------------------------------------------
-Loading  Example 3.3 (Example/Template of a GAP Package)
+Loading  Example 4.3.1 (Example/Template of a GAP Package)
 by Werner Nickel (http://www.mathematik.tu-darmstadt.de/~nickel),
    Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble), and
-   Alexander Konovalov (http://www.cs.st-andrews.ac.uk/~alexk/).
+   Olexandr Konovalov (https://alex-konovalov.github.io/).
+maintained by:
+   Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble) and
+   Olexandr Konovalov (https://alex-konovalov.github.io/).
+Homepage: https://gap-packages.github.io/example
+Report issues at https://github.com/gap-packages/example/issues
 ----------------------------------------------------------------
 true
 ]]></Example>
