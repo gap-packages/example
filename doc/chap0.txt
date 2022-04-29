@@ -6,17 +6,17 @@
                       [1X Example/Template of a [5XGAP[105X Package [101X
   
   
-                                     4.3.0
+                                     4.3.1
   
   
-                                22 February 2021
+                                 29 April 2022
   
   
                                  Werner Nickel
   
                                   Greg Gamble
   
-                              Alexander Konovalov
+                               Olexandr Konovalov
   
   
   
@@ -33,9 +33,9 @@
                 [33X[0;14YAustralia[133X
   
   
-  Alexander Konovalov
-      Email:    [7Xmailto:alexander.konovalov@st-andrews.ac.uk[107X
-      Homepage: [7Xhttp://www.cs.st-andrews.ac.uk/~alexk/[107X
+  Olexandr Konovalov
+      Email:    [7Xmailto:obk1@st-andrews.ac.uk[107X
+      Homepage: [7Xhttps://alex-konovalov.github.io/[107X
       Address:  [33X[0;14YSchool of Computer Science[133X
                 [33X[0;14YUniversity of St Andrews[133X
                 [33X[0;14YJack Cole Building, North Haugh,[133X
@@ -45,7 +45,7 @@
   
   -------------------------------------------------------
   [1XCopyright[101X
-  [33X[0;0Y© 1997-2012 by Werner Nickel, Greg Gamble and Alexander Konovalov[133X
+  [33X[0;0Y© 1997-2022 by Werner Nickel, Greg Gamble and Olexandr Konovalov[133X
   
   [33X[0;0Y[5XExample[105X  package  is free software; you can redistribute it and/or modify it
   under     the     terms     of    the    GNU    General    Public    License

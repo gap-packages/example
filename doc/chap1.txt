@@ -85,7 +85,7 @@
   
   [1X1.1-7 FruitCake[101X
   
-  [33X[1;0Y[29X[2XFruitCake[102X[32X global variable[133X
+  [33X[1;0Y[29X[2XFruitCake[102X [32X global variable[133X
   
   [33X[0;0Yis a record with the bits and pieces needed to make a boiled fruit cake. Its
   fields satisfy the criteria for [2XRecipe[102X ([14X1.1-8[114X).[133X
