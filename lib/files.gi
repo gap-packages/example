@@ -140,7 +140,7 @@ end );
 ##
 #V  FruitCake . . . . . . . . . . . . . things one needs to make a fruit cake
 ##
-InstallValue( FruitCake, rec( 
+BindGlobal( "FruitCake", rec(
     name        := "Fruit Cake",
     ovenTemp    := "160 C then 150 C",
     cookingTime := "2/3 + 1 1/2 hours",
