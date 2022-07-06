@@ -138,8 +138,8 @@ DeclareGlobalFunction( "HelloWorld" );
 ##  </Description>
 ##  </ManSection>
 ##  <#/GAPDoc>
-DeclareGlobalVariable( "FruitCake",
-   "record with the bits and pieces needed to make a boiled fruit cake");
+
+# this variable is defined in files.gi
 
 #############################################################################
 ##
