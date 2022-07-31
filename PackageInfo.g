@@ -38,10 +38,10 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.3.1",
+Version := "4.3.2",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "29/04/2022",
+Date := "01/08/2022",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -289,7 +289,7 @@ AbstractHTML :=
 PackageDoc := rec(
   BookName  := "Example",
   ArchiveURLSubset := ["doc"],
-  HTMLStart := "doc/chap0.html",
+  HTMLStart := "doc/chap0_mj.html",
   PDFFile   := "doc/manual.pdf",
   # the path to the .six file used by GAP's help system
   SixFile   := "doc/manual.six",
