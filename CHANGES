@@ -1,3 +1,6 @@
+Version 4.3.3: 2022-01-03
+* Enhance the `configure` script to accept `--with-gaproot=PATH`
+
 Version 4.3.2: 2022/08/01
 * Avoid using InstallValue
 
