@@ -38,10 +38,10 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Extending: Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.3.2",
+Version := "4.3.3",
 
 ##  Release date of the current version in dd/mm/yyyy format.
-Date := "01/08/2022",
+Date := "03/01/2023",
 
 ## Optional: license of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -251,7 +251,7 @@ PackageInfoURL :=
 ##  Provide a short (up to a few lines) abstract in HTML format, explaining
 ##  the package content. This text will be displayed on the package overview
 ##  Web page. Please use '<span class="pkgname">GAP</span>' for GAP and
-##  '<span class="pkgname">MyPKG</span>' for specifing package names.
+##  '<span class="pkgname">MyPKG</span>' for specifying package names.
 ##  
 # AbstractHTML := "This package provides  a collection of functions for \
 # computing the Smith normal form of integer matrices and some related \

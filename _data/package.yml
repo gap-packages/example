@@ -1,6 +1,6 @@
 name: Example
-version: 4.3.2
-date: 2022-08-01
+version: 4.3.3
+date: 2023-01-03
 description: |
     Example/Template of a GAP Package
 
@@ -31,7 +31,7 @@ packageinfo: https://gap-packages.github.io/example/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/gap-packages/example/releases/download/v4.3.2/Example-4.3.2.tar.gz
+      url: https://github.com/gap-packages/example/releases/download/v4.3.3/Example-4.3.3.tar.gz
 
 abstract: |
     The <span class="pkgname">Example</span> package, as its name suggests,    is an example of how to create a <span class="pkgname">GAP</span>    package. It has little functionality except for being a package.

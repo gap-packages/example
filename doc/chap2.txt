@@ -70,7 +70,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage("example");[127X[104X
     [4X[28X----------------------------------------------------------------[128X[104X
-    [4X[28XLoading  Example 4.3.2 (Example/Template of a GAP Package)[128X[104X
+    [4X[28XLoading  Example 4.3.3 (Example/Template of a GAP Package)[128X[104X
     [4X[28Xby Werner Nickel (http://www.mathematik.tu-darmstadt.de/~nickel),[128X[104X
     [4X[28X   Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble), and[128X[104X
     [4X[28X   Olexandr Konovalov (https://alex-konovalov.github.io/).[128X[104X
