@@ -1,22 +1,32 @@
-name: CI
+name: CI (advanced)
 
 # Trigger the workflow on push or pull request
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+      - main
+  pull_request:
+
+# the `concurrency` settings ensure that not too many CI jobs run in parallel
+concurrency:
+  # group by workflow and ref; the last slightly strange component ensures that for pull
+  # requests, we limit to 1 concurrent job, but for the master branch we don't
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.ref != 'refs/heads/master' || github.run_number }}
+  # Cancel intermediate builds, but only if it is a pull request build.
+  cancel-in-progress: ${{ startsWith(github.ref, 'refs/pull/') }}
 
 jobs:
   # The CI test job
   test:
     name: ${{ matrix.gap-branch }} ${{ matrix.ABI }}
     runs-on: ubuntu-latest
-    # Don't run this twice on PRs for branches pushed to the same repository
-    if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
     strategy:
       fail-fast: false
       matrix:
         gap-branch:
           - master
+          - stable-4.12
           - stable-4.11
           - stable-4.10
           - stable-4.9
@@ -51,14 +61,10 @@ jobs:
   manual:
     name: Build manuals
     runs-on: ubuntu-latest
-    # Don't run this twice on PRs for branches pushed to the same repository
-    if: ${{ !(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository) }}
 
     steps:
       - uses: actions/checkout@v3
       - uses: gap-actions/setup-gap@v2
-        with:
-          GAP_PKGS_TO_BUILD: ''
       - uses: gap-actions/build-pkg-docs@v1
         with:
           use-latex: 'true'
