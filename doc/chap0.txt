@@ -6,10 +6,10 @@
                       [1X Example/Template of a [5XGAP[105X Package [101X
   
   
-                                     4.3.3
+                                     4.3.4
   
   
-                                 3 January 2023
+                                25 February 2023
   
   
                                  Werner Nickel
@@ -35,7 +35,7 @@
   
   Olexandr Konovalov
       Email:    [7Xmailto:obk1@st-andrews.ac.uk[107X
-      Homepage: [7Xhttps://alex-konovalov.github.io/[107X
+      Homepage: [7Xhttps://olexandr-konovalov.github.io/[107X
       Address:  [33X[0;14YSchool of Computer Science[133X
                 [33X[0;14YUniversity of St Andrews[133X
                 [33X[0;14YJack Cole Building, North Haugh,[133X
