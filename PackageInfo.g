@@ -103,34 +103,6 @@ ArchiveURL := Concatenation( ~.SourceRepository.URL,
 # ArchiveFormats := ".tar.gz", # the others are generated automatically
 ArchiveFormats := ".tar.gz",
 
-##  If not all of the archive formats mentioned above are provided, these 
-##  can be produced at the GAP side. Therefore it is necessary to know which
-##  files of the package distribution are text files which should be unpacked
-##  with operating system specific line breaks. 
-##  The package wrapping tools for the GAP distribution and web pages will
-##  use a sensible list of file extensions to decide if a file 
-##  is a text file (being conservative, it may miss a few text files). 
-##  These rules may be optionally prepended by the application of rules 
-##  from the PackageInfo.g file. For this, there are the following three
-##  mutually exclusive possibilities to specify the text files:
-##  
-##    - specify below a component 'TextFiles' which is a list of names of the 
-##      text files, relative to the package root directory (e.g., "lib/bla.g"),
-##      then all other files are taken as binary files.
-##    - specify below a component 'BinaryFiles' as list of names, then all other
-##      files are taken as text files.
-##    - specify below a component 'TextBinaryFilesPatterns' as a list of names
-##      and/or wildcards, prepended by 'T' for text files and by 'B' for binary
-##      files.
-##  
-##  (Remark: Just providing a .tar.gz file will often result in useful
-##  archives)
-##  
-##  These entries are *optional*.
-#TextFiles := ["init.g", ......],
-#BinaryFiles := ["doc/manual.dvi", ......],
-#TextBinaryFilesPatterns := [ "TGPLv3", "Texamples/*", "B*.in", ......],
-
 
 ##  Information about authors and maintainers is contained in the `Persons'
 ##  field which is a list of records, one record for each person; each 
