@@ -1,5 +1,6 @@
 name: Example
-version: 4.3.4
+version: "4.3.4"
+license: "GPL-2.0-or-later"
 date: 2023-02-25
 description: |
     Example/Template of a GAP Package
@@ -39,3 +40,31 @@ abstract: |
 status: deposited
 doc-html: doc/chap0_mj.html
 doc-pdf: doc/manual.pdf
+keywords: |
+    package example, package template.
+citeas: |
+    <p class='BibEntry'>
+    [<span class='BibKey'>NGK23</span>]   <b class='BibAuthor'>Nickel, W., Gamble, G. and Konovalov, O.</b>,
+     <i class='BibTitle'>Example, Example/Template of a GAP Package,
+             Version 4.3.4</i>
+     (<span class='BibYear'>2023</span>)<br />
+    (<span class='BibNote'>GAP package</span>),
+    <span class='BibHowpublished'><a href="https://gap-packages.github.io/example">https://gap-packages.github.io/example</a></span>.
+    </p>
+    
+
+bibtex: |
+    @misc{ Example4.3.4,
+      author =           {Nickel, W. and Gamble, G. and Konovalov, O.},
+      title =            {{Example},   Example/Template   of   a   GAP  Package,
+                          {V}ersion 4.3.4},
+      month =            {Feb},
+      year =             {2023},
+      note =             {GAP package},
+      howpublished =     {\href         {https://gap-packages.github.io/example}
+                          {\texttt{https://gap-packages.github.io/}\discretionary
+                          {}{}{}\texttt{example}}},
+      keywords =         {package example; package template},
+      printedkey =       {NGK23}
+    }
+
