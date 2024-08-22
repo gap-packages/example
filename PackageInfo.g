@@ -291,15 +291,6 @@ Dependencies := rec(
   # SuggestedOtherPackages := [],
   SuggestedOtherPackages := [],
 
-  # *Optional*: a list of pairs as above, denoting those needed packages
-  # that must be completely loaded before loading of the current package
-  # is started (if this is not possible due to a cyclic dependency
-  # then the current package is regarded as not loadable);
-  # this component should be used only if functions from the needed packages
-  # in question are called (or global lists or records are accessed)
-  # while the current package gets loaded
-  # OtherPackagesLoadedInAdvance := [],
-
   # needed external conditions (programs, operating system, ...)  provide 
   # just strings as text or
   # pairs [text, URL] where URL  provides further information
