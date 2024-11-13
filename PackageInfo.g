@@ -16,7 +16,7 @@
 ##  especially in the case where the Example package's entry is blank.
 ##  
 ##  For the LoadPackage mechanism in GAP >= 4.5 the minimal set of needed
-##  entries is .PackageName, .Version, and .AvailabilityTest, and an error
+##  entries is .PackageName and .Version, and an error
 ##  will occur if any of them is missing. Other important entries are
 ##  .PackageDoc and .Dependencies. The other entries are relevant if the
 ##  package will be distributed for other GAP users, in particular if it
@@ -35,15 +35,15 @@ PackageName := "Example",
 ##  one line.
 Subtitle := "Example/Template of a GAP Package",
 
-##  See '?Extending: Version Numbers' in GAP help for an explanation
+##  See '?Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
 Version := "4.3.4",
 
-##  Release date of the current version in dd/mm/yyyy format.
-Date := "25/02/2023",
+##  Release date of the current version in yyyy-mm-dd format.
+Date := "2023-02-25",
 
-## Optional: license of the package, as an SPDX short-form identifiers;
+## License of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
 ## <https://spdx.org/licenses> for a list of supported licenses.
 ## You can also combine multiple licenses via SPDX License Expressions,
@@ -104,12 +104,15 @@ ArchiveURL := Concatenation( ~.SourceRepository.URL,
 ArchiveFormats := ".tar.gz",
 
 
+##  Optional:
 ##  Information about authors and maintainers is contained in the `Persons'
 ##  field which is a list of records, one record for each person; each 
 ##  person's record should be as per the following example: 
 ##  
 ##     rec(
-##     # these are compulsory, the strings can be encoded in UTF-8 or latin1,
+##     # 'LastName' is mandatory.
+##     # 'FirstNames' is optional from GAP 4.14 on, was mandatory before.
+##     # The strings can be encoded in UTF-8 or latin1,
 ##     # so using German umlauts or other special characters is ok:
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
@@ -233,7 +236,7 @@ AbstractHTML :=
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package.",
 
-##  Here is the information on the help books of the package, used for
+##  Here is the information on the help book(s) of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
 ##  documentation on the GAP website.
 ##  
@@ -299,11 +302,12 @@ Dependencies := rec(
   # 'AvailabilityTest' function below)
   # ExternalConditions := []
   ExternalConditions := []
-                      
 ),
 
+##  *Optional*:
 ##  Provide a test function for the availability of this package.
-##  For packages containing nothing but GAP code, just say 'ReturnTrue' here.
+##  For packages containing nothing but GAP code, just say 'ReturnTrue' here
+##  (this is also the default value).
 ##  For packages which may not work or will have only partial functionality,
 ##  use 'LogPackageLoadingMessage( PACKAGE_WARNING, ... )' statements to
 ##  store messages which may be viewed later with `DisplayPackageLoadingLog'.
@@ -385,6 +389,20 @@ TestFile := "tst/testall.g",
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
 Keywords := ["package example", "package template"],
+
+##  *Optional*:
+##  Here you can list conditional extensions which your package provides,
+##  see Section "Extensions Provided by a Package" in the GAP Reference Manual.
+##  For example, suppose that your package contains a function that depends
+##  on some other packages, but you want your package to be loadable also
+##  without these other packages (and then without your function being
+##  available).
+##  Then you can put the code of this function into a separate file
+##  that shall be read only as soon as those other packages
+##  get loaded.
+##  The filename and the names of the packages in question
+##  can be specified via the 'Extensions' component.
+# Extensions := [],
 
 ##  *Optional*: If you are using AutoDoc, then you can specify content of
 ##  the manual title page it creates for you here
