@@ -112,8 +112,8 @@ ArchiveFormats := ".tar.gz",
 ##     rec(
 ##     # 'LastName' is mandatory.
 ##     # 'FirstNames' is optional from GAP 4.14 on, was mandatory before.
-##     # The strings can be encoded in UTF-8 or latin1,
-##     # so using German umlauts or other special characters is ok:
+##     # The strings should be encoded in UTF-8,
+##     # in particular they should not contain LaTeX macros or HTML tags.
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
 ##  
