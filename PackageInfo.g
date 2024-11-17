@@ -188,25 +188,11 @@ Persons := [
   
 ],
 
-##  Status information. Currently the following cases are recognized:
-##    "accepted"      for successfully refereed packages
-##    "submitted"     for packages submitted for the refereeing
-##    "deposited"     for packages for which the GAP developers agreed 
-##                    to distribute them with the core GAP system
-##    "dev"           for development versions of packages 
-##    "other"         for all other packages
-##
-# Status := "accepted",
-Status := "deposited",
-
-##  You must provide the next two entries if and only if the status is 
-##  "accepted" because is was successfully refereed:
-# format: 'name (place)'
-# CommunicatedBy := "Mike Atkinson (St Andrews)",
-#CommunicatedBy := "",
-# format: mm/yyyy
-# AcceptDate := "08/1999",
-#AcceptDate := "",
+##  The fields 'Status', 'CommunicatedBy' and 'AcceptDate' are obsolete since
+##  GAP 4.13.. If a package is intended to be compatible with older GAP
+##  versions, one may set `Status` to "other". There is no need to set the
+##  other two fields even in that case.
+# Status := "other",
 
 ##  For a central overview of all packages and a collection of all package
 ##  archives it is necessary to have two files accessible which should be
