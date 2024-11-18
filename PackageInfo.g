@@ -189,7 +189,7 @@ Persons := [
 ],
 
 ##  The fields 'Status', 'CommunicatedBy' and 'AcceptDate' are obsolete since
-##  GAP 4.13.. If a package is intended to be compatible with older GAP
+##  GAP 4.13. If a package is intended to be compatible with older GAP
 ##  versions, one may set `Status` to "other". There is no need to set the
 ##  other two fields even in that case.
 # Status := "other",
