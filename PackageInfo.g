@@ -38,10 +38,10 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.3.4",
+Version := "4.4.0",
 
 ##  Release date of the current version in yyyy-mm-dd format.
-Date := "2023-02-25",
+Date := "2024-11-18",
 
 ## License of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
@@ -293,7 +293,7 @@ Dependencies := rec(
 ##  *Optional*:
 ##  Provide a test function for the availability of this package.
 ##  For packages containing nothing but GAP code, just say 'ReturnTrue' here
-##  (this is also the default value).
+##  (this is also the default value since GAP 4.14).
 ##  For packages which may not work or will have only partial functionality,
 ##  use 'LogPackageLoadingMessage( PACKAGE_WARNING, ... )' statements to
 ##  store messages which may be viewed later with `DisplayPackageLoadingLog'.
@@ -303,6 +303,10 @@ Dependencies := rec(
 ##  With the package loading mechanism of GAP >=4.4, the availability
 ##  tests of other packages, as given under .Dependencies above, will be 
 ##  done automatically and need not be included in this function.
+##
+##  Note that this field is optional since GAP 4.14 but was required
+##  before. If compatibility with older GAP versions is desired, set it
+##  explicitly to `ReturnTrue`.
 ##
 #AvailabilityTest := ReturnTrue,
 AvailabilityTest := function()
@@ -388,6 +392,9 @@ Keywords := ["package example", "package template"],
 ##  get loaded.
 ##  The filename and the names of the packages in question
 ##  can be specified via the 'Extensions' component.
+##
+##  Extensions are supported since GAP 4.13 or later, older GAP versions will
+##  ignore this field.
 # Extensions := [],
 
 ##  *Optional*: If you are using AutoDoc, then you can specify content of

@@ -1,3 +1,18 @@
+Version 4.4.0: 2024-MM-DD
+* Add `Extensions` field which was introduced in GAP 4.13
+* Mark `Status`, `CommunicatedBy`, `AcceptDate` as obsolete starting
+  with GAP 4.13.0
+* Mark `License` field as required
+* Mark `AvailabilityTest` as optional since GAP 4.14
+* Remove references to long obsolete fields `TextFiles`, `BinaryFiles`,
+  `TextBinaryFilesPatterns`
+* Remove `OtherPackagesLoadedInAdvance` which should not be used and
+  will be deprecated in future GAP versions
+* Update CI configuration
+
+Version 4.3.4: 2023-02-25
+* Update Olexandr's homepage URL
+
 Version 4.3.3: 2022-01-03
 * Enhance the `configure` script to accept `--with-gaproot=PATH`
 
