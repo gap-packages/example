@@ -41,7 +41,7 @@ Subtitle := "Example/Template of a GAP Package",
 Version := "4.4.0",
 
 ##  Release date of the current version in yyyy-mm-dd format.
-Date := "2024-11-18",
+Date := "2024-11-20",
 
 ## License of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
