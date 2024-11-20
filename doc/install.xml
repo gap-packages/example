@@ -56,8 +56,8 @@ e.g.&nbsp;if your private <F>pkg</F> directory is a subdirectory of
 <P/>
 &nbsp;&nbsp;<C>gap -l ";<A>myhomedir</A>/mygap"</C>
 <P/>
-where <A>myhomedir</A> is the  path  to  your  home  directory,  which  (since
-&GAP;&nbsp;4.3) may be replaced  by  a  tilde (the  empty  path  before  the
+where <A>myhomedir</A> is the  path  to  your  home  directory,  which 
+may be replaced  by  a  tilde (the  empty  path  before  the
 semicolon is  filled  in  by  the  default  path  of  the  &GAP;&nbsp;4  home
 directory).
 
@@ -101,13 +101,13 @@ done by calling <Ref Func="LoadPackage" BookName="ref"/>:
 <Example><![CDATA[
 gap> LoadPackage("example");
 ----------------------------------------------------------------
-Loading  Example 4.3.3 (Example/Template of a GAP Package)
+Loading Example 4.4.0 (Example/Template of a GAP Package)
 by Werner Nickel (http://www.mathematik.tu-darmstadt.de/~nickel),
    Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble), and
-   Olexandr Konovalov (https://alex-konovalov.github.io/).
+   Olexandr Konovalov (https://olexandr-konovalov.github.io/).
 maintained by:
    Greg Gamble (http://www.math.rwth-aachen.de/~Greg.Gamble) and
-   Olexandr Konovalov (https://alex-konovalov.github.io/).
+   Olexandr Konovalov (https://olexandr-konovalov.github.io/).
 Homepage: https://gap-packages.github.io/example
 Report issues at https://github.com/gap-packages/example/issues
 ----------------------------------------------------------------
