@@ -16,7 +16,7 @@
 ##  especially in the case where the Example package's entry is blank.
 ##  
 ##  For the LoadPackage mechanism in GAP >= 4.5 the minimal set of needed
-##  entries is .PackageName, .Version, and .AvailabilityTest, and an error
+##  entries is .PackageName and .Version, and an error
 ##  will occur if any of them is missing. Other important entries are
 ##  .PackageDoc and .Dependencies. The other entries are relevant if the
 ##  package will be distributed for other GAP users, in particular if it
@@ -35,15 +35,15 @@ PackageName := "Example",
 ##  one line.
 Subtitle := "Example/Template of a GAP Package",
 
-##  See '?Extending: Version Numbers' in GAP help for an explanation
+##  See '?Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.3.4",
+Version := "4.4.0",
 
-##  Release date of the current version in dd/mm/yyyy format.
-Date := "25/02/2023",
+##  Release date of the current version in yyyy-mm-dd format.
+Date := "2024-11-20",
 
-## Optional: license of the package, as an SPDX short-form identifiers;
+## License of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and
 ## <https://spdx.org/licenses> for a list of supported licenses.
 ## You can also combine multiple licenses via SPDX License Expressions,
@@ -103,42 +103,17 @@ ArchiveURL := Concatenation( ~.SourceRepository.URL,
 # ArchiveFormats := ".tar.gz", # the others are generated automatically
 ArchiveFormats := ".tar.gz",
 
-##  If not all of the archive formats mentioned above are provided, these 
-##  can be produced at the GAP side. Therefore it is necessary to know which
-##  files of the package distribution are text files which should be unpacked
-##  with operating system specific line breaks. 
-##  The package wrapping tools for the GAP distribution and web pages will
-##  use a sensible list of file extensions to decide if a file 
-##  is a text file (being conservative, it may miss a few text files). 
-##  These rules may be optionally prepended by the application of rules 
-##  from the PackageInfo.g file. For this, there are the following three
-##  mutually exclusive possibilities to specify the text files:
-##  
-##    - specify below a component 'TextFiles' which is a list of names of the 
-##      text files, relative to the package root directory (e.g., "lib/bla.g"),
-##      then all other files are taken as binary files.
-##    - specify below a component 'BinaryFiles' as list of names, then all other
-##      files are taken as text files.
-##    - specify below a component 'TextBinaryFilesPatterns' as a list of names
-##      and/or wildcards, prepended by 'T' for text files and by 'B' for binary
-##      files.
-##  
-##  (Remark: Just providing a .tar.gz file will often result in useful
-##  archives)
-##  
-##  These entries are *optional*.
-#TextFiles := ["init.g", ......],
-#BinaryFiles := ["doc/manual.dvi", ......],
-#TextBinaryFilesPatterns := [ "TGPLv3", "Texamples/*", "B*.in", ......],
 
-
+##  Optional:
 ##  Information about authors and maintainers is contained in the `Persons'
 ##  field which is a list of records, one record for each person; each 
 ##  person's record should be as per the following example: 
 ##  
 ##     rec(
-##     # these are compulsory, the strings can be encoded in UTF-8 or latin1,
-##     # so using German umlauts or other special characters is ok:
+##     # 'LastName' is mandatory.
+##     # 'FirstNames' is optional from GAP 4.14 on, was mandatory before.
+##     # The strings should be encoded in UTF-8,
+##     # in particular they should not contain LaTeX macros or HTML tags.
 ##     LastName := "Müller",
 ##     FirstNames := "Fritz Eduard",
 ##  
@@ -213,25 +188,11 @@ Persons := [
   
 ],
 
-##  Status information. Currently the following cases are recognized:
-##    "accepted"      for successfully refereed packages
-##    "submitted"     for packages submitted for the refereeing
-##    "deposited"     for packages for which the GAP developers agreed 
-##                    to distribute them with the core GAP system
-##    "dev"           for development versions of packages 
-##    "other"         for all other packages
-##
-# Status := "accepted",
-Status := "deposited",
-
-##  You must provide the next two entries if and only if the status is 
-##  "accepted" because is was successfully refereed:
-# format: 'name (place)'
-# CommunicatedBy := "Mike Atkinson (St Andrews)",
-#CommunicatedBy := "",
-# format: mm/yyyy
-# AcceptDate := "08/1999",
-#AcceptDate := "",
+##  The fields 'Status', 'CommunicatedBy' and 'AcceptDate' are obsolete since
+##  GAP 4.13. If a package is intended to be compatible with older GAP
+##  versions, one may set `Status` to "other". There is no need to set the
+##  other two fields even in that case.
+# Status := "other",
 
 ##  For a central overview of all packages and a collection of all package
 ##  archives it is necessary to have two files accessible which should be
@@ -261,7 +222,7 @@ AbstractHTML :=
    is an example of how to create a <span class=\"pkgname\">GAP</span> \
    package. It has little functionality except for being a package.",
 
-##  Here is the information on the help books of the package, used for
+##  Here is the information on the help book(s) of the package, used for
 ##  loading into GAP's online help and maybe for an online copy of the 
 ##  documentation on the GAP website.
 ##  
@@ -319,15 +280,6 @@ Dependencies := rec(
   # SuggestedOtherPackages := [],
   SuggestedOtherPackages := [],
 
-  # *Optional*: a list of pairs as above, denoting those needed packages
-  # that must be completely loaded before loading of the current package
-  # is started (if this is not possible due to a cyclic dependency
-  # then the current package is regarded as not loadable);
-  # this component should be used only if functions from the needed packages
-  # in question are called (or global lists or records are accessed)
-  # while the current package gets loaded
-  # OtherPackagesLoadedInAdvance := [],
-
   # needed external conditions (programs, operating system, ...)  provide 
   # just strings as text or
   # pairs [text, URL] where URL  provides further information
@@ -336,11 +288,12 @@ Dependencies := rec(
   # 'AvailabilityTest' function below)
   # ExternalConditions := []
   ExternalConditions := []
-                      
 ),
 
+##  *Optional*:
 ##  Provide a test function for the availability of this package.
-##  For packages containing nothing but GAP code, just say 'ReturnTrue' here.
+##  For packages containing nothing but GAP code, just say 'ReturnTrue' here
+##  (this is also the default value since GAP 4.14).
 ##  For packages which may not work or will have only partial functionality,
 ##  use 'LogPackageLoadingMessage( PACKAGE_WARNING, ... )' statements to
 ##  store messages which may be viewed later with `DisplayPackageLoadingLog'.
@@ -350,6 +303,10 @@ Dependencies := rec(
 ##  With the package loading mechanism of GAP >=4.4, the availability
 ##  tests of other packages, as given under .Dependencies above, will be 
 ##  done automatically and need not be included in this function.
+##
+##  Note that this field is optional since GAP 4.14 but was required
+##  before. If compatibility with older GAP versions is desired, set it
+##  explicitly to `ReturnTrue`.
 ##
 #AvailabilityTest := ReturnTrue,
 AvailabilityTest := function()
@@ -422,6 +379,23 @@ TestFile := "tst/testall.g",
 ##  of the package.
 # Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
 Keywords := ["package example", "package template"],
+
+##  *Optional*:
+##  Here you can list conditional extensions which your package provides,
+##  see Section "Extensions Provided by a Package" in the GAP Reference Manual.
+##  For example, suppose that your package contains a function that depends
+##  on some other packages, but you want your package to be loadable also
+##  without these other packages (and then without your function being
+##  available).
+##  Then you can put the code of this function into a separate file
+##  that shall be read only as soon as those other packages
+##  get loaded.
+##  The filename and the names of the packages in question
+##  can be specified via the 'Extensions' component.
+##
+##  Extensions are supported since GAP 4.13 or later, older GAP versions will
+##  ignore this field.
+# Extensions := [],
 
 ##  *Optional*: If you are using AutoDoc, then you can specify content of
 ##  the manual title page it creates for you here
