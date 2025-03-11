@@ -79,24 +79,13 @@ static Int InitLibrary (
 */
 /* <name> returns the description of this module */
 static StructInitInfo module = {
-#ifdef EDIVSTATIC
-    .type = MODULE_STATIC,
-#else
     .type = MODULE_DYNAMIC,
-#endif
     .name = "hello",
     .initKernel = InitKernel,
     .initLibrary = InitLibrary,
 };
 
-#ifndef EDIVSTATIC
-StructInitInfo * Init__Dynamic ( void )
+StructInitInfo * Init__Dynamic (void)
 {
- return &module;
-}
-#endif
-
-StructInitInfo * Init__ediv ( void )
-{
-  return &module;
+    return &module;
 }
