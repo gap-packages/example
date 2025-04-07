@@ -373,7 +373,7 @@ AvailabilityTest := function()
 ##  deposited packages, these tests are run regularly as a part of the
 ##  standard GAP test suite. See  '?Tests files for a GAPpackage',
 ##  '?TestPackage', and also '?TestDirectory' for more information.
-TestFile := "tst/testall.g",
+TestFile := "tst/testalls.g",
 
 ##  *Optional*: Here you can list some keyword related to the topic 
 ##  of the package.
