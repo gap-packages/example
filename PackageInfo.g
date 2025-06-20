@@ -38,10 +38,10 @@ Subtitle := "Example/Template of a GAP Package",
 ##  See '?Version Numbers' in GAP help for an explanation
 ##  of valid version numbers. For an automatic package distribution update
 ##  you must provide a new version number even after small changes.
-Version := "4.4.0",
+Version := "4.4.1",
 
 ##  Release date of the current version in yyyy-mm-dd format.
-Date := "2024-11-20",
+Date := "2025-06-20",
 
 ## License of the package, as an SPDX short-form identifiers;
 ## see <https://spdx.org/ids> for an explanation what an SPDX ID is, and

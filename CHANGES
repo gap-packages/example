@@ -1,3 +1,6 @@
+Version 4.4.1: 2025-06-20
+* Janitorial changes
+
 Version 4.4.0: 2024-11-20
 * Add `Extensions` field which was introduced in GAP 4.13
 * Mark `Status`, `CommunicatedBy`, `AcceptDate` as obsolete starting
