@@ -209,6 +209,15 @@ README_URL :=
 PackageInfoURL := 
   Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
 
+##  Optional:
+##  It is good practice to include a CHANGES/CHANGELOG file in the package,
+##  containing a summary of the changes made to the package in each new release.
+##  You may specify a URL for this file, to help with the automation of keeping
+##  the version on the website up to date.
+##
+CHANGES_URL :=
+  Concatenation( ~.PackageWWWHome, "/CHANGES" ),
+
 ##  Provide a short (up to a few lines) abstract in HTML format, explaining
 ##  the package content. This text will be displayed on the package overview
 ##  Web page. Please use '<span class="pkgname">GAP</span>' for GAP and
