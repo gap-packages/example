@@ -266,7 +266,7 @@ PackageDoc := rec(
 Dependencies := rec(
   # GAP version, use the version string for specifying a least version,
   # prepend a '=' for specifying an exact version.
-  GAP := "4.11",
+  GAP := "4.10",
 
   # list of pairs [package name, version], package name is case
   # insensitive, exact version denoted with '=' prepended to version string.
