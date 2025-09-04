@@ -31,6 +31,7 @@ jobs:
           - stable-4.13
           - stable-4.12
           - stable-4.11
+          - stable-4.10
         ABI: ['']
         include:
           - gap-branch: master # add one test in 32bit mode -- nostly for packages with kernel extension
@@ -40,8 +41,8 @@ jobs:
       - uses: actions/checkout@v5
       - uses: gap-actions/setup-gap@v2
         with:
-          GAP_PKGS_TO_CLONE: "orb"
-          GAP_PKGS_TO_BUILD: "io profiling orb" # io & profiling must always be built for coverage tracking
+          GAP_PKGS_TO_CLONE: "nq"
+          GAP_PKGS_TO_BUILD: "io profiling nq" # io & profiling must always be built for coverage tracking
           GAPBRANCH: ${{ matrix.gap-branch }}
           ABI: ${{ matrix.ABI }}
       - name: 'Install additional dependencies'

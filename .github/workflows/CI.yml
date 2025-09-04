@@ -31,6 +31,7 @@ jobs:
           - stable-4.13
           - stable-4.12
           - stable-4.11
+          - stable-4.10
 
     steps:
       - uses: actions/checkout@v5
