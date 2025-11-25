@@ -287,7 +287,27 @@ Dependencies := rec(
   # (no automatic test will be done for this, do this in your 
   # 'AvailabilityTest' function below)
   # ExternalConditions := []
-  ExternalConditions := []
+  ExternalConditions := [],
+
+  # for packages that need external software, besides the purely descriptive
+  # `ExternalConditions` we also offer the following, which gives an
+  # actionable description of needed external software at least for some
+  # package distributions.
+  # If present this must be a record. The keys specify the package manager.
+  # For Linux distributions, it uses the Distributor IDs as provided by
+  # `lsb_release -i`. For Homebrew on macOS, use "Homebrew".
+  #
+  # Each of these then maps to a list of package descriptors. Each package
+  # descriptor is a list of strings. The first string is the name of a system
+  # package to be installed. The others are reserved for future usage (e.g. to
+  # specify minimal package versions)
+  NeededSystemPackages := rec(
+    #Debian :=   [["libsomepackage-dev"]],
+    #Fedora :=   [["somepackage-devel"]],
+    #Homebrew := [["somepackage"]],
+    #Ubuntu :=   [["libsomepackage-dev"]],
+  ),
+
 ),
 
 ##  *Optional*:

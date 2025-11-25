@@ -19,7 +19,7 @@ concurrency:
 jobs:
   # The CI test job
   test:
-    name: ${{ matrix.gap-branch }} ${{ matrix.ABI }}
+    name: ${{ matrix.gap-branch }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -32,10 +32,6 @@ jobs:
           - stable-4.12
           - stable-4.11
           - stable-4.10
-        ABI: ['']
-        include:
-          - gap-branch: master # add one test in 32bit mode -- nostly for packages with kernel extension
-            ABI: 32
 
     steps:
       - uses: actions/checkout@v6
@@ -44,17 +40,10 @@ jobs:
           GAP_PKGS_TO_CLONE: "nq"
           GAP_PKGS_TO_BUILD: "io profiling nq" # io & profiling must always be built for coverage tracking
           GAPBRANCH: ${{ matrix.gap-branch }}
-          ABI: ${{ matrix.ABI }}
       - name: 'Install additional dependencies'
         run: |
-          if [ "${{matrix.ABI}}" = "32" ]; then
-            sudo apt-get install libmpfr-dev:i386  # you can remove this if you don't need 32 bit builds
-          else
-            sudo apt-get install libmpfr-dev
-          fi
+           apt-get install libmpfr-dev
       - uses: gap-actions/build-pkg@v1
-        with:
-          ABI: ${{ matrix.ABI }}
       - uses: gap-actions/run-pkg-tests@v3
       - uses: gap-actions/run-pkg-tests@v3
         with:
