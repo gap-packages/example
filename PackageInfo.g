@@ -280,6 +280,14 @@ Dependencies := rec(
   # SuggestedOtherPackages := [],
   SuggestedOtherPackages := [],
 
+  # list of pairs [package name, version] as above,
+  # these packages will not automatically be loaded and
+  # the current package will be loaded if they are not available.
+  # this list should contain additional packages required to run
+  # tests and/or build the documentation of the current package
+  # TestPackages := [],
+  TestPackages := [],
+
   # needed external conditions (programs, operating system, ...)  provide 
   # just strings as text or
   # pairs [text, URL] where URL  provides further information
