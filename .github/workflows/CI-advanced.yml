@@ -42,7 +42,7 @@ jobs:
           GAPBRANCH: ${{ matrix.gap-branch }}
       - name: 'Install additional dependencies'
         run: |
-           apt-get install libmpfr-dev
+           sudo apt-get install libmpfr-dev
       - uses: gap-actions/build-pkg@v1
       - uses: gap-actions/run-pkg-tests@v3
       - uses: gap-actions/run-pkg-tests@v3
