@@ -19,54 +19,42 @@ concurrency:
 jobs:
   # The CI test job
   test:
-    name: ${{ matrix.gap-branch }}
-    runs-on: ubuntu-latest
+    name: ${{ matrix.gap-version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        gap-branch:
-          - master
-          - stable-4.15
-          - stable-4.14
-          - stable-4.13
-          - stable-4.12
-          - stable-4.11
-          - stable-4.10
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+        gap-version:
+          - 'devel'
+          - '4.15'
+          - '4.14'
+          - '4.13'
+          - '4.12'
+          - '4.11'
+        include:
+          - os: ubuntu-latest
+            gap-version: '4.10'
+            
 
     steps:
       - uses: actions/checkout@v6
-      - uses: gap-actions/setup-gap@v2
+      - uses: gap-actions/setup-cygwin@v2
+        if: ${{ matrix.os == 'windows-latest' }}
+      - uses: gap-actions/setup-gap@v3
         with:
-          GAP_PKGS_TO_CLONE: "nq"
-          GAP_PKGS_TO_BUILD: "io profiling nq" # io & profiling must always be built for coverage tracking
-          GAPBRANCH: ${{ matrix.gap-branch }}
-      - name: 'Install additional dependencies'
-        run: |
-           sudo apt-get install libmpfr-dev
-      - uses: gap-actions/build-pkg@v1
-      - uses: gap-actions/run-pkg-tests@v3
-      - uses: gap-actions/run-pkg-tests@v3
+          gap-version: ${{ matrix.gap-version }}
+      - uses: gap-actions/install-pkg@v1
         with:
-          only-needed: true
-      - uses: gap-actions/process-coverage@v2
+          packages: nq@devel
+      - uses: gap-actions/build-pkg@v3
+        with:
+          extra-pkgs: nq
+      - uses: gap-actions/run-pkg-tests@v4
+      - uses: gap-actions/run-pkg-tests@v4
+        with:
+          mode: onlyneeded
+      - uses: gap-actions/process-coverage@v3
       - uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-
-  # The documentation job
-  manual:
-    name: Build manuals
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v6
-      - uses: gap-actions/setup-gap@v2
-      - uses: gap-actions/build-pkg-docs@v1
-        with:
-          use-latex: 'true'
-      - name: 'Upload documentation'
-        uses: actions/upload-artifact@v4
-        with:
-          name: manual
-          path: ./doc/manual.pdf
-          if-no-files-found: error
