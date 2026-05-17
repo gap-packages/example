@@ -403,11 +403,6 @@ AvailabilityTest := function()
 ##  '?TestPackage', and also '?TestDirectory' for more information.
 TestFile := "tst/testall.g",
 
-##  *Optional*: Here you can list some keyword related to the topic 
-##  of the package.
-# Keywords := ["Smith normal form", "p-adic", "rational matrix inversion"]
-Keywords := ["package example", "package template"],
-
 ##  *Optional*:
 ##  Here you can list conditional extensions which your package provides,
 ##  see Section "Extensions Provided by a Package" in the GAP Reference Manual.
