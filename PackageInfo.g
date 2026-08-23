@@ -141,7 +141,12 @@ ArchiveFormats := ".tar.gz",
 ##     
 ##     # If you want, add one or both of the following entries (*optional*)
 ##     Place := "Notown",
-##     Institution := "Institute for Nothing"
+##     Institution := "Institute for Nothing",
+##
+##     # If you want, add the person's GitHub username without the leading
+##     # '@' (*optional*). This may be used to ping maintainers in comments
+##     # on GitHub issues and pull requests.
+##     GitHubUsername := "fmueller"
 ##     )
 ##  
 Persons := [
@@ -176,6 +181,7 @@ Persons := [
     IsMaintainer  := true,
     Email         := "obk1@st-andrews.ac.uk",
     WWWHome       := "https://olexandr-konovalov.github.io/",
+    GitHubUsername:= "olexandr-konovalov",
     PostalAddress := Concatenation( [
                      "School of Computer Science\n",
                      "University of St Andrews\n",
